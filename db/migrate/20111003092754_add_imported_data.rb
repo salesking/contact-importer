@@ -4,6 +4,7 @@ class AddImportedData < ActiveRecord::Migration
       t.integer :import_id
       t.string :sk_id, :limit => 22
       t.text :source
+      t.text :log
       t.string :company_id, :user_id, :limit => 22
       t.timestamps
     end

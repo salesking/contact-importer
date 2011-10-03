@@ -1,13 +1,12 @@
 class Import < ActiveRecord::Base
   belongs_to :company
   has_many :mappings
-  has_many :import_data
+  has_many :data_rows
   belongs_to :attachment
 
   accepts_nested_attributes_for :mappings
 
   validates :col_sep, :quote_char,  :presence=>true
-
 
 
   def create_clients(site, token)
@@ -25,12 +24,19 @@ class Import < ActiveRecord::Base
       end
       if obj.save # to sk
         # create import-data success
+        a = self.data_rows.build :sk_id => obj.id
+        a.save!
       else
-        errors << obj.errors.inspect
-        # collect errors and save import-data
+        a = self.data_rows.build
+        a.source= i.to_csv(:col_sep=>col_sep, :quote_char=>quote_char)
+        a.log = obj.errors.full_messages
+        a.save!
       end
     end
-    raise errors.inspect unless errors.empty?
+  end
+
+  def success?
+    data_rows.failed.empty?
   end
 
 end

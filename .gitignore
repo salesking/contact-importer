@@ -7,3 +7,4 @@ vendor/gems
 nbproject
 config/database.yml
 config/settings.yml
+coverage

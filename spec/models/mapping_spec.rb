@@ -3,6 +3,11 @@ describe Mapping do
 
   describe 'convert' do
 
+    it "should return field value" do
+      obj = Mapping.new :source=>'0'
+      obj.convert(['Pipi']).should == 'Pipi'
+    end
+
     it "should convert enum" do
       obj = Mapping.new :conv_opts => '{"male":"Herr","female":"Frau"}', :conv_type=>'enum', :source=>'0'
       obj.convert(['Frau']).should == 'female'

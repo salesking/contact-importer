@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'json'
-gem 'sk_sdk', :path => "~/projekte/github/sk/sdk"
+gem 'sk_sdk'
 gem "sk_api_schema"
 gem "fastercsv"
 gem "haml"

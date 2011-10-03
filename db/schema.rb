@@ -10,13 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110925001203) do
+ActiveRecord::Schema.define(:version => 20111003092754) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",      :limit => 100
     t.string   "disk_filename"
     t.string   "company_id",    :limit => 22
     t.string   "user_id",       :limit => 22
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data_rows", :force => true do |t|
+    t.integer  "import_id"
+    t.string   "sk_id",      :limit => 22
+    t.text     "source"
+    t.text     "log"
+    t.string   "company_id", :limit => 22
+    t.string   "user_id",    :limit => 22
     t.datetime "created_at"
     t.datetime "updated_at"
   end

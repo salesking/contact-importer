@@ -17,3 +17,17 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+
+# Simulate a File Upload. Files reside in RAILS_ROOT/test/fixutes/files
+# ==== Parameter
+# filename<String>:: The file to upload
+# ==== Returns
+# <Object>::simulated file upload
+def file_upload(filename)
+  type = 'text/plain'
+  file = File.new(Rails.root.join('spec/fixtures/', filename), 'r')
+  ActionDispatch::Http::UploadedFile.new( :tempfile => file,
+                                          :filename => filename,
+                                          :type => type)
+end
