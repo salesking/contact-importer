@@ -18,6 +18,9 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
+def user_login
+  @request.session['access_token'] = 'abcdefg'
+end
 
 # Simulate a File Upload. Files reside in RAILS_ROOT/test/fixutes/files
 # ==== Parameter
@@ -26,8 +29,14 @@ end
 # <Object>::simulated file upload
 def file_upload(filename)
   type = 'text/plain'
-  file = File.new(Rails.root.join('spec/fixtures/', filename), 'r')
-  ActionDispatch::Http::UploadedFile.new( :tempfile => file,
-                                          :filename => filename,
-                                          :type => type)
+  file_path = Rails.root.join('spec/fixtures/', filename)
+#  file = File.new(Rails.root.join('spec/fixtures/', filename), 'r')
+  Rack::Test::UploadedFile.new(file_path, type)
+#  ActionDispatch::Http::UploadedFile.new( :tempfile => file,
+#                                          :filename => filename,
+#                                          :type => type)
+end
+
+def response_to_json
+  ActiveSupport::JSON.decode(response.body)
 end

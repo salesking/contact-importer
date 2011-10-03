@@ -3,13 +3,7 @@ class ImportsController < ApplicationController
 
   def new
     #TODO select incoming ISo/UTF-8 format
-    #
-    # nested data:
-    # addresses - show 3 types delivery/work/home
-    # show headers, 1-3 example lines
-
     @import = Import.new :col_sep=>',', :quote_char=>'"'
-
   end
 
   def create

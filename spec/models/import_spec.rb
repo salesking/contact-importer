@@ -24,7 +24,7 @@ describe Import,'creating data' do
     @client.should_receive(:save).and_return(true)
     lambda{
       @import.create_clients('http://localhost', 'some-token')
-    }.should change(DataRow, :count).by(1)    
+    }.should change(DataRow, :count).by(1)
   end
 
   it "should create failed data_rows" do
