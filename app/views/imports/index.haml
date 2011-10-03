@@ -1,0 +1,28 @@
+%h2=Import.model_name.human(:count=>5)
+
+%p= link_to t(:'imports.new'), new_import_path
+
+%table
+  %thead
+    %tr
+      %th Actions
+      %th=Import.human_attribute_name(:name)
+      %th=Import.human_attribute_name(:kind)
+      %th=Import.human_attribute_name(:created_at)
+  %tbody
+    - @imports.each do |obj|
+      %tr
+        %td
+          = link_to( t('actions.destroy'), '#') #destroy_import_path(obj)
+        %td=obj.name
+        %td=obj.kind
+        %td=obj.created_at
+
+
+
+-# table_for(@imports, :sorting => false) do |t, obj|
+
+  = t.column :name, :link => import_path(obj)
+  = t.column :kind
+  = t.column :started_at
+  = t.column :created_at

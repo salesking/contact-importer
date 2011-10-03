@@ -1,0 +1,15 @@
+#oAuth app credentials
+id:
+secret:
+
+# url of the salesking instance
+sk_url: https://*.dev.salesking.eu
+
+# slug of this app inside salesking
+canvas_slug: csv-importer
+
+# acl - scope
+scope: api/clients:create offline_access
+
+# when comming bacl from oauth dialog inside this app
+redirect_url: http://localhost:3001/login_success

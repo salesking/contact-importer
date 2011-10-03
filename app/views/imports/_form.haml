@@ -1,0 +1,41 @@
+- content_for :head do
+  = javascript_include_tag 'jquery-ui.min.js'
+  = javascript_include_tag 'fileuploader'
+  = javascript_include_tag 'dnd_upload'
+  = stylesheet_link_tag    'fileuploader'
+
+
+= form_for @import, :html => { :multipart => true } do |f|
+  = f.hidden_field :attachment_id
+  .clearfix
+    = label_tag :name
+    .input
+      = f.text_field :name
+  .clearfix
+    = label_tag :col_sep
+    .input
+      = f.text_field :col_sep, :class=>'minimi'
+  .clearfix
+    = label_tag :quote_char
+    .input
+      = f.text_field :quote_char, :class=>'minimi'
+  .clearfix
+    = label_tag :kind
+    .input
+      = f.select :kind, [ ['Clients', 'client'], ['Payments', 'payment'] , ['Products', 'product']  ]
+  .clearfix
+    %label=t('imports.upload')
+    .input
+      #file-upload
+        %noscript
+          %p Please enable JavaScript to use file uploader
+
+  .clearfix
+    %label=t('imports.csv_fields')
+    #csv_fields.input
+  .clearfix
+    %label=t('imports.salesking_fields')
+    #schema_fields.input
+
+  .actions
+    = f.submit :class => "btn primary"

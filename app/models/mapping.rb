@@ -1,0 +1,57 @@
+# A mapping connects source with targed fields. It further does a conversion if
+# needed
+# 
+# == Conversions:
+# - join: merges multiple incoming fields into a target
+# - enum: maps source strings to enum target values
+# 
+# - split: split source field into multiple target fields
+#
+#
+class Mapping < ActiveRecord::Base
+  belongs_to :company
+  belongs_to :import
+#  has_many :target_fields
+#  has_many :source_fields
+
+  CONVERT_TYPES= ['enum', 'date', 'join']
+
+  # === Parameter
+  #<Array>:: Source data row
+  def convert(data_row)
+    if conv_type && self.respond_to?("convert_#{conv_type}")
+      self.send("convert_#{conv_type}", data_row)
+    else # simple field mapping
+      data_row[source.to_i]
+    end
+  end
+
+  # 
+  #  convert_opts = {"male":"Herr","female":"Frau"}
+  def convert_enum(data_row)
+    val = data_row[source.to_i]
+    res = parsed_opts.detect {|trg_val, src_val| val == src_val }
+    res && res[0]
+  end
+
+  def convert_date(data_row)
+    val = data_row[source.to_i]
+    date = Date.strptime(val, parsed_opts['date']) rescue val
+    date.is_a?(Date) ? date.strftime("%Y.%m.%d") : val
+  end
+
+  # == Params
+  # <Array>:. Incomming csv fields
+  def convert_join(data_row)
+    source_ids = source.split(',').map{|i| i.to_i}
+    vals = source_ids.map{ |i| data_row[i] }
+    vals.join(' ')
+  end
+
+  # ===Returns
+  # <Hash>:: parsed(decoded json) conversion options
+  def parsed_opts
+     ActiveSupport::JSON.decode conv_opts
+  end
+
+end

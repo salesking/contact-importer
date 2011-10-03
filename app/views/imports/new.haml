@@ -1,0 +1,9 @@
+%h2=t('imports.new')
+- if @import.errors.any?
+  .alert-message.block-message.error
+    %p
+      %strong=flash[:error]
+    %ul
+      - @import.errors.full_messages.each do |i|
+        %li=i
+= render :partial => "form"

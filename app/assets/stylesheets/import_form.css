@@ -1,0 +1,19 @@
+input.minimi{ width: 15px; }
+#csv_fields, #schema_fields { width: 100%;}
+.field{float:left; padding:5px; border: 1px solid #ddd; background: #F5F5F5; margin:3px; list-style: none;}
+#csv_fields .field{cursor: move; }
+.over{background: #FFF6D9; padding: 5px; }
+.field.dropped{padding: 0;}
+.field div{float: left;}
+.field.dropped .target{background: #DDF4FB;  border-right: 1px solid #ddd; padding:4px}
+.field.dropped .source{background: #BFE7BF; padding:4px}
+.map_actions{cursor: pointer; margin: 0 0 0 6px; font-weight: bold}
+
+
+/* overriden bootstrap*/
+.options{clear:left; padding:5px}
+.options>div{clear:left;}
+.options input{float: left;}
+.options label{width:auto; float: left; padding: 0 0 0 5px}
+.help-block {display: block;}
+.field_with_errors input{background:#FDDFDE}
