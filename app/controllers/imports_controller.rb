@@ -1,6 +1,10 @@
 require 'sk_sdk/oauth'
 class ImportsController < ApplicationController
 
+  def show
+    @import = Import.by_c(current_company_id).find(params[:id])
+  end
+
   def new
     #TODO select incoming ISo/UTF-8 format
     @import = Import.new :col_sep=>',', :quote_char=>'"'
@@ -8,6 +12,8 @@ class ImportsController < ApplicationController
 
   def create
     @import = Import.new params[:import]
+    @import.company_id = current_company_id
+    @import.user_id = current_user_id
     # save mapping
     if @import.save
       conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
@@ -22,8 +28,18 @@ class ImportsController < ApplicationController
     end
   end
 
+  def destroy
+    @import = Import.by_c(current_company_id).find(params[:id])
+    if @import.destroy
+      flash[:success] = I18n.t('imports.destroyed')
+    else
+      flash[:error] =  I18n.t('imports.destroy_failed')
+    end
+    redirect_to imports_url
+  end
+
   def index
-    @imports = Import.all
+    @imports = Import.by_c(current_company_id).order("created_at DESC")
   end
 
   # POST js uploader
@@ -37,6 +53,8 @@ class ImportsController < ApplicationController
   def upload
     # save temp file, create attachment
     file = Attachment.new :uploaded_data => params[:file]
+    file.company_id = current_company_id
+    file.user_id = current_user_id
     file.save!
     # grab csv options
     opts = {:col_sep => params[:col_sep], :quote_char => params[:quote_char] }

@@ -1,19 +1,20 @@
-%h2=Import.model_name.human(:count=>5)
+%h2="#{Import.model_name.human(:count=>5)} (#{@imports.length})"
 
 %p= link_to t(:'imports.new'), new_import_path
 
 %table
   %thead
     %tr
-      %th Actions
-      %th=Import.human_attribute_name(:name)
-      %th=Import.human_attribute_name(:kind)
-      %th=Import.human_attribute_name(:created_at)
+      %th= t(:'link.actions')
+      %th= Import.human_attribute_name(:name)
+      %th= Import.human_attribute_name(:kind)
+      %th= Import.human_attribute_name(:created_at)
   %tbody
     - @imports.each do |obj|
       %tr
         %td
-          = link_to( t('actions.destroy'), '#') #destroy_import_path(obj)
+          = link_to( t('link.show'), obj )
+          =# link_to( t('link.destroy'), obj ,:remote => true,  :confirm => t(:'link.confirm_destroy'), :method => :delete )
         %td=obj.name
         %td=obj.kind
         %td=obj.created_at

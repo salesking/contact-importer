@@ -15,9 +15,13 @@ describe ImportsController do
     end
 
     it "should be successful" do
-      i = Import.create :quote_char=>'"', :col_sep=>";"
+      import = Import.new :quote_char=>'"', :col_sep=>";"
+      import.company_id = @request.session['company_id']
+      import.save!
       get :index
       response.should be_success
+      assigns[:imports].length.should == 1
+      assigns[:imports].should include import
     end
   end
 
@@ -25,6 +29,18 @@ describe ImportsController do
     it "should be successful" do
       get :new
       response.should be_success
+    end
+  end
+
+  describe "GET 'show'" do
+    it "should be successful" do
+      import = Import.new :quote_char=>'"', :col_sep=>";"
+      import.company_id = @request.session['company_id']
+      import.save!
+      
+      get :show, :id=>import.id
+      response.should be_success
+      assigns[:import].should == import
     end
   end
 

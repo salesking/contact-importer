@@ -20,6 +20,8 @@ end
 
 def user_login
   @request.session['access_token'] = 'abcdefg'
+  @request.session['user_id'] = 'some-user_id'
+  @request.session['company_id'] = 'a-company_id'
 end
 
 # Simulate a File Upload. Files reside in RAILS_ROOT/test/fixutes/files

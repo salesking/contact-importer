@@ -11,7 +11,9 @@ class Attachment < ActiveRecord::Base
   after_create :store_file
 
   validates :filename, :disk_filename, :presence=>true
-    # Any upload file gets passed in as uploaded_data attribute
+
+  attr_accessible :uploaded_data
+  # Any upload file gets passed in as uploaded_data attribute
   # Here its beeing parsed into its bits and pieces so the other attributes can
   # be set (filesize / filename / ..)
   # Sets instance var @uploaded_file, which points to a temp file object and is

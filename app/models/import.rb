@@ -4,7 +4,12 @@ class Import < ActiveRecord::Base
   has_many :data_rows
   belongs_to :attachment
 
+  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }
+  
   accepts_nested_attributes_for :mappings
+
+  attr_accessible :col_sep, :quote_char, :mappings, :name, :kind, 
+                  :attachment_id # need to validate belongs to current company
 
   validates :col_sep, :quote_char,  :presence=>true
 

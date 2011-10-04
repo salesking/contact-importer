@@ -2,8 +2,38 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-
+  activerecord:
+    models:
+      import:
+        one: Import
+        other: Imports
+      mapping:
+        one: Mapping
+        other: Mappings
+      data_row:
+        one: Data Row
+        other: Data Rows
+    attributes:
+      import:
+        created_at: Created at
+        col_sep: Column Separator
+      data_row:
+        sk_id: SalesKing ID
+      mapping:
+        target: Target field
+        source: Source field
+        conv_type: Convert type
+        conv_opts: Convert Options
   imports:
     new: New Import
     upload: Upload
+  data_rows:
+    failed: Failed rows
+    success: Successfull rows
+  link:
+    actions: Actions
+    show: Show
+    revert: Revert
+    back_to_list: Back to list
+    destroy: Delete
+    confirm_destroy: Really delete this record?

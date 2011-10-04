@@ -28,13 +28,14 @@ describe Import,'creating data' do
   end
 
   it "should create an address" do
+    # see test1.csv
     @import.mappings.create :target => 'address.address1', :source=>'8'
     @import.mappings.create :target => 'address.zip', :source=>'9'
     @import.mappings.create :target => 'address.city', :source=>'10'
     @client.should_receive(:save).and_return(true)
     # create mapping for import
     @import.create_clients('http://localhost', 'some-token')
-    puts @client.addresses[0].inspect
+    
     @client.addresses[0].zip.should == '83620'
     @client.addresses[0].address1.should == 'Hubertstr. 205'
     @client.addresses[0].city.should == 'Feldkirchen'

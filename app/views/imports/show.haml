@@ -1,0 +1,39 @@
+%h2=Import.model_name.human(:count=>1)
+%p=link_to t(:'link.back_to_list'), imports_path
+%dl
+  %dt= t(:'data_rows.success')
+  %dd
+    = @import.data_rows.success.count
+    -# link_to t(:'links.show'), create salesking internal url form subdomain/url/kind
+  - unless @import.data_rows.failed.empty?
+    %dt= t(:'data_rows.failed')
+    %dd= @import.data_rows.failed.count
+  %dt= Import.human_attribute_name(:created_at)
+  %dd= @import.created_at
+
+.well
+  = form_for @import, :html => { :method => 'delete' } do |f|
+    = submit_tag t(:'link.destroy'), :class=>'btn danger'
+
+-# %h3=Attachment.model_name.human(:count=>1)
+
+
+%h3=Mapping.model_name.human(:count=>5)
+
+%table
+  %thead
+    %tr
+      %th= t(:'link.actions')
+      %th=Mapping.human_attribute_name(:target)
+      %th=Mapping.human_attribute_name(:source)
+      %th=Mapping.human_attribute_name(:conv_type)
+      %th=Mapping.human_attribute_name(:conv_opts)
+  %tbody
+    - @import.mappings.each do |obj|
+      %tr
+        %td
+          = link_to( t('link.edit'), obj )
+        %td=obj.target
+        %td=obj.source
+        %td=obj.conv_type
+        %td=obj.conv_opts
