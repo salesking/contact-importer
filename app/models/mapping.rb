@@ -11,9 +11,6 @@
 class Mapping < ActiveRecord::Base
   belongs_to :company
   belongs_to :import
-#  has_many :target_fields
-#  has_many :source_fields
-
   CONVERT_TYPES= ['enum', 'date', 'join']
 
   # === Parameter

@@ -46,7 +46,7 @@ describe ImportsController do
     it "should return data rows in json" do
       post :upload, :file => file_upload('test1.csv'), :col_sep=>';', :quote_char=>'"'
       res = response_to_json
-      res['data'].should ==  [[nil, nil, "", "Herr", nil, "Theo", "Heineman", nil, "Hubertstr. 205", "83620", "Feldkirchen-Westerham", nil, nil, nil, "1721", "08063-98766543", " ", nil, "Messe", "Presse", nil, nil, nil, nil, nil, nil, nil, nil]]
+      res['data'].should ==  [[nil, nil, "", "Herr", nil, "Theo", "Heineman", nil, "Hubertstr. 205", "83620", "Feldkirchen", nil, nil, nil, "1721", "08063-98766543", " ", nil, "Messe", "Presse", nil, nil, nil, nil, nil, nil, nil, nil]]
     end
   end
 

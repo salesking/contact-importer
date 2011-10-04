@@ -14,7 +14,7 @@ describe Import,'creating data' do
     @atm = Attachment.create :uploaded_data => file_upload('test1.csv')
     @import = Import.new :quote_char=>'"', :col_sep=>";",
                          :attachment_id => @atm.id
-    @import.save
+    @import.save!
     Sk.init('http://localhost', 'some-token')
     @client = Sk::Client.new
     Sk::Client.should_receive(:new).and_return(@client)
@@ -25,6 +25,19 @@ describe Import,'creating data' do
     lambda{
       @import.create_clients('http://localhost', 'some-token')
     }.should change(DataRow, :count).by(1)
+  end
+
+  it "should create an address" do
+    @import.mappings.create :target => 'address.address1', :source=>'8'
+    @import.mappings.create :target => 'address.zip', :source=>'9'
+    @import.mappings.create :target => 'address.city', :source=>'10'
+    @client.should_receive(:save).and_return(true)
+    # create mapping for import
+    @import.create_clients('http://localhost', 'some-token')
+    puts @client.addresses[0].inspect
+    @client.addresses[0].zip.should == '83620'
+    @client.addresses[0].address1.should == 'Hubertstr. 205'
+    @client.addresses[0].city.should == 'Feldkirchen'
   end
 
   it "should create failed data_rows" do

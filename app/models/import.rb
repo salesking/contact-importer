@@ -15,26 +15,29 @@ class Import < ActiveRecord::Base
     # setup sk object
     Sk.init(site, token)
     # kick header if present?
-    data[1..-1].each do |i|
+    data[1..-1].each do |row|
       obj = Sk::Client.new
       # divide client from address fields
       adr_fields = []
       cli_fields = []
-      mappings.each do |i|
-        if i.target.match(/^address/)
-          adr_fields << i
+      mappings.each do |map|
+        if map.target.match(/^address\./)
+          adr_fields << map
         else
-          cli_fields << i
+          cli_fields << map
         end
       end
+      # assign 
       cli_fields.each do |m|
         # always send the mapping the whole data_row array
-        obj.send("#{m.target}=", m.convert(i))
+        obj.send("#{m.target}=", m.convert(row))
       end
       adr = Sk::Address.new
-      adr_fields.each do |m|
-        # always send the mapping the whole data_row array
-        adr.send("#{m.target}=", m.convert(i))
+      adr_fields.each do |a|
+        # strip address. prefix from target name .. from end until .
+        # => address.city => city
+        field_name = a.target[/\.(.*)$/, 1]
+        adr.send("#{field_name}=", a.convert(row))
       end
       obj.addresses = [adr]
       if obj.save # to sk
@@ -43,7 +46,7 @@ class Import < ActiveRecord::Base
         a.save!
       else
         a = self.data_rows.build
-        a.source= i.to_csv(:col_sep=>col_sep, :quote_char=>quote_char)
+        a.source= row.to_csv(:col_sep=>col_sep, :quote_char=>quote_char)
         a.log = obj.errors.full_messages
         a.save!
       end
