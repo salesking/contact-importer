@@ -18,7 +18,6 @@ describe Import,'creating data' do
     lambda{
       @atm.destroy
     }.should change(Attachment, :count).by(-1)
-    puts file_path
     File.exist?(file_path).should be_false
   end
 

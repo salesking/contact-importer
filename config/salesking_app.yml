@@ -1,7 +1,0 @@
-id: 43bb861a39b4ed61
-secret: cbf2f509a54a5dfab5501551c38f4d71
-sk_url: http://*.salesking.local:3000
-canvas_slug: csv-importer
-scope: api/clients:create offline_access
-# inside this app
-redirect_url: http://localhost:3001/login_success

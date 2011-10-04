@@ -52,7 +52,7 @@ class Import < ActiveRecord::Base
       else
         a = self.data_rows.build
         a.source= row.to_csv(:col_sep=>col_sep, :quote_char=>quote_char)
-        a.log = obj.errors.full_messages
+        a.log = obj.errors.full_messages.join(',')
         a.save!
       end
     end
