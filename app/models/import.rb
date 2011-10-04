@@ -12,16 +12,31 @@ class Import < ActiveRecord::Base
   def create_clients(site, token)
     opts = {:col_sep => self.col_sep, :quote_char => self.quote_char }
     data = FasterCSV.read(self.attachment.full_filename, opts)
-    errors = []
     # setup sk object
     Sk.init(site, token)
     # kick header if present?
     data[1..-1].each do |i|
       obj = Sk::Client.new
-      self.mappings.each do |m|
+      # divide client from address fields
+      adr_fields = []
+      cli_fields = []
+      mappings.each do |i|
+        if i.target.match(/^address/)
+          adr_fields << i
+        else
+          cli_fields << i
+        end
+      end
+      cli_fields.each do |m|
         # always send the mapping the whole data_row array
         obj.send("#{m.target}=", m.convert(i))
       end
+      adr = Sk::Address.new
+      adr_fields.each do |m|
+        # always send the mapping the whole data_row array
+        adr.send("#{m.target}=", m.convert(i))
+      end
+      obj.addresses = [adr]
       if obj.save # to sk
         # create import-data success
         a = self.data_rows.build :sk_id => obj.id
