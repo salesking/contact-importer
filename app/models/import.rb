@@ -8,10 +8,10 @@ class Import < ActiveRecord::Base
   
   accepts_nested_attributes_for :mappings
 
-  attr_accessible :col_sep, :quote_char, :mappings, :name, :kind, 
+  attr_accessible :col_sep, :quote_char, :mappings_attributes, :name, :kind,
                   :attachment_id # need to validate belongs to current company
 
-  validates :col_sep, :quote_char,  :presence=>true
+  validates :col_sep,:quote_char,  :presence=>true #:kind,
 
 
   def create_clients(site, token)

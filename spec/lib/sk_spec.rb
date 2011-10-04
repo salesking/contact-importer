@@ -6,4 +6,9 @@ describe Sk do
     keys.should include 'last_name', 'gender' #...
     keys.should_not include 'lock_version', 'addresses'
   end
+
+  it "should read schema" do
+    hsh = Sk.read_schema('client')
+    hsh['title'].should == 'client'
+  end
 end

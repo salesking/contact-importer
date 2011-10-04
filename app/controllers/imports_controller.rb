@@ -21,7 +21,7 @@ class ImportsController < ApplicationController
       app.sub_domain = session['sub_domain']
       url = "#{app.sk_url}/api"
       @import.create_clients(url, session['access_token'])
-      redirect_to :imports
+      redirect_to @import
     else
       flash[:error] = I18n.t('imports.save_failed')
       render :action => "new"

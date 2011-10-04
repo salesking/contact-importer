@@ -44,6 +44,34 @@ describe ImportsController do
     end
   end
 
+  describe "POST 'create'" do
+
+    it "should be successful" do
+      client = Sk::Client.new
+      Sk::Client.should_receive(:new).and_return(client)
+      client.should_receive(:save).and_return(true)
+      atm = Attachment.new :uploaded_data => file_upload('test1.csv')
+      atm.company_id = @request.session['company_id']
+      atm.save!
+      opts = { :col_sep=>';', :quote_char=>'"',
+               :kind => 'client',
+               :attachment_id =>atm.id,
+               :mappings_attributes => [
+                 {:target => 'address.city', :source=>'8'},
+                 {:target => 'last_name', :source=>'6'}
+                ] }
+      lambda{
+        lambda{
+          lambda{
+            post :create, :import => opts
+          }.should change(Mapping, :count).by(2)
+        }.should change(DataRow, :count).by(1)
+      }.should change(Import, :count).by(1)
+      response.should be_redirect
+      
+    end
+  end
+
   describe "POST 'upload'" do
 
     it "should be successful" do
@@ -63,6 +91,20 @@ describe ImportsController do
       post :upload, :file => file_upload('test1.csv'), :col_sep=>';', :quote_char=>'"'
       res = response_to_json
       res['data'].should ==  [[nil, nil, "", "Herr", nil, "Theo", "Heineman", nil, "Hubertstr. 205", "83620", "Feldkirchen", nil, nil, nil, "1721", "08063-98766543", " ", nil, "Messe", "Presse", nil, nil, nil, nil, nil, nil, nil, nil]]
+    end
+  end
+
+  describe "DELETE 'import'" do
+
+    it "should be successful" do
+      import = Import.new :quote_char=>'"', :col_sep=>";"
+      import.company_id = @request.session['company_id']
+      import.save!
+
+      lambda{
+        delete :destroy, :id => import.id
+      }.should change(Import, :count).by(-1)
+      response.should be_redirect
     end
   end
 

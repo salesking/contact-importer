@@ -9,6 +9,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :import
 
   after_create :store_file
+  after_destroy :delete_file
 
   validates :filename, :disk_filename, :presence=>true
 
