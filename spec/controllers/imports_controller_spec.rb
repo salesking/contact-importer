@@ -1,5 +1,19 @@
 require 'spec_helper'
 
+describe ImportsController, 'logged out' do
+  render_views
+
+  it "should redirect to frontpage" do
+    get :index
+    response.should be_redirect
+  end
+  it "should redirect to salesking if subdomain is available" do
+    @request.session['sub_domain'] = 'abc'
+    get :index
+    response.body.should == "<script> top.location.href='http://abc.salesking.local:3000'</script>"
+  end
+end
+
 describe ImportsController do
   render_views
 
@@ -47,6 +61,7 @@ describe ImportsController do
   describe "POST 'create'" do
 
     it "should be successful" do
+      Sk.init('http://localhost', 'token')
       client = Sk::Client.new
       Sk::Client.should_receive(:new).and_return(client)
       client.should_receive(:save).and_return(true)

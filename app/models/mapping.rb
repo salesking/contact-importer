@@ -46,6 +46,7 @@ class Mapping < ActiveRecord::Base
 
   def convert_date(data_row)
     val = data_row[source.to_i]
+#    if val && val.empty?
     date = Date.strptime(val, parsed_opts['date']) rescue val
     date.is_a?(Date) ? date.strftime("%Y.%m.%d") : val
   end

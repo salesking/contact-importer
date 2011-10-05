@@ -17,6 +17,8 @@ en:
       import:
         created_at: Created at
         col_sep: Column Separator
+        quote_char: Quote character
+        kind: Data type
       data_row:
         sk_id: SalesKing ID
         log: Log
@@ -29,6 +31,7 @@ en:
   imports:
     new: New Import
     upload: Upload
+    dnd_info: "Please Drag&Drop Fields above onto their targets below. Drop multiple fields on a target to join values(space-delimited) e.g for the tag list."
   data_rows:
     failed: Failed rows
     success: Successfull rows
@@ -40,3 +43,5 @@ en:
     back_to_list: Back to list
     destroy: Delete
     confirm_destroy: Really delete this record?
+  errors:
+    sk_login_required: "Please login to SalesKing and navigate to this app from inside there."

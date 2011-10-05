@@ -1,4 +1,3 @@
-require 'sk_sdk/oauth'
 class ImportsController < ApplicationController
 
   def show
@@ -6,7 +5,6 @@ class ImportsController < ApplicationController
   end
 
   def new
-    #TODO select incoming ISo/UTF-8 format
     @import = Import.new :col_sep=>',', :quote_char=>'"'
   end
 

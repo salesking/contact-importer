@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
     end
 
     def access_denied
-      SK_APP.sub_domain = session['sub_domain']
-      render :inline => "<script> top.location.href='#{SK_APP.auth_dialog}'</script>"
+      if Sk::APP.sub_domain = session['sub_domain'] # go to sk url if
+        render :inline => "<script> top.location.href='#{Sk::APP.sk_url}'</script>"
+      else
+        flash[:error] = t(:'errors.sk_login_required')
+        redirect_to root_url
+      end
     end
 end
