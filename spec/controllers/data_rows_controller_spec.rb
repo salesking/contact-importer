@@ -28,6 +28,7 @@ describe DataRowsController do
       assigns[:data_rows].should include(row)
       response.should be_success
     end
+    
     it "should show failed" do
       import = Import.new :quote_char=>'"', :col_sep=>";"
       import.company_id = @request.session['company_id']

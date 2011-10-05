@@ -29,9 +29,9 @@ class ImportsController < ApplicationController
   def destroy
     @import = Import.by_c(current_company_id).find(params[:id])
     if @import.destroy
-      flash[:success] = I18n.t('imports.destroyed')
+      flash[:success] = t(:'imports.destroyed')
     else
-      flash[:error] =  I18n.t('imports.destroy_failed')
+      flash[:error] = t(:'imports.destroy_failed')
     end
     redirect_to imports_url
   end

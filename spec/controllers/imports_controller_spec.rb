@@ -60,6 +60,11 @@ describe ImportsController do
 
   describe "POST 'create'" do
 
+    it "should redirect to new on error" do
+      post :create, :import => {}
+      flash[:error].should_not be_nil
+    end
+
     it "should be successful" do
       Sk.init('http://localhost', 'token')
       client = Sk::Client.new
@@ -111,6 +116,18 @@ describe ImportsController do
 
   describe "DELETE 'import'" do
 
+    it "should show error" do
+      import = Import.new :quote_char=>'"', :col_sep=>";"
+      import.company_id = @request.session['company_id']
+      import.save!
+      Import.any_instance.should_receive(:destroy).and_return(:false)
+      lambda{
+        delete :destroy, :id => import.id
+      }.should_not change(Import, :count)
+      response.should be_redirect
+#      flash[:error].should_not be_empty
+    end
+
     it "should be successful" do
       import = Import.new :quote_char=>'"', :col_sep=>";"
       import.company_id = @request.session['company_id']
@@ -120,6 +137,7 @@ describe ImportsController do
         delete :destroy, :id => import.id
       }.should change(Import, :count).by(-1)
       response.should be_redirect
+      flash[:success].should_not be_empty
     end
   end
 
