@@ -22,7 +22,7 @@
   .clearfix
     = label_tag :kind
     .input
-      = f.select :kind, [ ['Clients', 'client'], ['Payments', 'payment'] , ['Products', 'product']  ]
+      = f.select :kind, [ ['Clients', 'client']] # , ['Payments', 'payment'] , ['Products', 'product']  
   .clearfix
     %label=t('imports.upload')
     .input

@@ -1,6 +1,15 @@
 require 'spec_helper'
 describe Mapping do
 
+  describe 'in general' do
+
+    it "should validate convert type" do
+      obj = Mapping.new :conv_type => 'what', :source=>'0'
+      obj.should_not be_valid
+      obj.errors[:conv_type].should_not be_empty
+    end
+  end
+
   describe 'convert' do
 
     it "should return field value" do

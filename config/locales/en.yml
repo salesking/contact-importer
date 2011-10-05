@@ -19,6 +19,8 @@ en:
         col_sep: Column Separator
       data_row:
         sk_id: SalesKing ID
+        log: Log
+        source: Source data
       mapping:
         target: Target field
         source: Source field
@@ -33,6 +35,7 @@ en:
   link:
     actions: Actions
     show: Show
+    edit: Edit
     revert: Revert
     back_to_list: Back to list
     destroy: Delete

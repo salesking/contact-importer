@@ -43,7 +43,7 @@ describe Import,'creating data' do
 
   it "should create failed data_rows" do
     @client.should_receive(:save).and_return(false)
-    @client.errors.should_receive(:full_messages).and_return('some error message')
+    @client.errors.should_receive(:full_messages).and_return(['some error message'])
     lambda{
       @import.create_clients('http://localhost', 'some-token')
     }.should change(DataRow, :count).by(1)

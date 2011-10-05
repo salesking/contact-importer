@@ -7,11 +7,24 @@
 # 
 # - split: split source field into multiple target fields
 #
-#
 class Mapping < ActiveRecord::Base
-  belongs_to :company
+
+  CONVERT_TYPES = ['enum', 'date', 'join']
+  ##############################################################################
+  # Associations
+  ##############################################################################
   belongs_to :import
-  CONVERT_TYPES= ['enum', 'date', 'join']
+  ##############################################################################
+  # Validations
+  ##############################################################################
+  validates :conv_type, :inclusion => { :in=> CONVERT_TYPES,
+                       :message => "Unknown conversion type %{value}"},
+                       :allow_blank => true
+
+  ##############################################################################
+  # Behavior
+  ##############################################################################
+  attr_accessible :conv_type, :target, :source, :conv_opts, :import_id
 
   # === Parameter
   #<Array>:: Source data row

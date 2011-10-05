@@ -1,16 +1,24 @@
 class Import < ActiveRecord::Base
-  belongs_to :company
-  has_many :mappings
-  has_many :data_rows
-  belongs_to :attachment
 
-  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }
-  
+  ##############################################################################
+  # Associations
+  ##############################################################################
+  has_many :mappings, :dependent => :destroy
+  has_many :data_rows, :dependent => :destroy
+  belongs_to :attachment, :dependent => :destroy
+  ##############################################################################
+  # Scopes
+  ##############################################################################
+  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }  
+  ##############################################################################
+  # Behavior
+  ##############################################################################
   accepts_nested_attributes_for :mappings
-
   attr_accessible :col_sep, :quote_char, :mappings_attributes, :name, :kind,
                   :attachment_id # need to validate belongs to current company
-
+  ##############################################################################
+  # Validations
+  ##############################################################################
   validates :col_sep,:quote_char,  :presence=>true #:kind,
 
 
@@ -58,8 +66,9 @@ class Import < ActiveRecord::Base
     end
   end
 
+  # An import is successful if no rows failed
   def success?
-    data_rows.failed.empty?
+    data_rows.failed.count == 0
   end
 
 end

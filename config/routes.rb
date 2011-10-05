@@ -1,12 +1,14 @@
 CsvImporter::Application.routes.draw do
 
-  resources :imports
+  resources :imports do
+    resources :data_rows
+  end
+  resources :data_rows
   resources :mappings
-  resources :import_data
   match 'login' => 'sessions#create', :via => :post, :as => :login
   match 'login_success' => 'sessions#new', :via => :get, :as => :login_success
   match 'imports/upload' => 'imports#upload', :via => :post, :as => :upload_imports
-  root :to => 'dashboard#index'
+  root :to => 'frontend#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,19 +1,28 @@
 # Store uploaded files, temporary until the import is created
 # 
-# If files need to present afterwards need to implement persistent s3 storage!!
+# If files need to present afterwards should implement persistent s3 storage!!
 class Attachment < ActiveRecord::Base
 
   FILE_DIR = Rails.root.join( 'tmp', 'attachments')
-
-  belongs_to :company
+  ##############################################################################
+  # Associations
+  ##############################################################################
   belongs_to :import
-
+  ##############################################################################
+  # Callbacks
+  ##############################################################################
   after_create :store_file
   after_destroy :delete_file
-
+  ##############################################################################
+  # Validations
+  ##############################################################################
   validates :filename, :disk_filename, :presence=>true
-
+  ##############################################################################
+  # Behavior
+  ##############################################################################
   attr_accessible :uploaded_data
+
+  
   # Any upload file gets passed in as uploaded_data attribute
   # Here its beeing parsed into its bits and pieces so the other attributes can
   # be set (filesize / filename / ..)

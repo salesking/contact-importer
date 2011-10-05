@@ -7,7 +7,9 @@
     -# link_to t(:'links.show'), create salesking internal url form subdomain/url/kind
   - unless @import.data_rows.failed.empty?
     %dt= t(:'data_rows.failed')
-    %dd= @import.data_rows.failed.count
+    %dd
+      = @import.data_rows.failed.count
+      = link_to( t(:'link.show'), import_data_rows_url(@import, {:failed=>true}) )
   %dt= Import.human_attribute_name(:created_at)
   %dd= @import.created_at
 

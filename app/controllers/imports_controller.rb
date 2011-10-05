@@ -48,7 +48,7 @@ class ImportsController < ApplicationController
   # - only read first 100 lines
   # - hide headers/fields which are potentially empty see above
   # - find or construct a row with all data set, so we can show examples
-  #
+  # - move to attachments/new
   # JSON
   def upload
     # save temp file, create attachment

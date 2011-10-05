@@ -1,0 +1,16 @@
+%h2="#{DataRow.model_name.human(:count=>5)} (#{@data_rows.length}) for Import"
+%p= link_to t(:'link.back_to_list'), import_url(@import)
+%table
+  %thead
+    %tr
+      %th= t(:'link.actions')
+      %th= DataRow.human_attribute_name(:source)
+      %th= DataRow.human_attribute_name(:log)
+  %tbody
+    - @data_rows.each do |obj|
+      %tr
+        %td
+          = link_to( t(:'link.edit'), obj )
+          =# link_to( t('link.destroy'), obj ,:remote => true,  :confirm => t(:'link.confirm_destroy'), :method => :delete )
+        %td=obj.source
+        %td=obj.log
