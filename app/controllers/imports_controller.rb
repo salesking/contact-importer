@@ -57,7 +57,7 @@ class ImportsController < ApplicationController
     # grab csv options
     opts = {:col_sep => params[:col_sep], :quote_char => params[:quote_char] }
 #    puts opts.inspect
-    data = FasterCSV.read(file.full_filename, opts)
+    data = CSV.read(file.full_filename, opts)
     # read json-schema
 #    props = SK.send("#{params[:kind]}_fields")
     props = Sk.client_fields

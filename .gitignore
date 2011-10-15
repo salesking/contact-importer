@@ -9,3 +9,5 @@ config/database.yml
 config/settings.yml
 config/salesking_app.yml
 coverage
+.idea
+public/assets

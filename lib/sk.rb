@@ -1,16 +1,15 @@
 require 'sk_api_schema'
 require 'sk_sdk/base'
-
 # Tiny helper class for talking to SalesKing
 class Sk
   @@conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
-  APP = SK::SDK::Oauth.new(@@conf)
-
+  APP = SK::SDK::Oauth.new(@@conf[Rails.env])
+  %w{Client Address}.each do |model|
+    eval "class #{model} < SK::SDK::Base;end" #unless defined?("Sk::#{model.constantize}")
+  end
   # init SalesKing classes and set connection oAuth token
   def self.init(site, token)
-    %w{Client Address}.each do |model|
-      eval "class #{model} < SK::SDK::Base;end" unless defined?("Sk::#{model.constantize}")
-    end
+
     SK::SDK::Base.set_connection( {:site => site, :token => token} )
   end
 

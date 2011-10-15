@@ -1,11 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails'
 gem 'mysql2'
 gem 'json'
 gem 'sk_sdk'
 gem "sk_api_schema"
-gem "fastercsv"
 gem "haml"
 gem 'rack-raw-upload'
 # Gems used only for assets and not required

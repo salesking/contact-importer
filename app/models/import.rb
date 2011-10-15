@@ -24,7 +24,7 @@ class Import < ActiveRecord::Base
 
   def create_clients(site, token)
     opts = {:col_sep => self.col_sep, :quote_char => self.quote_char }
-    data = FasterCSV.read(self.attachment.full_filename, opts)
+    data = CSV.read(self.attachment.full_filename, opts)
     # setup sk object
     Sk.init(site, token)
     # kick header if present?
