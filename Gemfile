@@ -19,5 +19,6 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
-  gem "rcov"
+  gem 'simplecov'
+  # gem "rcov"
 end
