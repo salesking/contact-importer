@@ -8,6 +8,8 @@ gem "sk_api_schema"
 gem "haml"
 gem 'jquery-rails'
 gem 'rack-raw-upload'
+
+gem "thin"
 gem 'pg'
 gem 'heroku'
 # Gems used only for assets and not required
