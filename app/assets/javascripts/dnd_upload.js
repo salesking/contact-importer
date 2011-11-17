@@ -189,3 +189,20 @@ $(function() {
   }
 
 });
+
+/**
+//widget factory
+//$.widget => create
+// testing with => qunitjs.com
+
+sk.Csv = function(){
+  //instan method
+  this.list_el;
+};
+sk.Csv.prototype = {
+
+  revert_field : function(){
+    this.list_el;
+  }
+}
+*/

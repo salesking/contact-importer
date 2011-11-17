@@ -6,7 +6,10 @@ gem 'json'
 gem 'sk_sdk'
 gem "sk_api_schema"
 gem "haml"
+gem 'jquery-rails'
 gem 'rack-raw-upload'
+gem 'pg'
+gem 'heroku'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -14,8 +17,6 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
