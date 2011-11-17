@@ -11,18 +11,18 @@ development:
   # comming back from oauth dialog inside this app
   redirect_url: http://localhost:3001/login_success
 
-  test:
-    id:
-    secret:
-    sk_url: https://*.dev.salesking.eu
-    canvas_slug: csv-importer
-    scope: api/clients:create offline_access
-    redirect_url: http://localhost:3001/login_success
+test:
+  id:
+  secret:
+  sk_url: https://*.dev.salesking.eu
+  canvas_slug: csv-importer
+  scope: api/clients:create offline_access
+  redirect_url: http://localhost:3001/login_success
 
-  production:
-    id:
-    secret:
-    sk_url: https://*.dev.salesking.eu
-    canvas_slug: csv-importer
-    scope: api/clients:create offline_access
-    redirect_url: http://localhost:3001/login_success
+production:
+  id:
+  secret:
+  sk_url: https://*.dev.salesking.eu
+  canvas_slug: csv-importer
+  scope: api/clients:create offline_access
+  redirect_url: http://localhost:3001/login_success

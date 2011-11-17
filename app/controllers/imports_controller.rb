@@ -1,3 +1,4 @@
+require 'csv'
 class ImportsController < ApplicationController
 
   def show
