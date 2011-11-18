@@ -6,6 +6,7 @@ require 'sk_sdk/base'
 class Sk
   # setup oAuth app info, local classes
   @@conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
+  #raise 'config/salesking_app.yml missing' if !@@conf || @@conf.empty?
   APP = SK::SDK::Oauth.new(@@conf[Rails.env])
   %w{Client Address}.each do |model|
     eval "class #{model} < SK::SDK::Base;end"

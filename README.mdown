@@ -5,13 +5,14 @@ clients given as csv f.ex exported from Outlook.
 
 ## Developer Infos
 
-The app is build with Rails 3.1 on Ruby 1.9.2 and a mysql backend. It uses
-oAuth2 and has a canvas integration, meaning a user can use it inside SalesKing.
+The app is build with Rails 3.1 on Ruby 1.9.2 and a mysql & postgres 
+backend. It uses oAuth2 and has a canvas integration, so a user can use 
+it inside SalesKing.
 
 ## Getting Started
 
-1. Register a new app(to get an app-id & secret) in your SalesKing account and
-dont forget to set it's canvas slug.
+1. Register a new app to get an app-id & secret in your SalesKing account.
+DON'T forget to set it's canvas slug.
 
 2. Checkout this repo, copy and edit salesking_app.yml & database.yml.
 
@@ -21,6 +22,21 @@ dont forget to set it's canvas slug.
 
 3. Go into SalesKing at /app/your-canvas-slug
 
+## Run on Heroku
+
+The app is deployed by us on Heroku and [you can do it too](http://devcenter.heroku.com/articles/rails31_heroku_cedar). The only problem to be 
+solved is the creation of the salesking_app.yml keeping the app 
+key & secret. 
+Instead of using [Heroku's env_vars](http://devcenter.heroku.com/articles/config-vars) you should use a separate 
+local git branch where you add the ignored salesking_app.yml file
+    # create a new branch
+    git checkout production
+    [create salesking_app.yml, remove from .gitignore and commit]
+    git merge master
+    git push heroku production:master
+    # change back to master branch for normal edits .. DON'T merge production into master
+    git checkout master
+    
 ## Test
 
 Run specs with
