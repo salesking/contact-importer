@@ -56,7 +56,7 @@ class ImportsController < ApplicationController
     file.user_id = current_user_id
     file.save!
     # grab csv options
-    opts = {:col_sep => params[:col_sep], :quote_char => params[:quote_char] }
+    opts = {:col_sep => params[:col_sep], :quote_char => params[:quote_char] } #, :row_sep => "\r\n"
 #    puts opts.inspect
     data = CSV.read(file.full_filename, opts)
     # read json-schema

@@ -1,12 +1,12 @@
 $(function() {
 
   var src_container =  $('#csv_fields'),
-      trgt_container =  $('#schema_fields ');
+      trgt_container = $('#schema_fields ');
 
   /*
    *  events
    */
-  $('.kill').live('click', function(e){revert_field(e, this)})
+  $('.kill').live('click', function(e){revert_field(e, this)});
   
   src_container.delegate('.field:not(.ui-draggable)', 'mouseenter', function() {
     $(this).draggable({revert: 'invalid'});
@@ -16,7 +16,9 @@ $(function() {
     $(this ).droppable({
       accept: "#csv_fields li",
       hoverClass: "over",
-      drop: function(event, ui) {drop_field(event, ui);}
+//      drop: function(event, ui) {drop_field( $(event.target), ui);}
+//      event target is now $(this) .. ui will fix it http://bugs.jqueryui.com/ticket/7852
+      drop: function(event, ui) {drop_field($(this), ui);}
     });
   });
 
@@ -110,9 +112,10 @@ $(function() {
   
   /*
    * drop event of receiving list
+   * @param el jQuery object with the receiving list item
+   * @param ui ui-object draggable helper
    */
-  function drop_field(event, ui) {
-    var el = $(event.target);
+  function drop_field(el, ui) {
     add_fields(el, ui);
     //add special mapping fields
     if($('.target',el).attr('data-enum') != undefined){ add_enum_fields(el) }
@@ -120,9 +123,9 @@ $(function() {
   }
 
   /*
-   *adds basic markup to a target field
-   *@param el jQuery object of the receiving list item
-   *@param ui ui object draggable helper
+   * adds basic markup to a target field
+   * @param el jQuery object with the receiving list item
+   * @param ui ui-object draggable helper
    */
   function add_fields(el, ui) {
     $('.target',el).after(
@@ -144,7 +147,8 @@ $(function() {
   }
 
   /*
-   *adds enum markup to a target field
+   * adds enum markup to a target field
+   * @param el jQuery object with the receiving list item
    */
   function add_enum_fields(el) {
     var opts = $('.target',el).attr('data-enum').split(','),
@@ -158,7 +162,8 @@ $(function() {
     el.append( els.join('') );
   }
   /*
-   *adds date markup to a target field
+   * adds date markup to a target field
+   * @param el jQuery object with the receiving list item
    */
   function add_date_fields(el) {
     var els = ["<div class='options'>"];
@@ -190,13 +195,13 @@ $(function() {
 
 });
 
-/**
+/** TODO: make a class structure for this
 //widget factory
 //$.widget => create
 // testing with => qunitjs.com
 
 sk.Csv = function(){
-  //instan method
+  //instance method
   this.list_el;
 };
 sk.Csv.prototype = {

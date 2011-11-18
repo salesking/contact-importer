@@ -1,9 +1,5 @@
--# content_for :head do
-  = javascript_include_tag 'jquery-ui.min.js'
-  = javascript_include_tag 'fileuploader'
-  = javascript_include_tag 'dnd_upload'
-  = stylesheet_link_tag    'fileuploader'
-
+- content_for :head do
+  = javascript_include_tag 'import_form'
 
 = form_for @import, :html => { :multipart => true } do |f|
   = f.hidden_field :attachment_id

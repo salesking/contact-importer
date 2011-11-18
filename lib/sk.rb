@@ -1,5 +1,6 @@
 require 'sk_api_schema'
 require 'sk_sdk/base'
+require 'sk_sdk/oauth'
 # Tiny helper class for talking to SalesKing
 # - Setup local Sk:: classes for remote objects. client, address,..
 # - construct writable fields
