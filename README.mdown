@@ -28,7 +28,8 @@ The app is deployed by us on Heroku and [you can do it too](http://devcenter.her
 solved is the creation of the salesking_app.yml keeping the app 
 key & secret. 
 Instead of using [Heroku's env_vars](http://devcenter.heroku.com/articles/config-vars) you should use a separate 
-local git branch where you add the ignored salesking_app.yml file
+local git branch where you add the ignored salesking_app.yml file:
+
     # create a new branch
     git checkout production
     [create salesking_app.yml, remove from .gitignore and commit]
