@@ -10,7 +10,7 @@ describe ImportsController, 'logged out' do
   it "should redirect to salesking if subdomain is available" do
     @request.session['sub_domain'] = 'abc'
     get :index
-    response.body.should == "<script> top.location.href='http://abc.salesking.local:3000'</script>"
+    response.body.should == "<script> top.location.href='#{sk_url('abc')}'</script>"
   end
 end
 

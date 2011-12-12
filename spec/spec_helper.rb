@@ -27,6 +27,14 @@ def user_login
   @request.session['sub_domain'] = 'my-subdomain'
 end
 
+def sk_config
+  YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))[Rails.env]
+end
+
+def sk_url(sub_domain)
+  sk_config['sk_url'].gsub('*', sub_domain)
+end
+
 # Simulate a File Upload. Files reside in RAILS_ROOT/test/fixutes/files
 # ==== Parameter
 # filename<String>:: The file to upload

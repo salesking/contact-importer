@@ -10,7 +10,7 @@ describe SessionsController do
       param_hash = {'sub_domain' =>'abc', 'algorithm' => 'HMAC-SHA256'}
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::APP.secret)
       post :create, :signed_request => param
-      response.body.should include"<script> top.location.href='http://abc.salesking.local:3000/oauth/authorize?"
+      response.body.should include"<script> top.location.href='#{sk_url('abc')}/oauth/authorize?"
     end
 
     it "should set session var with user_id" do
@@ -34,7 +34,7 @@ describe SessionsController do
       @request.session['sub_domain'] = 'abc'
       Sk::APP.should_receive(:get_token).with('some-token-code').and_return('an access token')
       get :new, :code=>'some-token-code'
-      response.body.should =="<script> top.location.href='http://abc.salesking.local:3000/app/csv-importer'</script>"
+      response.body.should =="<script> top.location.href='#{sk_url('abc')}/app/csv-importer'</script>"
     end
 
   end

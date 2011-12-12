@@ -16,7 +16,7 @@ class ImportsController < ApplicationController
     # save mapping
     if @import.save
       conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
-      app = SK::SDK::Oauth.new(conf)
+      app = SK::SDK::Oauth.new(conf[Rails.env])
       app.sub_domain = session['sub_domain']
       url = "#{app.sk_url}/api"
       @import.create_clients(url, session['access_token'])

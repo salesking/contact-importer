@@ -8,12 +8,13 @@ class ApplicationController < ActionController::Base
     def current_company_id
       session['company_id']
     end
+    
     def current_user_id
       session['user_id']
     end
 
     def login_required
-      (session['user_id'] && session['user_id'] && session['access_token']) || access_denied
+      (session['user_id'] && session['company_id'] && session['access_token']) || access_denied
     end
 
     def access_denied
