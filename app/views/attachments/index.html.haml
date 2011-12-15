@@ -1,0 +1,16 @@
+%h2="#{Attachment.model_name.human(count: @attachments.size)} (#{@attachments.size})"
+
+%p= link_to t(:'attachments.new'), new_attachment_path
+
+%table
+  %thead
+    %tr
+      %th= t('link.actions')
+      %th= Attachment.human_attribute_name(:filename)
+      %th= Attachment.human_attribute_name(:created_at)
+  %tbody
+    - @attachments.each do |attachment|
+      %tr
+        %td= link_to(t('link.show'), attachment)
+        %td= attachment.filename
+        %td= attachment.created_at

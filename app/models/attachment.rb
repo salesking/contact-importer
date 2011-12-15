@@ -1,6 +1,9 @@
 # Store uploaded files, temporary until the import is created
 # 
 # If files need to present afterwards should implement persistent s3 storage!!
+
+require 'csv'
+
 class Attachment < ActiveRecord::Base
 
   FILE_DIR = Rails.root.join( 'tmp', 'attachments')
@@ -8,6 +11,10 @@ class Attachment < ActiveRecord::Base
   # Associations
   ##############################################################################
   belongs_to :import
+  ##############################################################################
+  # Scopes
+  ##############################################################################
+  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }  
   ##############################################################################
   # Callbacks
   ##############################################################################
@@ -17,10 +24,11 @@ class Attachment < ActiveRecord::Base
   # Validations
   ##############################################################################
   validates :filename, :disk_filename, :presence=>true
+  validates :col_sep, :quote_char, :presence => true
   ##############################################################################
   # Behavior
   ##############################################################################
-  attr_accessible :uploaded_data
+  attr_accessible :col_sep, :quote_char, :uploaded_data
 
   
   # Any upload file gets passed in as uploaded_data attribute
@@ -41,8 +49,16 @@ class Attachment < ActiveRecord::Base
   def full_filename
     File.join(path, self.disk_filename)
   end
+  
+  def rows(size = 0)
+    parsed_data[0..(size - 1)]
+  end
 
 private
+
+  def parsed_data
+    @parsed_data ||= CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char)
+  end
 
   def store_file
     File.open(full_filename, 'wb') do |f|

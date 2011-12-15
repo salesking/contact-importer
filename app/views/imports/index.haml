@@ -1,6 +1,8 @@
 %h2="#{Import.model_name.human(:count=>5)} (#{@imports.length})"
 
-%p= link_to t(:'imports.new'), new_import_path
+%p
+  = link_to t(:'imports.new'), new_import_path
+  = link_to "attachments", attachments_path
 
 %table
   %thead

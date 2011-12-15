@@ -4,6 +4,9 @@
 en:
   activerecord:
     models:
+      attachment:
+        one: Attachment
+        other: Attachments
       import:
         one: Import
         other: Imports
@@ -14,6 +17,9 @@ en:
         one: Data Row
         other: Data Rows
     attributes:
+      attachment:
+        col_sep: Column Separator
+        quote_char: Quote character
       import:
         created_at: Created at
         col_sep: Column Separator
@@ -28,9 +34,12 @@ en:
         source: Source field
         conv_type: Convert type
         conv_opts: Convert Options
+  attachments:
+    new: New Attachment
+    upload: Upload
+    continue: Continue
   imports:
     new: New Import
-    upload: Upload
     dnd_info: "Please Drag&Drop Fields above onto their targets below. Drop multiple fields on a target to join values(space-delimited) e.g for the tag list."
   data_rows:
     failed: Failed rows

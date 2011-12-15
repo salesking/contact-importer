@@ -1,0 +1,35 @@
+- content_for :head do
+  = javascript_include_tag 'attachments'
+
+%h2= t('attachments.new')
+
+- if @attachment.errors.any?
+  .alert-message.block-message.error
+    %p
+      %strong= flash[:error]
+    %ul
+      - @attachment.errors.full_messages.each do |i|
+        %li=i
+
+= form_for @attachment, method: 'put' do |f|
+  - if @attachment.new_record?
+    .clearfix
+      %label=t(:'attachments.upload')
+      .input
+        #file-upload
+          %noscript
+            %p Please enable JavaScript to use file uploader
+  .clearfix
+    = label_tag :col_sep, Attachment.human_attribute_name(:col_sep)
+    .input
+      = f.text_field :col_sep, class: 'minimi'
+  .clearfix
+    = label_tag :quote_char, Attachment.human_attribute_name(:quote_char)
+    .input
+      = f.text_field :quote_char, class: 'minimi'
+  #csv-table.clearfix{style: ("display: none" if @attachment.new_record?)}
+    = link_to(image_tag("refresh.png", size: "16x16") + "Reload", "#", id: "csv-refresh")
+
+  .actions
+    = f.submit t('attachments.continue'), class: "btn primary large"
+    = link_to t('links.back_to_list'), attachments_path, class: "btn secondary"

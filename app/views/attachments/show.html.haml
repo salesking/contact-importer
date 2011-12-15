@@ -1,0 +1,7 @@
+%h1= @attachment.filename
+%table
+  - @attachment.rows.each do |row|
+    %tr
+      - row.each do |item|
+        %td= item
+%p= link_to t('links.back_to_list'), attachments_path

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003092754) do
+ActiveRecord::Schema.define(:version => 20111215103135) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",      :limit => 100
@@ -19,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20111003092754) do
     t.string   "user_id",       :limit => 22
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "col_sep",       :limit => 1
+    t.string   "quote_char",    :limit => 1
   end
 
   create_table "data_rows", :force => true do |t|
