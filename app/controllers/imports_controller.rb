@@ -14,11 +14,8 @@ class ImportsController < ApplicationController
     @import.user_id = current_user_id
 
     if @import.save
-      conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
-      app = SK::SDK::Oauth.new(conf[Rails.env])
-      app.sub_domain = session['sub_domain']
-      url = "#{app.sk_url}/api"
-      @import.create_clients(url, session['access_token'])
+      Sk::APP.sub_domain = session['sub_domain']
+      Sk.init("#{Sk::APP.sk_url}/api", session['access_token'])
       redirect_to @import
     else
       render :action => "new"

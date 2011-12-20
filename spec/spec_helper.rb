@@ -27,6 +27,14 @@ def user_login
   @request.session['sub_domain'] = 'my-subdomain'
 end
 
+def stub_sk_client
+  Sk.init('http://localhost', 'some-token')
+  client = Sk::Client.new
+  Sk::Client.stub(:new).and_return(client)
+  client.stub(:save).and_return(true)
+  client
+end
+
 def sk_config
   YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))[Rails.env]
 end

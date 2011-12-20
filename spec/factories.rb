@@ -3,6 +3,7 @@ FactoryGirl.define do
     uploaded_data { file_upload('test1.csv') }
     col_sep ';'
     quote_char '"'
+    association :mapping
   end
   
   factory :mapping do

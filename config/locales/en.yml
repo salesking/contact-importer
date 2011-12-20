@@ -53,6 +53,9 @@ en:
       other: "%{count} rows failed"
     new: Create import
     create: Import data
+    total:
+      one: "Total %{count} row"
+      other: "Total %{count} rows"
   data_rows:
     failed: Failed rows
     success: Successfull rows

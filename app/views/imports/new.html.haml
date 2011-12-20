@@ -1,7 +1,13 @@
 %h2
   = t('link.step', count: 3, total: 3)
   = t('imports.new')
-%p TODO: show preview
+%table
+  - @import.preview.each do |row|
+    %tr
+      - row.each do |item|
+        %td= item
+%p= t('imports.total', count: @import.attachment.rows.size - 1)
+
 = form_for [@attachment, @import] do |f|
   .actions
     = f.submit t('imports.create'), class: "btn primary large"
