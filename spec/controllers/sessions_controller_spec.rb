@@ -22,7 +22,7 @@ describe SessionsController do
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::APP.secret)
       
       post :create, :signed_request => param
-      response.should redirect_to imports_url
+      response.should redirect_to attachments_url
       @request.session['user_id'].should == param_hash['user_id']
     end
   end

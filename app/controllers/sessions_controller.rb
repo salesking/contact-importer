@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       session['access_token'] = r.data['access_token']
       session['user_id'] = r.data['user_id']
       session['company_id'] = r.data['company_id']
-      redirect_to imports_url
+      redirect_to attachments_url
     else # must authorize redirect to oauth dialog
       render :inline => "<script> top.location.href='#{Sk::APP.auth_dialog}'</script>"
     end
