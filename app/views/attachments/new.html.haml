@@ -1,4 +1,6 @@
-%h2= t('attachments.new')
+%h2
+  = t('link.step', count: 1, total: 3)
+  = t('attachments.new')
 
 - if @attachment.errors.any?
   .alert-message.block-message.error
@@ -28,5 +30,5 @@
     = link_to(image_tag("refresh.png", size: "16x16") + "Reload", "#", id: "csv-refresh")
 
   .actions
-    = f.submit t('attachments.continue'), class: "btn primary large"
-    = link_to t('links.back_to_list'), attachments_path, class: "btn secondary"
+    = f.submit t('attachments.proceed_to_mapping'), class: "btn primary large"
+    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"

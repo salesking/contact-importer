@@ -1,12 +1,16 @@
-%h2= "#{Mapping.model_name.human(count: 5)} (#{@mappings.size})"
+%h2
+  = Mapping.model_name.human(count: 5)
+  %small= @mappings.size
 
 %table
   %thead
     %tr
-      %th= t('link.actions')
+      %th= Mapping.model_name.human(count: 1)
       %th= Mapping.human_attribute_name(:created_at)
+      %th= t('link.actions')
   %tbody
     - @mappings.each do |mapping|
       %tr
-        %td= link_to(t('link.show'), mapping)
+        %td= mapping.title
         %td= mapping.created_at
+        %td= link_to(t('link.show'), mapping)

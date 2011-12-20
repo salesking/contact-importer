@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Attachment do
   it { should belong_to(:mapping) }
+  it { should have_many(:imports).dependent(:destroy) }
 
   before :each do
     @attachment = Factory(:attachment)

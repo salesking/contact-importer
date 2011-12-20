@@ -32,7 +32,7 @@ class AttachmentsController < ApplicationController
   private
   
   def init_attachments
-    @attachments = Attachment.by_c(current_company_id).order("created_at DESC")
+    @attachments = Attachment.by_c(current_company_id)
     @attachment = @attachments.find(params[:id]) if params[:id].present?
   end
 end

@@ -10,4 +10,5 @@
       %tr
         %td= mapping_element.source
         %td= mapping_element.target
-%p= link_to t('links.back_to_list'), mappings_path
+.actions
+  = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"

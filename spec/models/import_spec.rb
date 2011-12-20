@@ -1,59 +1,55 @@
 require 'spec_helper'
+
 describe Import do
-  it "should not save without quote_char and col_sep" do
-    obj = Import.new
-    obj.save.should be_false
-    obj.errors[:quote_char].should_not be_nil
-    obj.errors[:col_sep].should_not be_nil
-  end
-end
+  it { should have_many(:data_rows).dependent(:destroy) }
+  it { should belong_to(:attachment) }
+  
+  it { should validate_presence_of(:attachment) }
+  
+  describe "data import" do
+    before :each do
+      @mapping = Factory(:mapping)
+      Factory(:mapping_element, mapping: @mapping, source: 8, target: 'address.address1')
+      Factory(:mapping_element, mapping: @mapping, source: 9, target: 'address.zip')
+      Factory(:mapping_element, mapping: @mapping, source: 10, target: 'address.city')
+      @attachment = Factory(:attachment, mapping: @mapping)
+      @import = Factory(:import, attachment: @attachment)
+      Sk.init('http://localhost', 'some-token')
+      @client = Sk::Client.new
+      Sk::Client.stub(:new).and_return(@client)
+    end
 
-describe Import,'creating data' do
+    it "should create data_rows" do
+      @client.should_receive(:save).and_return(true)
+      lambda {
+        @import.create_clients('http://localhost', 'some-token')
+      }.should change(DataRow, :count).by(1)
+    end
 
-  before :each do
-    @atm = Attachment.create :uploaded_data => file_upload('test1.csv')
-    @import = Import.new :quote_char=>'"', :col_sep=>";",
-                         :attachment_id => @atm.id
-    @import.save!
-    Sk.init('http://localhost', 'some-token')
-    @client = Sk::Client.new
-    Sk::Client.should_receive(:new).and_return(@client)
-  end
-
-  it "should create data_rows" do
-    @client.should_receive(:save).and_return(true)
-    lambda{
+    it "should create an address" do
+      @client.should_receive(:save).and_return(true)
       @import.create_clients('http://localhost', 'some-token')
-    }.should change(DataRow, :count).by(1)
-  end
+      @client.addresses[0].zip.should == '83620'
+      @client.addresses[0].address1.should == 'Hubertstr. 205'
+      @client.addresses[0].city.should == 'Feldkirchen'
+    end
 
-  it "should create an address" do
-    # see test1.csv
-    @import.mappings.create :target => 'address.address1', :source=>'8'
-    @import.mappings.create :target => 'address.zip', :source=>'9'
-    @import.mappings.create :target => 'address.city', :source=>'10'
-    @client.should_receive(:save).and_return(true)
-    # create mapping for import
-    @import.create_clients('http://localhost', 'some-token')
-    
-    @client.addresses[0].zip.should == '83620'
-    @client.addresses[0].address1.should == 'Hubertstr. 205'
-    @client.addresses[0].city.should == 'Feldkirchen'
-  end
+    it "should create failed data_rows" do
+      @client.should_receive(:save).and_return(false)
+      @client.errors.should_receive(:full_messages).and_return(['some error message'])
+      lambda{
+        @import.create_clients('http://localhost', 'some-token')
+      }.should change(DataRow, :count).by(1)
+      data_row = @import.data_rows.first
+      data_row.sk_id.should be_nil
+      data_row.log.should == 'some error message'
+    end
 
-  it "should create failed data_rows" do
-    @client.should_receive(:save).and_return(false)
-    @client.errors.should_receive(:full_messages).and_return(['some error message'])
-    lambda{
+    it "should be success if no rows failed" do
+      @client.should_receive(:save).and_return(true)
+      @client.should_receive(:id).and_return("some_uuid")
       @import.create_clients('http://localhost', 'some-token')
-    }.should change(DataRow, :count).by(1)
-  end
-
-  it "should be success" do
-    @client.should_receive(:save).and_return(true)
-    @client.should_receive(:id).and_return("some_uuid")
-    @import.create_clients('http://localhost', 'some-token')
-    @import.success?.should be_true
-    @import.should be_success
+      @import.should be_success
+    end
   end
 end

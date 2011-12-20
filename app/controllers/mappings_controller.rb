@@ -12,7 +12,7 @@ class MappingsController < ApplicationController
     @mapping.user_id = current_user_id
     @mapping.attachments << @attachment
     if @mapping.save
-      redirect_to mapping_url(@mapping)
+      redirect_to new_attachment_import_url(@attachment)
     else
       render :new
     end
@@ -21,7 +21,7 @@ class MappingsController < ApplicationController
   private
   
   def init_mappings
-    @mappings = Mapping.by_c(current_company_id).order("created_at DESC")
+    @mappings = Mapping.by_c(current_company_id)
     @mapping = @mappings.find(params[:id]) if params[:id].present?
   end
   

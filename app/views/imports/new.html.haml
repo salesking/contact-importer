@@ -1,0 +1,8 @@
+%h2
+  = t('link.step', count: 3, total: 3)
+  = t('imports.new')
+%p TODO: show preview
+= form_for [@attachment, @import] do |f|
+  .actions
+    = f.submit t('imports.create'), class: "btn primary large"
+    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"

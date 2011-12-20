@@ -8,8 +8,10 @@ class Attachment < ActiveRecord::Base
   FILE_DIR = Rails.root.join('tmp', 'attachments')
 
   belongs_to :mapping
+  has_many :imports, dependent: :destroy
 
   scope :by_c, lambda { |company_id| where(company_id: company_id) }
+  default_scope order('attachments.id desc')
 
   after_create :store_file
   after_destroy :delete_file

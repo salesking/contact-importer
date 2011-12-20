@@ -4,4 +4,17 @@ FactoryGirl.define do
     col_sep ';'
     quote_char '"'
   end
+  
+  factory :mapping do
+  end
+  
+  factory :mapping_element do
+    association :mapping
+    source 0
+    target 'organization'
+  end
+  
+  factory :import do
+    association :attachment
+  end
 end

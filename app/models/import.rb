@@ -1,39 +1,32 @@
 class Import < ActiveRecord::Base
+  has_many :data_rows, dependent: :destroy
+  belongs_to :attachment
 
-  ##############################################################################
-  # Associations
-  ##############################################################################
-  has_many :mappings, :dependent => :destroy
-  has_many :data_rows, :dependent => :destroy
-  belongs_to :attachment, :dependent => :destroy
-  ##############################################################################
-  # Scopes
-  ##############################################################################
-  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }  
-  ##############################################################################
-  # Behavior
-  ##############################################################################
-  accepts_nested_attributes_for :mappings
-  attr_accessible :col_sep, :quote_char, :mappings_attributes, :name, :kind,
-                  :attachment_id # need to validate belongs to current company
-  ##############################################################################
-  # Validations
-  ##############################################################################
-  validates :col_sep,:quote_char,  :presence=>true #:kind,
+  scope :by_c, lambda { |company_id| where(company_id: company_id) }
+  default_scope order('imports.id desc')
+  
+  validates :attachment, presence: true
+  
+  def title
+    title = I18n.t('imports.title_success', count: data_rows.success.count)
+    if (failed = data_rows.failed.count) > 0
+      [title, I18n.t('imports.title_failed', count: failed)].to_sentence
+    else
+      title
+    end
+  end
 
-
+  # TODO: refactor to self.data_row.build(:data => row)
   def create_clients(site, token)
-    opts = {:col_sep => self.col_sep, :quote_char => self.quote_char }
-    data = CSV.read(self.attachment.full_filename, opts)
     # setup sk object
     Sk.init(site, token)
     # kick header if present?
-    data[1..-1].each do |row|
+    attachment.rows[1..-1].each do |row|
       obj = Sk::Client.new
       # divide client from address fields
       adr_fields = []
       cli_fields = []
-      mappings.each do |map|
+      attachment.mapping.mapping_elements.each do |map|
         if map.target.match(/^address\./)
           adr_fields << map
         else
@@ -59,7 +52,7 @@ class Import < ActiveRecord::Base
         a.save!
       else
         a = self.data_rows.build
-        a.source= row.to_csv(:col_sep=>col_sep, :quote_char=>quote_char)
+        a.source = row.to_csv(col_sep: attachment.col_sep, quote_char: attachment.quote_char)
         a.log = obj.errors.full_messages.join(',')
         a.save!
       end
@@ -70,5 +63,4 @@ class Import < ActiveRecord::Base
   def success?
     data_rows.failed.count == 0
   end
-
 end

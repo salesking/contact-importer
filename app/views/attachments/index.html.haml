@@ -1,22 +1,31 @@
-%h2="#{Attachment.model_name.human(count: 5)} (#{@attachments.size})"
+%h2
+  = Attachment.model_name.human(count: 5)
+  %small= @attachments.size
 
 %p= link_to t(:'attachments.new'), new_attachment_path
 
-%table
+%table.attachments
   %thead
     %tr
-      %th= t('link.actions')
-      %th= Attachment.human_attribute_name(:filename)
-      %th= Attachment.human_attribute_name(:created_at)
+      %th= Attachment.model_name.human(count: 1)
+      %th= Mapping.model_name.human(count: 1)
+      %th= Import.model_name.human(count: 1)
   %tbody
     - @attachments.each do |attachment|
       %tr
         %td
-          = link_to(t('link.show'), attachment)
-          |
+          = link_to(attachment.filename, attachment)
+          .created= attachment.created_at
+        %td
           - if attachment.mapping
-            = link_to(t('mappings.show'), attachment.mapping)
+            = link_to(attachment.mapping.title, attachment.mapping)
+            .created= attachment.mapping.created_at
           - else
             = link_to(t('mappings.new'), new_attachment_mapping_path(attachment))
-        %td= attachment.filename
-        %td= attachment.created_at
+        %td
+          - if attachment.imports.any?
+            - attachment.imports.each do |import|
+              = link_to(import.title, import)
+              .created= import.created_at
+          - elsif attachment.mapping
+            = link_to(t('imports.new'), new_attachment_import_path(attachment))

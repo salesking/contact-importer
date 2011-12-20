@@ -2,8 +2,8 @@ en:
   activerecord:
     models:
       attachment:
-        one: Attachment
-        other: Attachments
+        one: Uploaded File
+        other: Uploaded Files
       import:
         one: Import
         other: Imports
@@ -32,17 +32,27 @@ en:
         conv_type: Convert type
         conv_opts: Convert Options
   attachments:
-    new: New Attachment
+    new: Upload new CSV file
     upload: Upload
-    continue: Continue
+    proceed_to_mapping: Proceed to mapping
   mappings:
-    new: New Mapping
-    show: Show Mapping
-    source_fields: Source Fields
-    target_fields: Target Fields
-    dnd_info: "Please Drag&Drop Fields above onto their targets below. Drop multiple fields on a target to join values(space-delimited) e.g for the tag list."
+    title:
+      one: "%{count} field: %{fields}"
+      other: "%{count} fields: %{fields}"
+    new: Create mapping
+    proceed_to_import: Proceed to import
+    source_fields: Source fields
+    target_fields: Target fields
+    dnd_info: "Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list."
   imports:
-    new: New Import
+    title_success:
+      one: "%{count} rows imported"
+      other: "%{count} rows imported"
+    title_failed:
+      one: "%{count} row failed"
+      other: "%{count} rows failed"
+    new: Create import
+    create: Import data
   data_rows:
     failed: Failed rows
     success: Successfull rows
@@ -54,5 +64,6 @@ en:
     back_to_list: Back to list
     destroy: Delete
     confirm_destroy: Really delete this record?
+    step: "Step %{count} from %{total}:"
   errors:
     sk_login_required: "Please login to SalesKing and navigate to this app from inside there."

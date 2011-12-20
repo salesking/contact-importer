@@ -1,7 +1,12 @@
-%h1= @attachment.filename
+%h1
+  = Attachment.model_name.human(count: 1)
+  = @attachment.filename
 %table
   - @attachment.rows.each do |row|
     %tr
       - row.each do |item|
         %td= item
-%p= link_to t('links.back_to_list'), attachments_path
+.actions
+  - unless @attachment.mapping.present?
+    = link_to t('attachments.proceed_to_mapping'), new_attachment_mapping_path(@attachment), class: "btn primary large"
+  = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"

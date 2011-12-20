@@ -1,7 +1,7 @@
 input.minimi{ width: 15px; }
-#csv_fields, #schema_fields { width: 100%;}
+#source-fields, #target-fields { width: 100%;}
 .field{float:left; padding:5px; border: 1px solid #ddd; background: #F5F5F5; margin:3px; list-style: none;}
-#csv_fields .field{cursor: move; }
+#source-fields .field{cursor: move; }
 .over{background: #FFF6D9; padding: 5px; }
 .field.dropped{padding: 0;}
 .field div{float: left;}
