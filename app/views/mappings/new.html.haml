@@ -1,0 +1,22 @@
+%h2= t('mappings.new')
+
+= form_for [@attachment, @mapping] do |f|
+  .clearfix
+    %label= t('mappings.source_fields')
+    .input
+      %ul#source-fields
+        - @attachment.rows(1).first.each_with_index do |item, index|
+          %li.field{'data-name' => item, 'data-source' => index}= item
+  .clearfix
+    %p= t('mappings.dnd_info')
+  .clearfix
+    %label= t('mappings.target_fields')
+    .input
+      %ul#target-fields
+        - Sk.client_fields.each do |field|
+          - field.each do |name, params|
+            - attrs = Hash[params.collect { |k, v| ["data-#{k}", v] }]
+            %li.field
+              .target{attrs.merge('data-target' => name)}= name
+  .actions
+    = f.submit :class => "btn primary large"

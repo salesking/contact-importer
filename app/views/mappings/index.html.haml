@@ -1,0 +1,12 @@
+%h2= "#{Mapping.model_name.human(count: 5)} (#{@mappings.size})"
+
+%table
+  %thead
+    %tr
+      %th= t('link.actions')
+      %th= Mapping.human_attribute_name(:created_at)
+  %tbody
+    - @mappings.each do |mapping|
+      %tr
+        %td= link_to(t('link.show'), mapping)
+        %td= mapping.created_at

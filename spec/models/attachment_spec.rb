@@ -1,28 +1,29 @@
 require 'spec_helper'
 
-describe Import,'creating data' do
+describe Attachment do
+  it { should belong_to(:mapping) }
 
   before :each do
-    @atm = Attachment.new :uploaded_data => file_upload('test1.csv')
-  end
-
-  it "should save" do
-    lambda{
-      @atm.save!
-    }.should change(Attachment, :count).by(1)
-  end
-
-  it "should destroy file" do
-    @atm.save!
-    file_path = @atm.full_filename
-    lambda{
-      @atm.destroy
-    }.should change(Attachment, :count).by(-1)
-    File.exist?(file_path).should be_false
+    @attachment = Factory(:attachment)
   end
 
   it "should set filename and disk_filename" do
-    @atm.filename.should == 'test1.csv'
-    @atm.disk_filename.should_not be_empty    
+    @attachment.filename.should == 'test1.csv'
+    @attachment.disk_filename.should_not be_empty
+  end
+
+  it "should remove file on destroy" do
+    file_path = @attachment.full_filename
+    @attachment.destroy
+    File.exist?(file_path).should be_false
+  end
+  
+  it "parses csv data" do
+    @attachment.rows.size.should == 2
+    @attachment.rows.first.size.should be > 1
+  end
+  
+  it "reveals specified number of rows" do
+    @attachment.rows(1).size.should == 1
   end
 end

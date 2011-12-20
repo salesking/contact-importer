@@ -1,6 +1,3 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   activerecord:
     models:
@@ -29,7 +26,7 @@ en:
         sk_id: SalesKing ID
         log: Log
         source: Source data
-      mapping:
+      mapping_element:
         target: Target field
         source: Source field
         conv_type: Convert type
@@ -38,9 +35,14 @@ en:
     new: New Attachment
     upload: Upload
     continue: Continue
+  mappings:
+    new: New Mapping
+    show: Show Mapping
+    source_fields: Source Fields
+    target_fields: Target Fields
+    dnd_info: "Please Drag&Drop Fields above onto their targets below. Drop multiple fields on a target to join values(space-delimited) e.g for the tag list."
   imports:
     new: New Import
-    dnd_info: "Please Drag&Drop Fields above onto their targets below. Drop multiple fields on a target to join values(space-delimited) e.g for the tag list."
   data_rows:
     failed: Failed rows
     success: Successfull rows

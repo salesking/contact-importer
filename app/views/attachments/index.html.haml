@@ -1,4 +1,4 @@
-%h2="#{Attachment.model_name.human(count: @attachments.size)} (#{@attachments.size})"
+%h2="#{Attachment.model_name.human(count: 5)} (#{@attachments.size})"
 
 %p= link_to t(:'attachments.new'), new_attachment_path
 
@@ -11,6 +11,12 @@
   %tbody
     - @attachments.each do |attachment|
       %tr
-        %td= link_to(t('link.show'), attachment)
+        %td
+          = link_to(t('link.show'), attachment)
+          |
+          - if attachment.mapping
+            = link_to(t('mappings.show'), attachment.mapping)
+          - else
+            = link_to(t('mappings.new'), new_attachment_mapping_path(attachment))
         %td= attachment.filename
         %td= attachment.created_at

@@ -1,0 +1,13 @@
+%h2= Mapping.model_name.human(count: 1)
+
+%table
+  %thead
+    %tr
+      %th= MappingElement.human_attribute_name(:source)
+      %th= MappingElement.human_attribute_name(:target)
+  %tbody
+    - @mapping.mapping_elements.each do |mapping_element|
+      %tr
+        %td= mapping_element.source
+        %td= mapping_element.target
+%p= link_to t('links.back_to_list'), mappings_path

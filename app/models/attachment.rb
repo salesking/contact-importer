@@ -5,31 +5,19 @@
 require 'csv'
 
 class Attachment < ActiveRecord::Base
+  FILE_DIR = Rails.root.join('tmp', 'attachments')
 
-  FILE_DIR = Rails.root.join( 'tmp', 'attachments')
-  ##############################################################################
-  # Associations
-  ##############################################################################
-  belongs_to :import
-  ##############################################################################
-  # Scopes
-  ##############################################################################
-  scope :by_c, lambda { |company_id| where(:company_id=>company_id) }  
-  ##############################################################################
-  # Callbacks
-  ##############################################################################
+  belongs_to :mapping
+
+  scope :by_c, lambda { |company_id| where(company_id: company_id) }
+
   after_create :store_file
   after_destroy :delete_file
-  ##############################################################################
-  # Validations
-  ##############################################################################
-  validates :filename, :disk_filename, :presence=>true
-  validates :col_sep, :quote_char, :presence => true
-  ##############################################################################
-  # Behavior
-  ##############################################################################
-  attr_accessible :col_sep, :quote_char, :uploaded_data
 
+  validates :filename, :disk_filename, presence: true
+  validates :col_sep, :quote_char, presence: true
+
+  attr_accessible :col_sep, :quote_char, :uploaded_data
   
   # Any upload file gets passed in as uploaded_data attribute
   # Here its beeing parsed into its bits and pieces so the other attributes can

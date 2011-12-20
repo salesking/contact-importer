@@ -1,6 +1,9 @@
 CsvImporter::Application.routes.draw do
 
-  resources :attachments
+  resources :attachments, except: [:destroy] do
+    resources :mappings, only: [:new, :create]
+  end
+  resources :mappings, only: [:index, :show]
   resources :imports do
     resources :data_rows
   end

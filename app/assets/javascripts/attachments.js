@@ -1,2 +1,0 @@
-//= require fileuploader
-//= require uploads

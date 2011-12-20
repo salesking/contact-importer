@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215103135) do
+ActiveRecord::Schema.define(:version => 20111220125327) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",      :limit => 100
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111215103135) do
     t.datetime "updated_at"
     t.string   "col_sep",       :limit => 1
     t.string   "quote_char",    :limit => 1
+    t.integer  "mapping_id"
   end
 
   create_table "data_rows", :force => true do |t|
@@ -49,12 +50,20 @@ ActiveRecord::Schema.define(:version => 20111215103135) do
     t.datetime "updated_at"
   end
 
-  create_table "mappings", :force => true do |t|
+  create_table "mapping_elements", :force => true do |t|
     t.string   "target",     :limit => 100
     t.string   "conv_type",  :limit => 100
     t.string   "conv_opts"
     t.string   "source"
     t.integer  "import_id"
+    t.string   "company_id", :limit => 22
+    t.string   "user_id",    :limit => 22
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mapping_id"
+  end
+
+  create_table "mappings", :force => true do |t|
     t.string   "company_id", :limit => 22
     t.string   "user_id",    :limit => 22
     t.datetime "created_at"
