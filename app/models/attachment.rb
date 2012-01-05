@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # Store uploaded files, temporary until the import is created
 # 
 # If files need to present afterwards should implement persistent s3 storage!!
@@ -46,12 +48,21 @@ class Attachment < ActiveRecord::Base
 
 private
 
+  # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
-    @parsed_data ||= CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char)
+    @parsed_data ||= CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8' )
   end
 
+  # store the uploaded tempfile.
   def store_file
-    File.open(full_filename, 'wb') do |f|
+    # TODO 
+    # - kick BOM if present
+    # - convert to UTF-8 if a different encoding is given
+    # - we should check double encoding because the tempfile is always read as utf8
+    
+    # writes the file binary/raw without taking encodings into account. 
+    # If we want to convert incoming files this should be done before
+    File.open(full_filename, 'wb') do |f| #w:UTF-8
       f.write @uploaded_file.read
     end
   end

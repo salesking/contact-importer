@@ -12,10 +12,10 @@ class ImportsController < ApplicationController
     @import = Import.new(attachment: @attachment)
     @import.company_id = current_company_id
     @import.user_id = current_user_id
-
+    # init SK info with data from session so data_row can be saved with import
+    Sk::APP.sub_domain = session['sub_domain']
+    Sk.init(Sk::APP.sk_url, session['access_token'])
     if @import.save
-      Sk::APP.sub_domain = session['sub_domain']
-      Sk.init("#{Sk::APP.sk_url}/api", session['access_token'])
       redirect_to @import
     else
       render :action => "new"

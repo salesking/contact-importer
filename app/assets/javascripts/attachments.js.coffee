@@ -33,7 +33,10 @@ jQuery ->
     csv = ['<table>']
     $.each data.rows, ->
       csv.push '<tr>'
-      $.each this, -> csv.push('<td>' + this + '</td>')
+      $.each this, -> 
+        console.log(this)
+        val = if (this.length < 1) then '' else this
+        csv.push('<td>' + val + '</td>')
       csv.push '</tr>'
     csv.push '</table>'
     $('#csv-table table').remove()

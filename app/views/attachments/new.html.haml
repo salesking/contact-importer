@@ -11,13 +11,6 @@
         %li=i
 
 = form_for @attachment, method: 'put' do |f|
-  - if @attachment.new_record?
-    .clearfix
-      %label=t(:'attachments.upload')
-      .input
-        #file-upload
-          %noscript
-            %p Please enable JavaScript to use file uploader
   .clearfix
     = label_tag :col_sep, Attachment.human_attribute_name(:col_sep)
     .input
@@ -26,6 +19,13 @@
     = label_tag :quote_char, Attachment.human_attribute_name(:quote_char)
     .input
       = f.text_field :quote_char, class: 'minimi'
+  - if @attachment.new_record?
+    .clearfix
+      %label=t(:'attachments.upload')
+      .input
+        #file-upload
+          %noscript
+            %p Please enable JavaScript to use file uploader
   #csv-table.clearfix{style: ("display: none" if @attachment.new_record?)}
     = link_to(image_tag("refresh.png", size: "16x16") + "Reload", "#", id: "csv-refresh")
 

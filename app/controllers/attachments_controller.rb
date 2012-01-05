@@ -10,11 +10,11 @@ class AttachmentsController < ApplicationController
   # - hide headers/fields which are potentially empty
   # - find or construct a row with all data set, so we can show examples
   def create
+#    puts params[:file].tempfile.external_encoding.name
     @attachment = Attachment.new(uploaded_data: params[:file], col_sep: params[:col_sep], quote_char: params[:quote_char])
     @attachment.company_id = current_company_id
     @attachment.user_id = current_user_id
     @attachment.save!
-    
     render json: {success: true, id: @attachment.id, rows: @attachment.rows(4)}, status: :ok
   end
   
