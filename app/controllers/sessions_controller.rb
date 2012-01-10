@@ -2,9 +2,7 @@ require "sk_sdk/oauth"
 require "sk_sdk/signed_request"
 
 class SessionsController < ApplicationController
-  
   skip_before_filter :verify_authenticity_token
-  skip_before_filter :login_required
 
   # POST Receives the oauth code from SalesKing, saves it to session
   # renders canvas haml

@@ -1,8 +1,9 @@
 class Import < ActiveRecord::Base
+  include UserReference
+
   has_many :data_rows, dependent: :destroy
   belongs_to :attachment
 
-  scope :by_c, lambda { |company_id| where(company_id: company_id) }
   default_scope order('imports.id desc')
   
   validates :attachment, presence: true

@@ -8,11 +8,12 @@ require 'csv'
 
 class Attachment < ActiveRecord::Base
   FILE_DIR = Rails.root.join('tmp', 'attachments')
+  
+  include UserReference
 
   belongs_to :mapping
   has_many :imports, dependent: :destroy
 
-  scope :by_c, lambda { |company_id| where(company_id: company_id) }
   default_scope order('attachments.id desc')
 
   after_create :store_file
@@ -47,38 +48,15 @@ class Attachment < ActiveRecord::Base
     parsed_data[0..(size - 1)]
   end
 
-private
+  private
 
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
-    @parsed_data ||= CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8')
-#    @parsed_data ||= begin
-#      rows = error_rows = []
-      # alway read whole file in memory
-#      utf8_str = File.open(full_filename, "r:UTF-8") { |f| f.read }
-      
-#      lines = []
-#      IO.foreach(full_filename) do |line|
-#        lines << line
-#        if lines.size >= 1000
-#          lines = FasterCSV.parse(lines.join) rescue next
-#          store lines
-#          lines = []
-#        end
-#      end
-#      store lines
-      
-      # parse line whise
-#      CSV.parse(utf8_str, col_sep: col_sep, quote_char: quote_char ) do |row| #, encoding: 'UTF-8'
-#        begin 
-#          rows << row 
-#        rescue
-#          error_rows << row
-#        end        
-#      end
-#      @error_rows = error_rows unless error_rows.empty?
-#      rows
-#    end
+    @parsed_data ||= begin
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8')
+    rescue CSV::MalformedCSVError
+      []
+    end
   end
 
   # store the uploaded tempfile.
