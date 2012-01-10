@@ -20,11 +20,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-def user_login
-  @request.session['access_token'] = 'abcdefg'
-  @request.session['user_id'] = 'some-user_id'
-  @request.session['company_id'] = 'a-company_id'
-  @request.session['sub_domain'] = 'my-subdomain'
+def user_login(params = {})
+  @request.session['access_token'] = params[:access_token] || 'abcdefg'
+  @request.session['user_id'] = params[:user_id] || 'some-user_id'
+  @request.session['company_id'] = params[:company_id] || 'a-company_id'
+  @request.session['sub_domain'] = params[:sub_domain] || 'my-subdomain'
 end
 
 def stub_sk_client

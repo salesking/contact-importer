@@ -8,11 +8,12 @@ require 'csv'
 
 class Attachment < ActiveRecord::Base
   FILE_DIR = Rails.root.join('tmp', 'attachments')
+  
+  include UserReference
 
   belongs_to :mapping
   has_many :imports, dependent: :destroy
 
-  scope :by_c, lambda { |company_id| where(company_id: company_id) }
   default_scope order('attachments.id desc')
 
   after_create :store_file
@@ -46,11 +47,15 @@ class Attachment < ActiveRecord::Base
     parsed_data[0..(size - 1)]
   end
 
-private
+  private
 
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
-    @parsed_data ||= CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8' )
+    @parsed_data ||= begin
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8')
+    rescue CSV::MalformedCSVError
+      []
+    end
   end
 
   # store the uploaded tempfile.

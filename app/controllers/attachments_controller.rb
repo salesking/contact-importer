@@ -1,5 +1,5 @@
 class AttachmentsController < ApplicationController
-  before_filter :init_attachments, except: [:new, :create]
+  load_and_authorize_resource
   
   def new
     @attachment = Attachment.new(col_sep: ',', quote_char: '"')
@@ -12,8 +12,7 @@ class AttachmentsController < ApplicationController
   def create
 #    puts params[:file].tempfile.external_encoding.name
     @attachment = Attachment.new(uploaded_data: params[:file], col_sep: params[:col_sep], quote_char: params[:quote_char])
-    @attachment.company_id = current_company_id
-    @attachment.user_id = current_user_id
+    @attachment.user = current_user
     @attachment.save!
     render json: {success: true, id: @attachment.id, rows: @attachment.rows(4)}, status: :ok
   end
@@ -25,14 +24,10 @@ class AttachmentsController < ApplicationController
         format.js { render json: {rows: @attachment.rows(4)}, status: :ok }
       end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render json: {rows: {}}, status: :ok }
+      end
     end
-  end
-  
-  private
-  
-  def init_attachments
-    @attachments = Attachment.by_c(current_company_id)
-    @attachment = @attachments.find(params[:id]) if params[:id].present?
   end
 end

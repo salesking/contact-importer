@@ -31,12 +31,9 @@ jQuery ->
   
   insertFields = (data) ->
     csv = ['<table>']
-    $.each data.rows, ->
+    $.each data.rows, (index, row) ->
       csv.push '<tr>'
-      $.each this, -> 
-        console.log(this)
-        val = if (this.length < 1) then '' else this
-        csv.push('<td>' + val + '</td>')
+      $.each row, (index, value) -> csv.push('<td>' + (if value then value else '') + '</td>')
       csv.push '</tr>'
     csv.push '</table>'
     $('#csv-table table').remove()

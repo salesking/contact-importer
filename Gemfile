@@ -8,6 +8,7 @@ gem "sk_api_schema"
 gem "haml"
 gem 'jquery-rails'
 gem 'rack-raw-upload'
+gem 'cancan'
 
 gem "thin"
 gem 'pg'

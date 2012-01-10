@@ -4,8 +4,6 @@
 
 - if @attachment.errors.any?
   .alert-message.block-message.error
-    %p
-      %strong= flash[:error]
     %ul
       - @attachment.errors.full_messages.each do |i|
         %li=i

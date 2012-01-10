@@ -1,12 +1,8 @@
 require 'spec_helper'
 
-describe ImportsController do
+describe MappingsController do
   render_views
-  
-  before(:each) do
-    stub_sk_client
-  end
-  
+
   context "for unauthenticated user" do
     describe "GET #index" do
       it "triggers access_denied" do
@@ -18,7 +14,7 @@ describe ImportsController do
     describe "GET #show" do
       it "triggers access_denied" do
         controller.should_receive(:access_denied)
-        get :show, id: Factory(:import).id
+        get :show, id: Factory(:mapping).id
       end
     end
     
@@ -32,22 +28,22 @@ describe ImportsController do
     describe "POST #create" do
       it "triggers access_denied" do
         controller.should_receive(:access_denied)
-        post :create, attachment_id: Factory(:attachment).id
+        post :create, attachment_id: Factory(:attachment).id, mapping: {}
       end
     end
   end
   
   context "for authenticated user" do
-    before :each do
+    before(:each) do
       @user_id = 'attachments-user'
       @company_id = 'attachments-company'
       user_login(user_id: @user_id, company_id: @company_id)
     end
     
-    context "with existing imports" do
+    context "with existing mappings" do
       before(:each) do
-        @authorized_import = Factory(:import, company_id: @company_id)
-        @unauthorized_import = Factory(:import, company_id: 'another-company')
+        @authorized_mapping = Factory(:mapping, company_id: @company_id)
+        @unauthorized_mapping = Factory(:mapping, company_id: 'another-company')
       end
       
       describe "GET #index" do
@@ -56,9 +52,9 @@ describe ImportsController do
           response.should render_template(:index)
         end
 
-        it "reveals authorized imports" do
+        it "reveals authorized mappings" do
           get :index
-          assigns[:imports].should == [@authorized_import]
+          assigns[:mappings].should == [@authorized_mapping]
         end
       end
 
@@ -66,19 +62,19 @@ describe ImportsController do
         context "unauthorized" do
           it "triggers access_denied" do
             controller.should_receive(:access_denied)
-            get :show, id: @unauthorized_import.id
+            get :show, id: @unauthorized_mapping.id
           end
         end
 
         context "authorized" do
           it "renders show template" do
-            get :show, id: @authorized_import.id
+            get :show, id: @authorized_mapping.id
             response.should render_template(:show)
           end
 
-          it "reveals requested import" do
-            get :show, id: @authorized_import.id
-            assigns[:import].should == @authorized_import
+          it "reveals requested mapping" do
+            get :show, id: @authorized_mapping.id
+            assigns[:mapping].should == @authorized_mapping
           end
         end
       end
@@ -104,14 +100,9 @@ describe ImportsController do
             response.should render_template(:new)
           end
           
-          it "reveals new import" do
+          it "reveals new mapping" do
             get :new, attachment_id: @authorized_attachment.id
-            assigns[:import].should_not be_nil
-          end
-          
-          it "assigns new import with attachment" do
-            get :new, attachment_id: @authorized_attachment.id
-            assigns[:import].attachment.should == @authorized_attachment
+            assigns[:mapping].should_not be_nil
           end
         end
       end
@@ -120,20 +111,41 @@ describe ImportsController do
         context "unauthorized" do
           it "triggers access_denied" do
             controller.should_receive(:access_denied)
-            post :create, attachment_id: @unauthorized_attachment.id
+            post :create, attachment_id: @unauthorized_attachment.id, mapping: {}
           end
         end
         
         context "authorized" do
-          it "creates new import" do
+          it "creates new mapping" do
             lambda { 
-              post :create, attachment_id: @authorized_attachment.id
-            }.should change(Import, :count).by(1)
+              post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            }.should change(Mapping, :count).by(1)
           end
           
-          it "redirects to show" do
-            post :create, attachment_id: @authorized_attachment.id
-            response.should redirect_to(import_url(assigns[:import]))
+          it "reveals new mapping" do
+            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            assigns[:mapping].should_not be_nil
+          end
+          
+          it "sets mapping user_id" do
+            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            assigns[:mapping].user_id.should == @user_id
+          end
+          
+          it "sets mapping company_id" do
+            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            assigns[:mapping].company_id.should == @company_id
+          end
+          
+          it "assigns mapping to the attachment" do
+            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            @authorized_attachment.reload
+            @authorized_attachment.mapping.should == assigns[:mapping]
+          end
+          
+          it "redirects to new attachment import" do
+            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            response.should redirect_to(new_attachment_import_url(@authorized_attachment))
           end
         end
       end
