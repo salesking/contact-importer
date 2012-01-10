@@ -6,7 +6,7 @@ class ImportsController < ApplicationController
   def create
     # init SK info with data from session so data_row can be saved with import
     Sk::APP.sub_domain = session['sub_domain']
-    Sk.init(Sk::APP.sk_url, session['access_token'])
+    Sk.init("#{Sk::APP.sk_url}/api", session['access_token'])
     if @import.save
       redirect_to @import
     else
