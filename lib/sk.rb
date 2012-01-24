@@ -25,8 +25,8 @@ class Sk
   #<Array>:: [ { 'field_name'=>{properties} }, ]
   def self.client_fields
     # skip fields that dont make sence
-    exclude_cli = ['lock_version', 'team_id', 'addresses', 'due_days', 'cash_discount']
-    exclude_adr = ['order', 'address_type', 'address2', 'pobox', 'lat', 'long', '_destroy']
+    exclude_cli = ['lock_version', 'team_id', 'addresses']
+    exclude_adr = ['order', 'lat', 'long', '_destroy']
     client_schema = SK::Api::Schema.read('client', '1.0')
     adr_schema = SK::Api::Schema.read('address', '1.0')
     props = []
