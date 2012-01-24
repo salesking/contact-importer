@@ -37,7 +37,10 @@ local git branch where you add the ignored salesking_app.yml file:
     git push heroku production:master
     # change back to master branch for normal edits .. DON'T merge production into master
     git checkout master
-    
+
+DON'T FORGETT: never push production to your public branch, if you do you need to setup NEW app credentials
+
+
 ## Test
 
 Run specs with
