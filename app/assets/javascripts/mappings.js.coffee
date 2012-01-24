@@ -28,8 +28,11 @@ jQuery ->
 
   addEnumFields = (el) ->
     els = ["<div class='options'>"]
+    
     $.each $('.target', el).attr('data-enum').split(','), ->
-      els.push "<div> <input class='mini' name='" + this + "' type='text'> <label>=> " + this + "</label></div>"
+      #clean "[] from strings, comming from ary markup
+      name = this.replace( /["\[\]]/g, '')
+      els.push "<div> <input class='mini' name='" + name + "' type='text'> <label>=> " + name + "</label></div>"
     els.push "<input name='conv_type' type='hidden' value='enum'>"
     els.push "</div>"
     el.append els.join('')
