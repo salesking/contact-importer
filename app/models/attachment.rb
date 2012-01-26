@@ -53,7 +53,7 @@ class Attachment < ActiveRecord::Base
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8')
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, row_sep: "rn", encoding: "ISO-8859-1:UTF-8")
     rescue CSV::MalformedCSVError
       []
     end
