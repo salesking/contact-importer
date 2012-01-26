@@ -8,6 +8,12 @@
     = yield :head
   %body
     .container
+      %ul.top_menu
+        %li= link_to "Attachments", attachments_path, :class => ('current' if request.fullpath =~ /attachments/)    
+        %li= link_to "Mappings", mappings_path, :class => ('current' if request.fullpath =~ /mappings/)  
+        %li= link_to "Imports", imports_path, :class => ('current' if request.fullpath =~ /imports/)  
+      .clear
+      %hr.seperator  
       = yield
     %footer
       .container
