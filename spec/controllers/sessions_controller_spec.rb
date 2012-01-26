@@ -34,7 +34,7 @@ describe SessionsController do
       @request.session['sub_domain'] = 'abc'
       Sk::APP.should_receive(:get_token).with('some-token-code').and_return('an access token')
       get :new, :code=>'some-token-code'
-      response.body.should =="<script> top.location.href='#{sk_url('abc')}/app/csv-importer'</script>"
+      response.body.should =="<script> top.location.href='#{sk_url('abc')}/app/#{canvas_slug}'</script>"
     end
 
   end
