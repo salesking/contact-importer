@@ -55,11 +55,7 @@ end
 def file_upload(filename)
   type = 'text/plain'
   file_path = Rails.root.join('spec/fixtures/', filename)
-#  file = File.new(Rails.root.join('spec/fixtures/', filename), 'r')
   Rack::Test::UploadedFile.new(file_path, type)
-#  ActionDispatch::Http::UploadedFile.new( :tempfile => file,
-#                                          :filename => filename,
-#                                          :type => type)
 end
 
 def response_to_json
