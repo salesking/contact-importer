@@ -43,6 +43,10 @@ def sk_url(sub_domain)
   sk_config['sk_url'].gsub('*', sub_domain)
 end
 
+def canvas_slug
+  sk_config['canvas_slug']
+end
+
 # Simulate a File Upload. Files reside in RAILS_ROOT/test/fixutes/files
 # ==== Parameter
 # filename<String>:: The file to upload

@@ -53,12 +53,21 @@ class Attachment < ActiveRecord::Base
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: 'UTF-8')
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, row_sep: "rn", encoding: "ISO-8859-1:UTF-8")
     rescue CSV::MalformedCSVError
-      []
+      rows = []
+      #one more attempt. #TODO check if this is required.
+      begin
+        f = File.open(full_filename, "r:ISO-8859-1")
+        CSV.parse(f.read.encode("UTF-8") , col_sep: col_sep, quote_char: quote_char) do |row| 
+          rows << row 
+        end
+      ensure
+        return rows
+      end
     end
   end
-
+  
   # store the uploaded tempfile.
   def store_file
     # TODO 
