@@ -56,12 +56,10 @@ class Attachment < ActiveRecord::Base
       CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, row_sep: "rn", encoding: "ISO-8859-1:UTF-8")
     rescue CSV::MalformedCSVError
       rows = []
-      #one more attempt. #TODO check if this is required.
+      #one more attempt. If BOM is present in the file.
       begin
-        f = File.open(full_filename, "r:ISO-8859-1")
-        CSV.parse(f.read.encode("UTF-8") , col_sep: col_sep, quote_char: quote_char) do |row| 
-          rows << row 
-        end
+        f = File.open(full_filename, "r:bom|utf-8")
+        rows = CSV.parse(f.read, col_sep: col_sep, quote_char: quote_char)
       ensure
         return rows
       end
