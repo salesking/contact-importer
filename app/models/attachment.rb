@@ -53,15 +53,13 @@ class Attachment < ActiveRecord::Base
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, row_sep: "rn", encoding: "ISO-8859-1:UTF-8")
-    rescue CSV::MalformedCSVError
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char)
+    rescue CSV::MalformedCSVError => er
       rows = []
-      #one more attempt. #TODO check if this is required.
+      #one more attempt. If BOM is present in the file.
       begin
-        f = File.open(full_filename, "r:ISO-8859-1")
-        CSV.parse(f.read.encode("UTF-8") , col_sep: col_sep, quote_char: quote_char) do |row| 
-          rows << row 
-        end
+        f = File.open(full_filename, "rb:bom|utf-8")
+        rows = CSV.parse(f.read.force_encoding("ISO-8859-1"))
       ensure
         return rows
       end
