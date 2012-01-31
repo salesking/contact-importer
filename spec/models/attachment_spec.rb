@@ -27,4 +27,15 @@ describe Attachment do
   it "reveals specified number of rows" do
     @attachment.rows(1).size.should == 1
   end
+  
+  describe "different csv formats" do
+    {'google_native_test_.csv' => 3, 'google_outlook_test.csv' => 3, 'test1.csv' => 2}.each do |csv_file, count|
+      it "should able to read #{csv_file}" do
+        attachment = Factory(:attachment, :uploaded_data => file_upload(csv_file))
+        attachment.rows.first.size.should be > 1
+        attachment.rows.size.should == count
+      end
+    end  
+  end
+  
 end
