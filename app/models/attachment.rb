@@ -47,7 +47,7 @@ class Attachment < ActiveRecord::Base
   def rows(size = 0)
     parsed_data[0..(size - 1)]
   end
-
+  
   private
 
   # When parsing data, we expect our file to be saved as valid utf-8
@@ -81,7 +81,7 @@ class Attachment < ActiveRecord::Base
   end
 
   def delete_file
-    File.delete(full_filename)
+    File.delete(full_filename) rescue true #catch Errno::ENOENT exception for deleted files
   end
 
 

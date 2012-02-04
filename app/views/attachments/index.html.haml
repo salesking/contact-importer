@@ -10,6 +10,7 @@
       %th= Attachment.model_name.human(count: 1)
       %th= Mapping.model_name.human(count: 1)
       %th= Import.model_name.human(count: 1)
+      %th
   %tbody
     - @attachments.each do |attachment|
       %tr
@@ -29,3 +30,5 @@
               .created= import.created_at
           - elsif attachment.mapping
             = link_to(t('imports.new'), new_attachment_import_path(attachment))
+        %td
+          = link_to(image_tag('destroy.png'), attachment, :confirm => t('attachments.delete_confirm'), :method => :delete)

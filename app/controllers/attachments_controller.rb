@@ -30,4 +30,9 @@ class AttachmentsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @attachment.destroy
+    redirect_to attachments_path
+  end
 end
