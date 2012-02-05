@@ -38,6 +38,13 @@ describe AttachmentsController do
         put :update, id: Factory(:attachment).id, attachment: {}
       end
     end
+    
+    describe "DELETE #destroy" do
+      it "triggers access_denied" do
+        controller.should_receive(:access_denied)
+        delete :destroy, id: Factory(:attachment).id
+      end
+    end
   end
   
   context "for authenticaned user" do
@@ -173,5 +180,19 @@ describe AttachmentsController do
         end
       end
     end
+    
+    describe "DELETE destroy" do
+      it "destroys the requested attachment" do
+		    expect {
+		      delete :destroy, :id => @authorized_attachment.id
+		    }.to change(Attachment, :count).by(-1)
+		  end
+
+		  it "redirects to the attachments list after destroying the requested attachment" do
+		    delete :destroy, :id => @authorized_attachment.id
+		    response.should redirect_to(attachments_path)
+		  end
+		end
+		
   end
 end
