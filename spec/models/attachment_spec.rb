@@ -19,6 +19,12 @@ describe Attachment do
     File.exist?(file_path).should be_false
   end
   
+  it "should silently ignore missing files on destroy" do
+    file_path = @attachment.full_filename
+    File.delete(file_path)
+    lambda {@attachment.destroy}.should_not raise_error(Errno::ENOENT)
+  end
+  
   it "parses csv data" do
     @attachment.rows.size.should == 2
     @attachment.rows.first.size.should be > 1
@@ -28,7 +34,7 @@ describe Attachment do
     @attachment.rows(1).size.should == 1
   end
   
-  describe "different csv formats" do
+  describe "formats" do
     {'google_native_test_.csv' => 3, 'google_outlook_test.csv' => 3, 'test1.csv' => 2}.each do |csv_file, count|
       it "should able to read #{csv_file}" do
         attachment = Factory(:attachment, :uploaded_data => file_upload(csv_file))

@@ -35,6 +35,7 @@ en:
     new: Upload new CSV file
     upload: Upload
     proceed_to_mapping: Proceed to mapping
+    delete_confirm: "Please note that, this is irreversible process. This will delete associated imports. Are you sure?"  
   mappings:
     title:
       one: "%{count} field: %{fields}"
