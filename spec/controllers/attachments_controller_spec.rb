@@ -15,6 +15,9 @@ describe AttachmentsController do
       it "triggers access_denied" do
         controller.should_receive(:access_denied)
         get :show, id: Factory(:attachment).id
+      endit "sets attachment company_id" do
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        assigns[:attachment].company_id.should == @company_id
       end
     end
     
@@ -106,27 +109,34 @@ describe AttachmentsController do
     describe "POST #create" do
       it "creates new attachment" do
         lambda {
-          post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+          post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         }.should change(Attachment, :count).by(1)
       end
       
       it "reveals new attachment" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].should_not be_nil
       end
       
       it "sets attachment user_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].user_id.should == @user_id
       end
       
       it "sets attachment company_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].company_id.should == @company_id
       end
       
+      it "sets col_sep, quote_char and encoding " do
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        assigns[:col_sep].should == ';'
+        assigns[:quote_char].should == '"'
+        assigns[:encoding].should == 'utf-8'
+      end
+      
       it "renders successful json response" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         response.content_type.should == "application/json"
         response.code.should == "200"
       end

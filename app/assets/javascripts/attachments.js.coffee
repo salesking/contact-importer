@@ -7,7 +7,8 @@ jQuery ->
       data:
         '_method': 'put',
         'attachment[col_sep]': $('#attachment_col_sep').val(),
-        'attachment[quote_char]': $("#attachment_quote_char").val()
+        'attachment[quote_char]': $("#attachment_quote_char").val(),
+        'attachment[encoding]': $("#attachment_encoding").val()
       ,
       success: (data) -> insertFields(data)
     false
@@ -24,6 +25,7 @@ jQuery ->
           authenticity_token: $("input[name='authenticity_token']").val()
           col_sep: $("#attachment_col_sep").val()
           quote_char: $("#attachment_quote_char").val()
+          encoding: $("#attachment_encoding").val()
       ,
       onComplete: (id, fileName, data) ->
         insertFields(data)
