@@ -3,7 +3,15 @@ require 'spec_helper'
 describe Attachment do
   it { should belong_to(:mapping) }
   it { should have_many(:imports).dependent(:destroy) }
-
+  
+  ['filename', 'col_sep', 'quote_char', 'encoding', 'disk_filename'].each do |attribute|
+    it { should validate_presence_of(attribute)}
+  end 
+  
+  [:col_sep, :quote_char, :uploaded_data, :encoding].each do |attribute|
+    it { should allow_mass_assignment_of(attribute) }
+  end
+     
   before :each do
     @attachment = Factory(:attachment)
   end

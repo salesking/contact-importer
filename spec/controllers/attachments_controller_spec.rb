@@ -15,9 +15,6 @@ describe AttachmentsController do
       it "triggers access_denied" do
         controller.should_receive(:access_denied)
         get :show, id: Factory(:attachment).id
-      endit "sets attachment company_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
-        assigns[:attachment].company_id.should == @company_id
       end
     end
     
@@ -126,13 +123,6 @@ describe AttachmentsController do
       it "sets attachment company_id" do
         post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].company_id.should == @company_id
-      end
-      
-      it "sets col_sep, quote_char and encoding " do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
-        assigns[:col_sep].should == ';'
-        assigns[:quote_char].should == '"'
-        assigns[:encoding].should == 'utf-8'
       end
       
       it "renders successful json response" do
