@@ -22,7 +22,7 @@ class Attachment < ActiveRecord::Base
   validates :filename, :disk_filename, presence: true
   validates :col_sep, :quote_char, :encoding, presence: true
 
-  attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding
+  attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
   attr_reader :error_rows
   
   # Any upload file gets passed in as uploaded_data attribute

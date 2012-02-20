@@ -152,11 +152,16 @@ describe AttachmentsController do
           assigns[:attachment].quote_char.should == '^'
         end
         
-        it "redirects to new attachment mapping on html request" do
-          put :update, id: @authorized_attachment, attachment: {col_sep: ';'}
+        it "redirects to new attachment mapping on html request if mapping is not set" do
+          put :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: ''}
           response.should redirect_to(new_attachment_mapping_url(@authorized_attachment))
         end
         
+        it "redirects to new attachment import on html request if mapping is set" do
+          mapping = Factory(:mapping)
+          put :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: mapping.id}
+          response.should redirect_to(new_attachment_import_url(@authorized_attachment))
+        end
         it "reneders successful json response on js request" do
           put :update, id: @authorized_attachment, attachment: {col_sep: ';'}, format: 'js'
           response.code.should == "200"

@@ -8,7 +8,7 @@ describe Attachment do
     it { should validate_presence_of(attribute)}
   end 
   
-  [:col_sep, :quote_char, :uploaded_data, :encoding].each do |attribute|
+  [:col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id].each do |attribute|
     it { should allow_mass_assignment_of(attribute) }
   end
      

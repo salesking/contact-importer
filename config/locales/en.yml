@@ -35,7 +35,8 @@ en:
     new: Upload new CSV file
     upload: Upload
     proceed_to_mapping: Proceed to mapping
-    delete_confirm: "Please note that, this is irreversible process. This will delete associated imports. Are you sure?"  
+    delete_confirm: "Please note that, this is irreversible process. This will delete associated imports. Are you sure?" 
+    csv_import_error: "Try with different 'Column Separator' and/or 'Quote character'." 
   mappings:
     title:
       one: "%{count} field: %{fields}"
@@ -44,6 +45,7 @@ en:
     proceed_to_import: Proceed to import
     source_fields: Source fields
     target_fields: Target fields
+    reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     dnd_info: "Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list."
   imports:
     title_success:

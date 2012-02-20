@@ -20,7 +20,8 @@ class AttachmentsController < ApplicationController
   def update
     if @attachment.update_attributes(params[:attachment])
       respond_to do |format|
-        format.html { redirect_to new_attachment_mapping_url(@attachment) }
+        format.html { redirect_to (@attachment.mapping.blank? ? new_attachment_mapping_url(@attachment) : new_attachment_import_url(@attachment))
+          }
         format.js { render json: {rows: @attachment.rows(4)}, status: :ok }
       end
     else
