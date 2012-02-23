@@ -106,27 +106,27 @@ describe AttachmentsController do
     describe "POST #create" do
       it "creates new attachment" do
         lambda {
-          post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+          post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         }.should change(Attachment, :count).by(1)
       end
       
       it "reveals new attachment" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].should_not be_nil
       end
       
       it "sets attachment user_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].user_id.should == @user_id
       end
       
       it "sets attachment company_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         assigns[:attachment].company_id.should == @company_id
       end
       
       it "renders successful json response" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"'
+        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
         response.content_type.should == "application/json"
         response.code.should == "200"
       end
@@ -152,11 +152,16 @@ describe AttachmentsController do
           assigns[:attachment].quote_char.should == '^'
         end
         
-        it "redirects to new attachment mapping on html request" do
-          put :update, id: @authorized_attachment, attachment: {col_sep: ';'}
+        it "redirects to new attachment mapping on html request if mapping is not set" do
+          put :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: ''}
           response.should redirect_to(new_attachment_mapping_url(@authorized_attachment))
         end
         
+        it "redirects to new attachment import on html request if mapping is set" do
+          mapping = Factory(:mapping)
+          put :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: mapping.id}
+          response.should redirect_to(new_attachment_import_url(@authorized_attachment))
+        end
         it "reneders successful json response on js request" do
           put :update, id: @authorized_attachment, attachment: {col_sep: ';'}, format: 'js'
           response.code.should == "200"
