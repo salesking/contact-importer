@@ -14,3 +14,4 @@ ul.top_menu li:first-child a{margin-left:0}
 ul.top_menu li:last-child{border-right:none}
 hr.seperator{border-top:1px solid #ccc;background:#ccc;margin:5px 0}
 .clear{clear:both}
+form label span.required{color: red; font-size: 110%; margin-left: 4px;}

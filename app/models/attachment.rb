@@ -20,9 +20,9 @@ class Attachment < ActiveRecord::Base
   after_destroy :delete_file
 
   validates :filename, :disk_filename, presence: true
-  validates :col_sep, :quote_char, presence: true
+  validates :col_sep, :quote_char, :encoding, presence: true
 
-  attr_accessible :col_sep, :quote_char, :uploaded_data
+  attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
   attr_reader :error_rows
   
   # Any upload file gets passed in as uploaded_data attribute
@@ -53,8 +53,8 @@ class Attachment < ActiveRecord::Base
   # When parsing data, we expect our file to be saved as valid utf-8
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char)
-    rescue CSV::MalformedCSVError => er
+      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: encoding)
+    rescue #CSV::MalformedCSVError => er
       rows = []
       #one more attempt. If BOM is present in the file.
       begin

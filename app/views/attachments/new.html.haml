@@ -10,13 +10,17 @@
 
 = form_for @attachment, method: 'put' do |f|
   .clearfix
-    = label_tag :col_sep, Attachment.human_attribute_name(:col_sep)
+    = label_tag :col_sep, "#{Attachment.human_attribute_name(:col_sep)} <span class='required'> *</span>".html_safe
     .input
       = f.text_field :col_sep, class: 'minimi'
   .clearfix
-    = label_tag :quote_char, Attachment.human_attribute_name(:quote_char)
+    = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_charp)} <span class='required'> *</span>".html_safe 
     .input
       = f.text_field :quote_char, class: 'minimi'
+  .clearfix
+    = label_tag :encoding, "#{Attachment.human_attribute_name(:encoding)} <span class='required'> *</span>".html_safe 
+    .input
+      = f.text_field :encoding
   - if @attachment.new_record?
     .clearfix
       %label=t(:'attachments.upload')
