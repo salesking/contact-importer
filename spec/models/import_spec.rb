@@ -3,17 +3,17 @@ require 'spec_helper'
 describe Import do
   it { should have_many(:data_rows).dependent(:destroy) }
   it { should belong_to(:attachment) }
-  
+
   it { should validate_presence_of(:attachment) }
-  
+
   describe "data import" do
     before :each do
-      @mapping = Factory(:mapping)
-      Factory(:mapping_element, mapping: @mapping, source: 8, target: 'address.address1')
-      Factory(:mapping_element, mapping: @mapping, source: 9, target: 'address.zip')
-      Factory(:mapping_element, mapping: @mapping, source: 10, target: 'address.city')
-      @attachment = Factory(:attachment, mapping: @mapping)
-      @import = Factory.build(:import, attachment: @attachment)
+      @mapping = create(:mapping)
+      create(:mapping_element, mapping: @mapping, source: 8, target: 'address.address1')
+      create(:mapping_element, mapping: @mapping, source: 9, target: 'address.zip')
+      create(:mapping_element, mapping: @mapping, source: 10, target: 'address.city')
+      @attachment = create(:attachment, mapping: @mapping)
+      @import = build(:import, attachment: @attachment)
       @client = stub_sk_client
     end
 
