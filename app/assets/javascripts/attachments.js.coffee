@@ -12,7 +12,7 @@ jQuery ->
       ,
       success: (data) -> insertFields(data)
     false
-  
+
   if $('#file-upload').length > 0
     uploader = new qq.FileUploader
       multiple: false,
@@ -30,9 +30,9 @@ jQuery ->
       onComplete: (id, fileName, data) ->
         insertFields(data)
         $('#new_attachment').attr('action', '/attachments/' + data.id)
-  
+
   insertFields = (data) ->
-    csv = ['<table>']
+    csv = ['<table class="table table-bordered">']
     $.each data.rows, (index, row) ->
       csv.push '<tr>'
       $.each row, (index, value) -> csv.push('<td>' + (if value then value else '') + '</td>')
