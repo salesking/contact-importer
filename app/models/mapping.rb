@@ -11,7 +11,7 @@ class Mapping < ActiveRecord::Base
   scope :by_company, lambda{|company_id| where(:company_id => company_id)}
   scope :with_fields, joins(:mapping_elements).
                       select('mappings.id, count(mapping_elements.id) as element_count').
-                      group('mappings.id, element_count').
+                      group('mappings.id'). # fuck up with postgres
                       having('element_count > 0')
 
   def title
