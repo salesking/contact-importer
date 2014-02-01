@@ -25,11 +25,11 @@ class Sk
   #<Array>:: [ { 'field_name'=>{properties} }, ]
   def self.contact_fields
     # skip fields that dont make sence
-    exclude_cli = ['lock_version', 'team_id', 'addresses']
-    exclude_adr = ['order', 'lat', 'long', '_destroy']
-    contact_schema = SK::Api::Schema.read('contact', '1.0')
-    adr_schema = SK::Api::Schema.read('address', '1.0')
-    props = []
+    exclude_cli    = ['lock_version', 'team_id', 'addresses', 'parent_id']
+    exclude_adr    = ['order', 'lat', 'long', '_destroy']
+    contact_schema = read_schema('contact')
+    adr_schema     = read_schema('address')
+    props          = []
     contact_schema['properties'].each do |name, prop|
       props << { name => prop } unless prop['readonly'] || exclude_cli.include?(name)
     end
