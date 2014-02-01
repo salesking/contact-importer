@@ -1,8 +1,8 @@
 %h2
   = t('link.step', count: 2, total: 3)
   = t('mappings.new')
-  
-= form_for @attachment do |f|  
+
+= form_for @attachment do |f|
   %p= t('mappings.reuse')
   = f.select 'mapping_id', options_for_select(mapping_options)
   = f.submit t('mappings.proceed_to_import'), :class => "btn primary large"
@@ -21,7 +21,7 @@
     %label= t('mappings.target_fields')
     .input
       %ul#target-fields
-        - Sk.client_fields.each do |field|
+        - Sk.contact_fields.each do |field|
           - field.each do |name, params|
             - attrs = Hash[params.collect { |k, v| ["data-#{k}", v] }]
             %li.field
