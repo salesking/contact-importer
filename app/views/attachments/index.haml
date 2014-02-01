@@ -31,4 +31,4 @@
           - elsif attachment.mapping
             = link_to(t('imports.new'), new_attachment_import_path(attachment))
         %td
-          = link_to(image_tag('destroy.png'), attachment, :confirm => t('attachments.delete_confirm'), :method => :delete)
+          = link_to(image_tag('destroy.png'), attachment, confirm: t('attachments.delete_confirm'), method: :delete)

@@ -1,19 +1,19 @@
 !!! Strict
-%html{ "xmlns" => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, "lang" =>  I18n.locale }
+%html{ 'xmlns' => 'http://www.w3.org/1999/xhtml', 'xml:lang' => I18n.locale, 'lang' =>  I18n.locale }
   %head
     %title= 'SalesKing CSV Importer'
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
     = yield :head
   %body
     .container
       %ul.top_menu
-        %li= link_to "Attachments", attachments_path, :class => ('current' if request.fullpath =~ /attachments/)    
-        %li= link_to "Mappings", mappings_path, :class => ('current' if request.fullpath =~ /mappings/)  
-        %li= link_to "Imports", imports_path, :class => ('current' if request.fullpath =~ /imports/)  
+        %li= link_to 'Attachments', attachments_path, class: ('current' if request.fullpath =~ /attachments/)
+        %li= link_to 'Mappings', mappings_path, class: ('current' if request.fullpath =~ /mappings/)
+        %li= link_to 'Imports', imports_path, class: ('current' if request.fullpath =~ /imports/)
       .clear
-      %hr.seperator  
+      %hr.seperator
       = yield
     %footer
       .container

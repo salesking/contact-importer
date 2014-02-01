@@ -8,7 +8,7 @@ class Mapping < ActiveRecord::Base
   default_scope order('mappings.id desc')
 
   accepts_nested_attributes_for :mapping_elements
-  scope :by_company, lambda{|company_id| where(:company_id => company_id)}
+  scope :by_company, lambda{|company_id| where(company_id: company_id)}
   scope :with_fields, joins(:mapping_elements).
                       select('mappings.id, count(mapping_elements.id) as element_count').
                       group('mappings.id'). # fuck up with postgres

@@ -10,12 +10,12 @@ class ImportsController < ApplicationController
     if @import.save
       redirect_to @import
     else
-      render :action => "new"
+      render action:  "new"
     end
   end
-  
+
   private
-  
+
   def init_import
     @import = Import.new(attachment: @attachment)
     @import.user = current_user

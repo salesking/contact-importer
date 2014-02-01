@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       session['company_id'] = r.data['company_id']
       redirect_to attachments_url
     else # must authorize redirect to oauth dialog
-      render :inline => "<script> top.location.href='#{Sk::APP.auth_dialog}'</script>"
+        render inline: "<script> top.location.href='#{Sk::APP.auth_dialog}'</script>"
     end
   end
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       Sk::APP.sub_domain = session['sub_domain']
       Sk::APP.get_token(params[:code])
       #redirect to sk internal canvas page, where we are now authenticated
-      render :inline => "<script> top.location.href='#{Sk::APP.sk_canvas_url}'</script>"
+      render inline: "<script> top.location.href='#{Sk::APP.sk_canvas_url}'</script>"
     end
   end
 end

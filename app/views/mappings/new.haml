@@ -5,7 +5,7 @@
 = form_for @attachment do |f|
   %p= t('mappings.reuse')
   = f.select 'mapping_id', options_for_select(mapping_options)
-  = f.submit t('mappings.proceed_to_import'), :class => "btn primary large"
+  = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
 %hr
 
 = form_for [@attachment, @mapping] do |f|
@@ -27,5 +27,5 @@
             %li.field
               .target{attrs.merge('data-target' => name)}= name
   .actions
-    = f.submit t('mappings.proceed_to_import'), :class => "btn primary large"
-    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+    = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
+    = link_to t('link.back_to_list'), attachments_path, class: 'btn secondary'
