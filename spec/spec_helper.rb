@@ -28,12 +28,12 @@ def user_login(params = {})
   @request.session['sub_domain'] = params[:sub_domain] || 'my-subdomain'
 end
 
-def stub_sk_client
+def stub_sk_contact
   Sk.init('http://localhost', 'some-token')
-  client = Sk::Client.new
-  Sk::Client.stub(:new).and_return(client)
-  client.stub(:save).and_return(true)
-  client
+  contact = Sk::Contact.new
+  Sk::Contact.stub(:new).and_return(contact)
+  contact.stub(:save).and_return(true)
+  contact
 end
 
 def sk_config

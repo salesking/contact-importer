@@ -1,6 +1,6 @@
 %h2
   = t('link.step', count: 1, total: 3)
-  = t('attachments.new')
+  = t('.page_title')
 
 - if @attachment.errors.any?
   .alert-message.block-message.error
@@ -13,14 +13,15 @@
     = label_tag :col_sep, "#{Attachment.human_attribute_name(:col_sep)} <span class='required'> *</span>".html_safe
     .input
       = f.text_field :col_sep, class: 'minimi'
+      %span.help-inline= t('.can_use_tab_character_html')
   .clearfix
-    = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_charp)} <span class='required'> *</span>".html_safe 
+    = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_charp)} <span class='required'> *</span>".html_safe
     .input
       = f.text_field :quote_char, class: 'minimi'
   .clearfix
-    = label_tag :encoding, "#{Attachment.human_attribute_name(:encoding)} <span class='required'> *</span>".html_safe 
+    = label_tag :encoding, "#{Attachment.human_attribute_name(:encoding)} <span class='required'> *</span>".html_safe
     .input
-      = f.text_field :encoding
+      = f.text_field :encoding, class: 'input-mini'
   - if @attachment.new_record?
     .clearfix
       %label=t(:'attachments.upload')

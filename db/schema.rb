@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20120213113143) do
     t.string   "disk_filename"
     t.string   "company_id",    :limit => 22
     t.string   "user_id",       :limit => 22
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "col_sep",       :limit => 1
     t.string   "quote_char",    :limit => 1
     t.integer  "mapping_id"
@@ -33,16 +33,16 @@ ActiveRecord::Schema.define(:version => 20120213113143) do
     t.text     "log"
     t.string   "company_id", :limit => 22
     t.string   "user_id",    :limit => 22
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "imports", :force => true do |t|
     t.integer  "attachment_id"
     t.string   "company_id",    :limit => 22
     t.string   "user_id",       :limit => 22
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "mapping_elements", :force => true do |t|
@@ -50,16 +50,16 @@ ActiveRecord::Schema.define(:version => 20120213113143) do
     t.string   "conv_type",  :limit => 100
     t.string   "conv_opts"
     t.string   "source"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "mapping_id"
   end
 
   create_table "mappings", :force => true do |t|
     t.string   "company_id", :limit => 22
     t.string   "user_id",    :limit => 22
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
 end
