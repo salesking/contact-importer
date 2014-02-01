@@ -39,33 +39,33 @@ describe Attachment do
     @attachment = create(:attachment)
   end
 
-  it "should set filename and disk_filename" do
+  it 'should set filename and disk_filename' do
     @attachment.filename.should == 'test1.csv'
     @attachment.disk_filename.should_not be_empty
   end
 
-  it "should remove file on destroy" do
+  it 'should remove file on destroy' do
     file_path = @attachment.full_filename
     @attachment.destroy
     File.exist?(file_path).should be_false
   end
 
-  it "should silently ignore missing files on destroy" do
+  it 'should silently ignore missing files on destroy' do
     file_path = @attachment.full_filename
     File.delete(file_path)
-    lambda {@attachment.destroy}.should_not raise_error(Errno::ENOENT)
+    lambda {@attachment.destroy}.should_not raise_error #(Errno::ENOENT)
   end
 
-  it "parses csv data" do
+  it 'parses csv data' do
     @attachment.rows.size.should == 2
     @attachment.rows.first.size.should be > 1
   end
 
-  it "reveals specified number of rows" do
+  it 'reveals specified number of rows' do
     @attachment.rows(1).size.should == 1
   end
 
-  describe "formats" do
+  describe 'formats' do
     {'google_native_test_.csv' => 3, 'google_outlook_test.csv' => 3, 'test1.csv' => 2}.each do |csv_file, count|
       it "should able to read #{csv_file}" do
         attachment = create(:attachment, :uploaded_data => file_upload(csv_file))
