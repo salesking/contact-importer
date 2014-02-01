@@ -4,7 +4,7 @@ describe ImportsController do
   render_views
 
   before(:each) do
-    stub_sk_client
+    stub_sk_contact
   end
 
   context "for unauthenticated user" do

@@ -14,25 +14,25 @@ describe Import do
       create(:mapping_element, mapping: @mapping, source: 10, target: 'address.city')
       @attachment = create(:attachment, mapping: @mapping)
       @import = build(:import, attachment: @attachment)
-      @client = stub_sk_client
+      @contact = stub_sk_contact
     end
 
     it "should create data_rows" do
-      @client.should_receive(:save).and_return(true)
+      @contact.should_receive(:save).and_return(true)
       lambda { @import.save }.should change(DataRow, :count).by(1)
     end
 
     it "should create an address" do
-      @client.should_receive(:save).and_return(true)
+      @contact.should_receive(:save).and_return(true)
       @import.save
-      @client.addresses[0].zip.should == '83620'
-      @client.addresses[0].address1.should == 'Hubertstr. 205'
-      @client.addresses[0].city.should == 'Feldkirchen'
+      @contact.addresses[0].zip.should == '83620'
+      @contact.addresses[0].address1.should == 'Hubertstr. 205'
+      @contact.addresses[0].city.should == 'Feldkirchen'
     end
 
     it "should create failed data_rows" do
-      @client.should_receive(:save).and_return(false)
-      @client.errors.should_receive(:full_messages).and_return(['some error message'])
+      @contact.should_receive(:save).and_return(false)
+      @contact.errors.should_receive(:full_messages).and_return(['some error message'])
       lambda { @import.save }.should change(DataRow, :count).by(1)
       data_row = @import.data_rows.first
       data_row.sk_id.should be_nil
@@ -40,8 +40,8 @@ describe Import do
     end
 
     it "should be success if no rows failed" do
-      @client.should_receive(:save).and_return(true)
-      @client.should_receive(:id).and_return("some_uuid")
+      @contact.should_receive(:save).and_return(true)
+      @contact.should_receive(:id).and_return("some_uuid")
       @import.save
       @import.should be_success
     end

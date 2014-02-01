@@ -2,7 +2,7 @@
   = Attachment.model_name.human(count: 5)
   %small= @attachments.size
 
-%p= link_to t(:'attachments.new'), new_attachment_path
+%p= link_to t(:'attachments.new.page_title'), new_attachment_path
 
 %table.attachments.table.table-striped
   %thead
