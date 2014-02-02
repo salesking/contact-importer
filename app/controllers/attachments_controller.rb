@@ -38,10 +38,8 @@ class AttachmentsController < ApplicationController
   end
 
   private
+
   def attachment_params
-      # This says that params[:post] is required, but inside that, only params[:post][:title] and params[:post][:body] are permitted
-      # Unpermitted params will be stripped out
-      #params.require(:post).permit(:title, :body)
-      params.require(:attachment).permit(:col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id)
-    end
+    params.require(:attachment).permit(:col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id)
+  end
 end
