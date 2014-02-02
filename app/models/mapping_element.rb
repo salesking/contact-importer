@@ -15,10 +15,9 @@ class MappingElement < ActiveRecord::Base
   validates :conv_type, inclusion: {in: CONVERT_TYPES, message: "Unknown conversion type %{value}"},
                         allow_blank: true
 
-  #attr_accessible :conv_type, :target, :source, :conv_opts, :import_id
-
   # === Parameter
   #<Array>:: Source data row
+  # @param [Object] data_row
   def convert(data_row)
     if conv_type && self.respond_to?("convert_#{conv_type}")
       self.send("convert_#{conv_type}", data_row)

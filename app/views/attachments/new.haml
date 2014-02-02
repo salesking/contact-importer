@@ -8,7 +8,7 @@
       - @attachment.errors.full_messages.each do |i|
         %li=i
 
-= form_for @attachment, method: 'put' do |f|
+= form_for @attachment, method: 'patch' do |f|
   .clearfix
     = label_tag :col_sep, "#{Attachment.human_attribute_name(:col_sep)} <span class='required'> *</span>".html_safe
     .input

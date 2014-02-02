@@ -17,7 +17,7 @@ class AttachmentsController < ApplicationController
   end
 
   def update
-    if @attachment.update_attributes(params[:attachment])
+    if @attachment.update_attributes(attachment_params)
       respond_to do |format|
         format.html { redirect_to (@attachment.mapping.blank? ? new_attachment_mapping_url(@attachment) : new_attachment_import_url(@attachment))
           }
@@ -35,4 +35,12 @@ class AttachmentsController < ApplicationController
     @attachment.destroy
     redirect_to attachments_path
   end
+
+  private
+  def attachment_params
+      # This says that params[:post] is required, but inside that, only params[:post][:title] and params[:post][:body] are permitted
+      # Unpermitted params will be stripped out
+      #params.require(:post).permit(:title, :body)
+      params.require(:attachment).permit(:col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id)
+    end
 end
