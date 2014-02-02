@@ -57,6 +57,7 @@ class Attachment < ActiveRecord::Base
   private
 
   # When parsing data, we expect our file to be saved as valid utf-8
+  # TODO rescue parser errors -> rows empty
   def parsed_data
     @parsed_data ||= begin
       CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: encoding)

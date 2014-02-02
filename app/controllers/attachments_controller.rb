@@ -13,6 +13,7 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.new(uploaded_data: params[:file], col_sep: params[:col_sep], quote_char: params[:quote_char], encoding: params[:encoding])
     @attachment.user = current_user
     @attachment.save!
+    # TODO rescue parser errors -> rows empty
     render json: {success: true, id: @attachment.id, rows: @attachment.rows(4)}, status: :ok
   end
 
