@@ -3,8 +3,8 @@ class DataRow < ActiveRecord::Base
 
   attr_writer :data
 
-  scope :failed, where(sk_id: nil)
-  scope :success, where("data_rows.sk_id IS NOT NULL")
+  scope :failed, -> {where(sk_id: nil)}
+  scope :success, -> {where('data_rows.sk_id IS NOT NULL')}
 
   before_save :populate_contact
 

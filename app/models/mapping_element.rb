@@ -1,10 +1,10 @@
 # A mapping element connects source with targed field. It further does
 # a conversion if needed
-# 
+#
 # == Conversions:
 # - join: merges multiple incoming fields into a target
 # - enum: maps source strings to enum target values
-# 
+#
 # - split: split source field into multiple target fields
 #
 class MappingElement < ActiveRecord::Base
@@ -15,7 +15,7 @@ class MappingElement < ActiveRecord::Base
   validates :conv_type, inclusion: {in: CONVERT_TYPES, message: "Unknown conversion type %{value}"},
                         allow_blank: true
 
-  attr_accessible :conv_type, :target, :source, :conv_opts, :import_id
+  #attr_accessible :conv_type, :target, :source, :conv_opts, :import_id
 
   # === Parameter
   #<Array>:: Source data row
@@ -27,7 +27,7 @@ class MappingElement < ActiveRecord::Base
     end
   end
 
-  # 
+  #
   #  convert_opts = {"male":"Herr","female":"Frau"}
   def convert_enum(data_row)
     val = data_row[source.to_i]
