@@ -11,7 +11,7 @@ class DataRow < ActiveRecord::Base
   private
 
   def populate_contact
-    contact = Sk::Contact.new
+    contact = Sk::Contact.new(type:'Client')
     address = Sk::Address.new
 
     import.attachment.mapping.mapping_elements.each do |mapping_element|
