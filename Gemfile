@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'rack-raw-upload'
 gem 'cancan'
 
-gem 'thin'
+gem 'unicorn'
 gem 'pg'
 
 group :assets do
