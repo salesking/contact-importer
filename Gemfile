@@ -27,3 +27,8 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'simplecov'
 end
+
+group :development do
+  gem 'capistrano', '<3'
+  gem 'capistrano-ext'
+end
