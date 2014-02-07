@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/salesking/sk_sdk.git
+  revision: b29fad73c09726e684be725e8079b6d382b67963
+  branch: master
+  specs:
+    sk_sdk (0.3.0)
+      activeresource
+      activesupport
+      curb
+      sk_api_schema
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -138,11 +149,6 @@ GEM
     simplecov-html (0.8.0)
     sk_api_schema (0.9.4)
       activesupport
-    sk_sdk (0.3.0)
-      activeresource
-      activesupport
-      curb
-      sk_api_schema
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -197,7 +203,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   sk_api_schema (~> 0.9.4)
-  sk_sdk
+  sk_sdk!
   therubyracer
   thin
   uglifier
