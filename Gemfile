@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '4'
-gem 'mysql2'
 gem 'json'
 gem 'sk_sdk'
 gem 'sk_api_schema', '~> 0.9.4'
@@ -23,6 +22,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'mysql2'
 end
 
 group :development do
