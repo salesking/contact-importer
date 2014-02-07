@@ -15,7 +15,7 @@ gem 'pg'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-
+gem 'therubyracer'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.6'
