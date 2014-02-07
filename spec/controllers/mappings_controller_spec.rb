@@ -116,35 +116,37 @@ describe MappingsController do
         end
 
         context "authorized" do
+          let(:mapping_params) {{ "mapping_elements_attributes"=>{"0"=>{"source"=>"2", "target"=>"email"}, "1"=>{"source"=>"1", "target"=>"organisation"} } }}
+
           it "creates new mapping" do
             lambda {
-              post :create, attachment_id: @authorized_attachment.id, mapping: {}
+              post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             }.should change(Mapping, :count).by(1)
           end
 
           it "reveals new mapping" do
-            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             assigns[:mapping].should_not be_nil
           end
 
           it "sets mapping user_id" do
-            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             assigns[:mapping].user_id.should == @user_id
           end
 
           it "sets mapping company_id" do
-            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             assigns[:mapping].company_id.should == @company_id
           end
 
           it "assigns mapping to the attachment" do
-            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             @authorized_attachment.reload
             @authorized_attachment.mapping.should == assigns[:mapping]
           end
 
           it "redirects to new attachment import" do
-            post :create, attachment_id: @authorized_attachment.id, mapping: {}
+            post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             response.should redirect_to(new_attachment_import_url(@authorized_attachment))
           end
         end

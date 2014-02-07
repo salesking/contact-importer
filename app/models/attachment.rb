@@ -14,7 +14,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :mapping
   has_many :imports, dependent: :destroy
 
-  default_scope order('attachments.id desc')
+  default_scope ->{order('attachments.id desc')}
 
   after_create :store_file
   after_destroy :delete_file
@@ -23,7 +23,7 @@ class Attachment < ActiveRecord::Base
   validates :quote_char, :encoding, presence: true
   validate :col_sep_presence
 
-  attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
+  #attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
   attr_reader :error_rows
 
   def col_sep=(original_value)
@@ -57,6 +57,7 @@ class Attachment < ActiveRecord::Base
   private
 
   # When parsing data, we expect our file to be saved as valid utf-8
+  # TODO rescue parser errors -> rows empty
   def parsed_data
     @parsed_data ||= begin
       CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: encoding)

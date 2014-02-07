@@ -1,28 +1,25 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '4'
+gem 'mysql2'
 gem 'json'
 gem 'sk_sdk'
 gem 'sk_api_schema', '~> 0.9.4'
 gem 'haml'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'rack-raw-upload'
 gem 'cancan'
 
 gem 'unicorn'
 gem 'pg'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'libv8', '~> 3.16.14.3'
-  gem 'therubyracer', '~> 0.12.0' # for v8
-end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.6'
-  gem 'mysql2'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'

@@ -3,15 +3,15 @@ class DataRow < ActiveRecord::Base
 
   attr_writer :data
 
-  scope :failed, where(sk_id: nil)
-  scope :success, where("data_rows.sk_id IS NOT NULL")
+  scope :failed, -> {where(sk_id: nil)}
+  scope :success, -> {where('data_rows.sk_id IS NOT NULL')}
 
   before_save :populate_contact
 
   private
 
   def populate_contact
-    contact = Sk::Contact.new
+    contact = Sk::Contact.new(type:'Client')
     address = Sk::Address.new
 
     import.attachment.mapping.mapping_elements.each do |mapping_element|
