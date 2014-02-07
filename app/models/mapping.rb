@@ -13,7 +13,7 @@ class Mapping < ActiveRecord::Base
     joins(:mapping_elements).
     select('mappings.id, count(mapping_elements.id) as element_count').
     group('mappings.id'). # fuck up with postgres
-    having('element_count > 0')
+    having('count(mapping_elements.id) > 0')
   }
 
   def title
