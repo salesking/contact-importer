@@ -26,6 +26,7 @@ group :test, :development do
 end
 
 group :development do
+  gem 'thin'
   gem 'capistrano', '<3'
   gem 'capistrano-ext'
 end

@@ -1,6 +1,6 @@
 jQuery ->
-  $('.kill').live 'click', (e) -> revertField(e, this)
-  
+  $('#target-fields').on 'click', '.kill', (e) -> revertField(e, this)
+
   $('#source-fields').delegate '.field:not(.ui-draggable)', 'mouseenter', ->
     $(this).draggable revert: 'invalid'
 
@@ -28,7 +28,7 @@ jQuery ->
 
   addEnumFields = (el) ->
     els = ["<div class='options'>"]
-    
+
     $.each $('.target', el).attr('data-enum').split(','), ->
       #clean "[] from strings, comming from ary markup
       name = this.replace( /["\[\]]/g, '')
