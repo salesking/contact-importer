@@ -10,23 +10,25 @@ describe Attachment do
 
   describe 'validations' do
     context :col_sep do
-      let(:attachment) { build(:attachment, col_sep: separator) }
-      before           { attachment.valid? }
-      subject          { attachment }
-      context 'when present' do
-        let(:separator) { ',' }
-        its(:errors) { should_not include :col_sep }
+      let(:attachment) { build(:attachment) }
+      before           {  }
+      it 'is valid present' do
+        attachment.col_sep = ','
+        attachment.valid?
+        expect(attachment.errors).to_not include(:col_sep)
       end
 
-      context 'when blank' do
-        let(:separator) { '' }
-        its(:errors) { should include :col_sep }
+      it 'is invalid when blank' do
+        attachment.col_sep = nil
+        attachment.valid?
+        expect(attachment.errors).to include(:col_sep)
       end
 
       # "\t" is blank,
-      context 'when blank, but \t' do
-        let(:separator) { "\\t" }
-        its(:errors) { should_not include :col_sep }
+      it 'is valid when blank, but \t' do
+        attachment.col_sep = "\\t"
+        attachment.valid?
+        expect(attachment.errors).to_not include(:col_sep)
       end
     end
   end
@@ -43,7 +45,7 @@ describe Attachment do
   it 'should remove file on destroy' do
     file_path = @attachment.full_filename
     @attachment.destroy
-    File.exist?(file_path).should be_false
+    File.exist?(file_path).should be false
   end
 
   it 'should silently ignore missing files on destroy' do
