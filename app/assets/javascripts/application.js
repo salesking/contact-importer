@@ -1,5 +1,5 @@
 //= require jquery
 
-//= require jquery.ui.all
+//= require jquery-ui
 //= require fileuploader
 //= require_tree .
