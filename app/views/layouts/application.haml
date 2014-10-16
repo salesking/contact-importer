@@ -7,18 +7,12 @@
     = csrf_meta_tags
     = yield :head
   %body
-    .container
-      %ul.top_menu
-        %li= link_to 'Attachments', attachments_path, class: ('current' if request.fullpath =~ /attachments/)
-        %li= link_to 'Mappings', mappings_path, class: ('current' if request.fullpath =~ /mappings/)
-        %li= link_to 'Imports', imports_path, class: ('current' if request.fullpath =~ /imports/)
-      .clear
-      %hr.seperator
-      = yield
-    %footer
-      .container
-        &copy; 2011 Georg Leciejewski - SalesKing GmbH  |  We love OpenSource:
-        %a(href='https://github.com/salesking/CSV-Import') Fork & Fix
-        or report
-        %a(href='https://github.com/salesking/CSV-Import/issues') Bugs
-        on github
+    %header#header.clearfix
+      .head1
+        %nav.navbar.clearfix(role="navigation")
+          %ul.nav.navbar-nav
+            %li= link_to t('.attachments'), attachments_path, class: ('current' if request.fullpath =~ /attachments/)
+            %li= link_to t('.mappings'), mappings_path, class: ('current' if request.fullpath =~ /mappings/)
+            %li= link_to t('.imports'), imports_path, class: ('current' if request.fullpath =~ /imports/)
+      
+    = yield

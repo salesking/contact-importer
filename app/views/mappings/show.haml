@@ -1,14 +1,22 @@
-%h2= Mapping.model_name.human(count: 1)
+.header
+  .head2
+    .title
+      %h2= Mapping.model_name.human(count: 1)
 
-%table
-  %thead
-    %tr
-      %th= MappingElement.human_attribute_name(:source)
-      %th= MappingElement.human_attribute_name(:target)
-  %tbody
-    - @mapping.mapping_elements.each do |mapping_element|
+#side
+  .side-list
+    .side-list-item
+      .actions
+        = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+
+#content
+  %table.table
+    %thead
       %tr
-        %td= mapping_element.source
-        %td= mapping_element.target
-.actions
-  = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+        %th= MappingElement.human_attribute_name(:source)
+        %th= MappingElement.human_attribute_name(:target)
+    %tbody
+      - @mapping.mapping_elements.each do |mapping_element|
+        %tr
+          %td= mapping_element.source
+          %td= mapping_element.target

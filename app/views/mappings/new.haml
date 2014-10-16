@@ -1,31 +1,48 @@
-%h2
-  = t('link.step', count: 2, total: 3)
-  = t('mappings.new')
+.header
+  .head2
+    .title
+      = t('link.step', count: 2, total: 3)
+      = t('mappings.new')
 
-= form_for @attachment do |f|
-  %p= t('mappings.reuse')
-  = f.select 'mapping_id', options_for_select(mapping_options)
-  = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
-%hr
+        
+#content.form
+  .row
+    .col-md-6.fit-to-top
+      %span.big-letters= t('mappings.select_reuse')
+  .row.mapping-border
+    .col-md-8.existing-mapping
+      .clearfix
+        = form_for @attachment do |f|
+          %p= t('mappings.reuse')
+          = f.select 'mapping_id', options_for_select(mapping_options)
+          = f.submit t('mappings.proceed_to_import'), class: 'btn btn-primary btn-large'
+  #new_mapping_body
+    = form_for [@attachment, @mapping] do |f|
+      .row
+        .col-md-6.fit-to-top
+          %span.big-letters= t('mappings.new_mapping')
+      
+      .clearfix
+        %label= t('mappings.source_fields')
+        .input
+          %ul#source-fields
+            - @attachment.rows(1).first.each_with_index do |item, index|
+              %li.field{'data-name' => item, 'data-source' => index}= item
+      .clearfix
+        %p= t('mappings.dnd_info')
+      .clearfix
+        %label= t('mappings.target_fields')
+        .input
+          %ul#target-fields
+            - Sk.contact_fields.each do |field|
+              - field.each do |name, params|
+                - attrs = Hash[params.collect { |k, v| ["data-#{k}", v] }]
+                %li.field
+                  .target{attrs.merge('data-target' => name)}= name
+      .clearfix
+        %hr.form_bottom
+          = f.submit t('mappings.proceed_to_import'), class: 'btn btn-primary btn-large'
 
-= form_for [@attachment, @mapping] do |f|
-  .clearfix
-    %label= t('mappings.source_fields')
-    .input
-      %ul#source-fields
-        - @attachment.rows(1).first.each_with_index do |item, index|
-          %li.field{'data-name' => item, 'data-source' => index}= item
-  .clearfix
-    %p= t('mappings.dnd_info')
-  .clearfix
-    %label= t('mappings.target_fields')
-    .input
-      %ul#target-fields
-        - Sk.contact_fields.each do |field|
-          - field.each do |name, params|
-            - attrs = Hash[params.collect { |k, v| ["data-#{k}", v] }]
-            %li.field
-              .target{attrs.merge('data-target' => name)}= name
+#side
   .actions
-    = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
-    = link_to t('link.back_to_list'), attachments_path, class: 'btn secondary'
+    = link_to t('link.back'), new_attachment_path, class: 'btn secondary'

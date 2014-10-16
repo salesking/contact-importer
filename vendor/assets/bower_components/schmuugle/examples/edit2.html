@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+
+  <!-- external components-->
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="../bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <link href="css/examples.css" rel="stylesheet">
+  <link href="css/edit.css" rel="stylesheet">
+  <link href="../dist/css/schmuugle.css" rel="stylesheet">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body class="edit-layout-example">
+<header id="header">
+
+  <div class="head1-edit">
+    <ul class="nav pull-right">
+      <li>
+        <a href="#" title="My Profile">
+          Login to Service
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="head2-edit">
+    <a class="title-pre fa fa-level-up fa-rotate-270" href="index.html" title="Back To List"></a>
+    <span class="title" contenteditable="">
+      Meine erste Rechnung
+    </span>
+  </div>
+  <div class="head3-edit">
+    <ul class="nav menu-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+          Datei
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Properties</a>
+          </li>
+          <li>
+            <a href="#">Save</a>
+          </li>
+          <li>
+            <a href="#">Copy</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Stammdaten
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Firma</a>
+          </li>
+        </ul>
+      </li>
+      <li class="info-txt">erstellt am 20.1.2013 von Jens</li>
+    </ul>
+  </div>
+  <div class="edit-toolbar" >
+    <div class="btn-toolbar-edit">
+      <div class="btn-group">
+        <button type="button" class="btn"><i class="fa fa-mail-forward" title="Add"></i></button>
+      </div>
+      <span class="divider"></span>
+      <button type="button" class="btn" data-name="advanced_fields">Erweiterte Felder</button>
+      <button type="button" class="btn"></button>
+      <span class="divider"></span>
+      <button type="button" class="btn fa fa-money" data-name="currency"></button>
+      <button type="button" class="btn" data-name="cash_discount">% Skonto</button>
+      <span class="divider"></span>
+      <button type="button" class="btn">PDF Preview</button>
+    </div>
+  </div>
+</header>
+<div id="side-edit">
+  <h5>Erweiterte Eigenschaften</h5>
+
+  <div class="form-group">
+    <label>Zahlungsweise</label>
+    <select class="form-control input-sm">
+      <option>Bank</option>
+      <option>Bar</option>
+      <option>PayPal</option>
+    </select>
+  </div>
+  <div class="form-group" id="cash_discount">
+    <label>Skonto</label>
+    <input type="text" class="form-control input-sm"> %
+    <select class="form-control input-sm">
+      <option>7 Tage</option>
+      <option>14 Tage</option>
+      <option>30 Tage</option>
+    </select>
+  </div>
+  <hr>
+  <div id="currency">
+  <h5>International</h5>
+  <div class="form-group" id="currency">
+    <label>Währung</label>
+    <select class="form-control input-sm">
+      <option>EUR</option>
+      <option>USD</option>
+      <option>Pfund</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Sprache</label>
+    <select class="form-control input-sm">
+      <option>DE</option>
+      <option>EN</option>
+      <option>IT</option>
+    </select>
+  </div>
+  </div>
+</div>
+
+<div class="content-edit">
+  <form>
+  <div class="page-edit">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <select class="form-control input-sm">
+            <option>Neuen Kontakt wählen</option>
+            <option>Andreas Meier</option>
+            <option>Peter Torf GmbH</option>
+            <option>NuleMule AG</option>
+          </select>
+        </div>
+        <div class="form-group">
+        <textarea class="form-control" rows="5" cols="12">
+Andreas Meyer
+Peterstr. 34
+50789 Köln
+        </textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Nummer</label>
+          <span class="help-block-inline">- wird automatisch vergeben</span>
+          <input type="email" class="form-control input-sm" placeholder="0815">
+        </div>
+        <div class="form-group">
+          <label>Datum</label>
+          <input type="text" class="form-control input-sm" placeholder="20.11.2013">
+        </div>
+
+        <div class="form-group">
+          <label>Fälligkeit</label>
+          <input type="text" class="form-control input-sm" placeholder="30.11.2013">
+        </div>
+
+      </div>
+      <div class="col-md-4" id="advanced_fields">
+        <div class="form-group">
+          <label>Referenz</label>
+          <input type="text" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Auftragsnummer</label>
+          <input type="text" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select class="form-control input-sm">
+            <option>Offen</option>
+            <option>Geschlossen</option>
+            <option>Entwurf</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-md-12">
+        <!--<div class="form-group">-->
+          <!--&lt;!&ndash;<label>Titel</label>&ndash;&gt;-->
+          <!--<input type="text" class="form-control input-sm" placeholder="Rechnung Nummer 0815">-->
+        <!--</div>-->
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <textarea class="form-control input-sm" rows="2" placeholder="Wir stellen Ihnen hiermit in Rechnung"></textarea>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 60px"></th>
+              <th style="width: 400px">Beschreibung</th>
+              <th style="width: 150px">Menge</th>
+              <th style="width: 90px" >MWSt</th>
+              <th style="width: 90px">Preis</th>
+              <th style="width: 120px; text-align: right">Summe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <i class="fa fa-sort"></i>
+                <i class="fa fa-copy"></i>
+                <i class="fa fa-minus-circle"></i>
+              </td>
+              <td>
+                <textarea placeholder="Beschreibung" class="form-control input-sm" rows="2"></textarea>
+              </td>
+
+              <td>
+                <input type="text" placeholder="1 Stück" class="form-control input-sm">
+              </td>
+
+              <td>
+                <select class="form-control input-sm">
+                  <option>ohne</option>
+                  <option>19%</option>
+                  <option>7%</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" placeholder="120 €" class="form-control input-sm">
+
+              </td>
+              <td class="pull-right">
+                1200,23 €
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>
+                <i class="fa fa-sort"></i>
+                <i class="fa fa-copy"></i>
+                <i class="fa fa-minus-circle"></i>
+              </td>
+              <td>
+                <textarea placeholder="Beschreibung" class="form-control input-sm" rows="2"></textarea>
+              </td>
+
+              <td>
+                <input type="text" placeholder="1 Stück" class="form-control input-sm">
+              </td>
+
+              <td>
+                <select class="form-control input-sm">
+                  <option>ohne</option>
+                  <option>19%</option>
+                  <option>7%</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" placeholder="120 €" class="form-control input-sm">
+
+              </td>
+              <td class="pull-right">
+                1200,23 €
+              </td>
+
+            </tr>
+            <tr>
+              <td>
+                <i class="fa fa-sort"></i>
+                <i class="fa fa-copy"></i>
+                <i class="fa fa-minus-circle"></i>
+              </td>
+              <td>
+                <div class="form-group">
+                <input type="text" placeholder="Produktname" class="form-control input-sm">
+                </div>
+                <div class="form-group">
+                <textarea placeholder="Beschreibung" class="form-control input-sm" rows="2"></textarea>
+                </div>
+              </td>
+
+              <td>
+                <div class=" form-group">
+                  <input type="text" placeholder="1" class="form-control input-sm" style="float: left; width: 60px">
+                  <select class="form-control input-sm pull-right" style="float: left; width: 90px">
+                    <option>Stück</option>
+                    <option>Stunden</option>
+                    <option>Pauschal</option>
+                  </select>
+                </div>
+              </td>
+
+              <td>
+                <select class="form-control input-sm">
+                  <option>ohne</option>
+                  <option>19%</option>
+                  <option>7%</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" placeholder="120 €" class="form-control input-sm">
+              </td>
+              <td class="pull-right">
+                1200,23 €
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button class="btn btn-default btn-xs">Neuer Posten</button>
+          <button class="btn btn-default btn-xs">Trenner</button>
+          <button class="btn btn-default btn-xs">Zwischensumme</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <textarea class="form-control input-sm" rows="3" placeholder="Bitte überweisen Sie die Rechnung bis zum 20.1.2013 auf mein Konto"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+</div>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/edit.js"></script>
+</body>
+</html>

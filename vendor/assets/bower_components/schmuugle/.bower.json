@@ -1,0 +1,23 @@
+{
+  "name": "schmuugle",
+  "description": "css fun",
+  "main": "dist/css/schmuugle.css",
+  "dependencies": {
+    "bootstrap": "*",
+    "font-awesome": "*"
+  },
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "homepage": "https://github.com/Schmuugle/schmuugle",
+  "_release": "fbd82475de",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fbd82475dea49828cbede42b6a44fe3a574513af"
+  },
+  "_source": "https://github.com/Schmuugle/schmuugle.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/Schmuugle/schmuugle.git"
+}

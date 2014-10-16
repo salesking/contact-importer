@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <!-- external components-->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/examples.css" rel="stylesheet">
+    <link href="../dist/css/schmuugle.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+  <header id="header">
+    <div class="head1">
+      <nav class="navbar" role="navigation">
+        <ul class="nav navbar-nav">
+           <li>
+            <a href="index.html" class="">Schmuugle Index</a>
+           </li>
+           <li>
+            <a href="/" class="">Kontakte</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <a href="/" title="my Account">My Account</a>
+          </li>
+          <li>
+            <a href="/" title="Logout">
+              <i class="fa fa-power-off"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="head2">
+      <div id="logo">
+        <a class="dropdown-toggle" data-toggle="dropdown">My Company<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Another Company</a></li>
+        </ul>
+      </div>
+      <div id="main_search">
+        <input type="text" class="form-control">
+        <button type="button" class="btn btn-primary"> <i class="fa fa-search"></i></button>
+       </div>
+    </div>
+
+    <div class="head3">
+      <div class="title dropdown">
+        <a data-toggle="dropdown" href="#">Rechnungen<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="#">Mahnungen</a></li>
+        </ul>
+      </div>
+      <div class="btn-toolbar-main">
+        <button type="button" class="btn "><i class="fa fa-level-up fa-rotate-270"></i></button>
+        <a href="#" class="btn"><i class="fa fa-download"></i></a>
+        <div class="btn-group">
+          <button type="button" class="btn"><i class="fa fa-trash-o"></i></button>
+          <button type="button" class="btn"><i class="fa fa-folder-open"></i></button>
+          <button type="button" class="btn"><i class="fa fa-copy"></i></button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            More <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separate link</a></li>
+          </ul>
+        </div>
+
+        <div class="btn-group pull-right">
+          <button type="button" class="btn"><i class="fa fa-angle-left"></i></button>
+          <button type="button" class="btn"><i class="fa fa-angle-right"></i></button>
+        </div>
+        <span class="txt pull-right">
+          2 von 71
+        </span>
+
+        <!--<ul class="nav nav-pills pull-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Sortieren
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a data-order="pdts.name ASC" href="#">Name</a>
+              </li>
+              <li>
+                <a data-order="pdts.updated_at DESC" href="#">Updated at</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        -->
+      </div>
+    </div>
+
+  </header>
+
+  <div id="side">
+      <a class="btn btn-danger">Rechnung schreiben</a>
+        <div class="side-list">
+
+          <a href="#" class="side-list-item active">Offen (65)</a>
+
+          <a href="#users" class="side-list-item"  data-parent="#sidebar"> Überfällig (3)</a>
+
+          <div id="users" class="list-group subitem collapse">
+
+            <a href="#" class="side-list-item">
+              <i class="icon-caret-right"></i> Users
+            </a>
+
+            <a href="#" class="side-list-item">
+              <i class="icon-caret-right"></i> Create User
+            </a>
+
+            <a href="#" class="side-list-item">
+              <i class="icon-caret-right"></i> Create Group
+            </a>
+
+          </div>
+
+          <a href="#articles" class="side-list-item" data-parent="#sidebar"> Entwurf</a>
+
+          <div id="articles" class="list-group subitem collapse">
+
+            <a href="#" class="side-list-item bg_warning">
+              <i class="icon-caret-right"></i>
+            </a>
+
+            <a href="#" class="side-list-item">
+              <i class="icon-caret-right"></i> Create Article
+            </a>
+
+          </div>
+
+        </div>
+
+      <ul class="list-unstyled">
+          <li>Gold-Version</li>
+          <li>A-Kunde</li>
+          <li>Ohne-Tags</li>
+      </ul>
+</div>
+
+  <div id="content">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="check-column"><input id="id" name="id" type="checkbox" value="1"></th>
+            <th>Nummer</th>
+            <th>Fällig am</th>
+            <th>Datum</th>
+            <th>Brutto</th>
+            <th>Netto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  >
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-Bhb2vuyr4kHKeN2I-5FR" checked="checked"></td>
+            <td>
+              <span class="label label-warning">overdue</span>
+                <a href="/pdts/2" class="">R-2011-171 -  ChillZone Inc.</a></td>
+            <td class="">2011-03-24</td>
+            <td class="">2011-03-23</td>
+            <td class="">54,40&nbsp;€</td>
+            <td class="">50,84&nbsp;€</td>
+          </tr>
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR" data></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+          <tr>
+            <td class="check-column"><input name="ids[]" type="checkbox" value="a-IaIAV1yr3PfkeN2I-5FR"></td>
+            <td>
+                <span class="label label-success">closed</span>
+                <a href="#" class="">R-2009-088 -  </a></td>
+            <td class="">2009-11-06</td>
+            <td class="">2009-10-23</td>
+            <td class="">428,05&nbsp;€</td>
+            <td class="">395,00&nbsp;€</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+    </div>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--<script src="../dist/js/schmuugle.min.js"></script>-->
+  <script src="js/example.js"></script>
+  <script src="../js/img_checkbox.js"></script>
+  <script src="../js/multi_select.js"></script>
+  </body>
+</html>

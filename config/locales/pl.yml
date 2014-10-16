@@ -1,0 +1,8 @@
+pl:
+  activerecord:
+    attributes:
+      attachment:
+        encoding: 
+        quote_charp: 
+      mapping:
+        created_at: 

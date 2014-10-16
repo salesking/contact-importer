@@ -1,0 +1,67 @@
+/* SCHMUUGLE ADDITIONS */
+
+/* side */
+#side {
+	width: 225px;
+}
+
+/* content */
+#content {
+	left: 235px;
+}
+
+#content h2{
+	font-size: 30px;
+}
+
+.head2 .title {
+	padding-left: 15px;
+}
+
+.head3 .info {
+	padding-top: 12px;
+	position: absolute;
+	padding-left: 15px;
+}
+
+.side-list-item {
+	margin-bottom: 6px;
+}
+
+.help-inline {
+	font-size: smaller;
+	position: absolute;
+	margin-left: 12px;
+}
+
+.info {
+	font-size: smaller;
+}
+
+#content .form {
+	padding: 5px;
+}
+
+.existing-mapping {
+	margin-bottom: 50px;
+}
+
+.mapping-border {
+	border-bottom: solid lightgrey 1px;
+	margin-bottom: 50px;
+}
+
+.big-letters {
+	font-size: 30px;
+}
+
+.fit-to-top {
+	margin-top: -5px;
+	margin-bottom: 30px;
+}
+
+.left-space {
+	left: 235px;
+	position: absolute;
+	margin-top: 5px !important;
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <!-- external components-->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/examples.css" rel="stylesheet">
+    <link href="../dist/css/schmuugle.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+  <header id="header">
+    <div class="head1">
+      <nav class="navbar" role="navigation">
+        <ul class="nav navbar-nav">
+           <li>
+            <a href="list1.html" class="">List Example</a>
+           </li>
+           <li>
+            <a href="basic_layout.html" class="">Basic List Layout</a>
+          </li>
+          <li>
+            <a href="basic_layout_edit.html" class="">Basic Edit Layout</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <a href="/" title="Logout">
+              <i class="fa fa-power-off"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="head3">
+      <div class="title">
+        Schmuugle
+      </div>
+      <div class="">
+      </div>
+    </div>
+
+  </header>
+
+  <div id="side">
+
+    <a class="btn btn-danger">Download</a>
+    <br>
+    <div class="side-list">
+      <a href="#layouts" class="side-list-item active">Layouts</a>
+      <a href="#main-toolbar" class="side-list-item">Main Toolbar</a>
+      <a href="#edit-toolbar" class="side-list-item">Edit Toolbar</a>
+      <a href="#menu-nav" class="side-list-item">Menu Nav</a>
+      <a href="#sidebar-list" class="side-list-item">Sidebar list</a>
+  </div>
+  </div>
+
+  <div id="content">
+    <p>
+      Schmuugle provides styles for a basic frame-set with header, sidebar and content area. Besides it adds common navigation form elements.
+    </p>
+    <p>
+      Schmuugle is build on top of Bootstrap and Font-Awesome and tries to rely on their provided base elements.
+    </p>
+    <h3 id="layouts">Layouts</h3>
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <a class="thumbnail" href="../examples/basic_layout.html">
+          <img src="../examples/img/basic_layout_sm.png" alt="">
+        </a>
+        <h4>Basic List Layout template</h4>
+        <p>Just the basic frames: compiled CSS and JavaScript along with a container.</p>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <a class="thumbnail" href="../examples/list1.html">
+          <img src="../examples/img/list_layout_sm.png" alt="">
+        </a>
+        <h4>List example</h4>
+        <p>Shows a full blown list with list actions on top.</p>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <a class="thumbnail" href="../examples/basic_layout_edit.html">
+          <img src="../examples/img/basic_layout_edit_sm.png" alt="">
+        </a>
+        <h4>Edit Layout</h4>
+        <p>Basic layout of an edit view, with edit toolbar.</p>
+      </div>
+      <div class="clearfix visible-xs"></div>
+    </div>
+    <!--<h3>Download</h3>
+    <h3>What's included?</h3>
+    <h3>
+      Toolbar navigation
+    </h3>
+    <div class="sm-example">
+      <ul class="nav toolbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </div>-->
+    <h3 id="main-toolbar">Main Toolbar & Buttons</h3>
+    <p>A Toolbar wrapping all buttons inside as main buttons</p>
+    <div class="sm-example">
+      <div class="btn-toolbar-main">
+        <button type="button" class="btn"><i class="fa fa-level-up fa-rotate-270"></i></button>
+        <div class="btn-group">
+          <button type="button" class="btn"><i class="fa fa-trash-o"></i></button>
+          <button type="button" class="btn"><i class="fa fa-folder-open"></i></button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            More <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separate link</a></li>
+          </ul>
+        </div>
+        <div class="info-txt"> Some Info</div>
+
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-condensed"><i class="fa fa-angle-left"></i></button>
+          <button type="button" class="btn btn-condensed"><i class="fa fa-angle-right"></i></button>
+        </div>
+        <span class="txt pull-right">
+        2 von 71
+        </span>
+      </div>
+    </div>
+    <p>Single main buttons</p>
+    <div class="sm-example">
+        <button type="button" class="btn btn-main"><i class="fa fa-trash-o"></i>A Button</button>
+        <a href="#" class="btn btn-main"> A Link</a>
+    </div>
+
+    <h3 id="edit-toolbar">Editor Toolbar & Buttons</h3>
+    <div class="sm-example">
+      <div class="btn-toolbar-edit">
+        <button type="button" class="btn"><i class="fa fa-level-up fa-rotate-270"></i></button>
+        <button type="button" class="btn"><i class="fa fa-trash-o"></i></button>
+        <button type="button" class="btn"><i class="fa fa-folder-open"></i></button>
+        <span class="divider"></span>
+        <button type="button" class="btn">A Text Button</button>
+        <span class="divider"></span>
+        <button type="button" class="btn">More ..</button>
+
+      </div>
+    </div>
+
+    <h3 id="menu-nav">Menu Nav</h3>
+    <p>A plain text navigation, mainly used in the scope of an editor.</p>
+    <div class="sm-example">
+      <ul class="nav menu-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+            File
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Properties</a>
+            </li>
+            <li>
+              <a href="#">Save</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Edit
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Copy</a>
+            </li>
+            <li>
+              <a href="#">Delete</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h3 id="sidebar-list">Sidebar list</h3>
+    <p>
+      Sidebar navigation, full-width plain text list.
+    </p>
+    <div class="sm-example">
+      <div class="side-list">
+        <a href="#" class="side-list-item active">Open (65)</a>
+        <a href="#users" class="side-list-item"> Overdue (3)</a>
+        <a href="#users" class="side-list-item"> Draft (3)</a>
+      </div>
+    </div>
+    <h3>
+    License
+    </h3>
+    <p>MIT</p>
+    <div class="footer">
+      <ul>
+        <li><a href="#">Fork on Github</a> </li>
+      </ul>
+    </div>
+  </div>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/example.js"></script>
+  </body>
+</html>

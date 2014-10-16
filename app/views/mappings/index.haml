@@ -1,16 +1,29 @@
-%h2
-  = Mapping.model_name.human(count: 5)
-  %small= @mappings.size
+.header
+  .head2
+    .title
+      = Mapping.model_name.human(count: 5)
+      %small= @mappings.size
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th= Mapping.model_name.human(count: 1)
-      %th= Mapping.human_attribute_name(:created_at)
-      %th= t('link.actions')
-  %tbody
-    - @mappings.each do |mapping|
+#side
+  .side-list
+    .side-list-item
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'link.new_import')} 
+        = t(:'link.new_import')
+
+#content
+  %table.table
+    %thead
       %tr
-        %td= mapping.title
-        %td= mapping.created_at
-        %td= link_to(t('link.show'), mapping)
+        %th.check-column
+          %input{id: "id", name: "id", type: "checkbox", value: 1}
+        %th= Mapping.model_name.human(count: 1)
+        %th= Mapping.human_attribute_name(:created_at)
+        %th= t('link.actions')
+    %tbody
+      - @mappings.each do |mapping|
+        %tr
+          %td.check-column
+            %input{:type=>"checkbox", :name=>"ids[]", :value=>"#{mapping.id}"}
+          %td= mapping.title
+          %td= mapping.created_at
+          %td= link_to(t('link.show'), mapping)

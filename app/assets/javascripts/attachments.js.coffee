@@ -32,11 +32,26 @@ jQuery ->
         $('#new_attachment').attr('action', '/attachments/' + data.id)
 
   insertFields = (data) ->
-    csv = ['<table class="table table-bordered">']
+    csv = ['<table class="table">']
     $.each data.rows, (index, row) ->
-      csv.push '<tr>'
-      $.each row, (index, value) -> csv.push('<td>' + (if value then value else '') + '</td>')
-      csv.push '</tr>'
+      if index == 0
+        csv.push '<thead>'
+        csv.push '<tr>'  
+        $.each row, (index, value) -> csv.push('<th>' + (if value then value else '') + '</th>') 
+        csv.push '</tr>'
+        csv.push '</thead>'
+        csv.push '<tbody>'
+      if index > 0
+        csv.push '<tr>'
+        $.each row, (index, value) -> csv.push('<td>' + (if value then value else '') + '</td>')
+        csv.push '</tr>'
+    csv.push '</tbody>'
     csv.push '</table>'
     $('#csv-table table').remove()
     $('#csv-table').show().append csv.join('')
+
+  $(document).ready ->
+    button_text = $('#button-locale').text();
+    input = $('.qq-upload-button').find("input");
+    $('.qq-upload-button').text(button_text);
+    $('.qq-upload-button').append(input);

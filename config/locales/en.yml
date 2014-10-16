@@ -17,6 +17,8 @@ en:
       attachment:
         col_sep: Column Separator
         quote_char: Quote character
+        encoding: Encoding
+        quote_charp: Quote charp
       import:
         created_at: Created at
         col_sep: Column Separator
@@ -31,14 +33,16 @@ en:
         source: Source field
         conv_type: Convert type
         conv_opts: Convert Options
+      mapping:
+        created_at: Created at
   attachments:
     new:
       page_title: Upload new CSV file
-      can_use_tab_character_html: 'You can use <tt>\t</tt> as a tabulator desigator.'
+      can_use_tab_character_html: You can use <tt>\t</tt> as a tabulator desigator.
     upload: Upload
     proceed_to_mapping: Proceed to mapping
-    delete_confirm: "Please note that, this is irreversible process. This will delete associated imports. Are you sure?"
-    csv_import_error: "Try with different 'Column Separator' and/or 'Quote character'."
+    delete_confirm: Please note that, this is irreversible process. This will delete associated imports. Are you sure?
+    csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
   mappings:
     title:
       one: "%{count} field: %{fields}"
@@ -48,7 +52,7 @@ en:
     source_fields: Source fields
     target_fields: Target fields
     reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
-    dnd_info: "Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list."
+    dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
   imports:
     title_success:
       one: "%{count} rows imported"
@@ -59,8 +63,8 @@ en:
     new: Create import
     create: Import data
     total:
-      one: "Total %{count} row"
-      other: "Total %{count} rows"
+      one: Total %{count} row
+      other: Total %{count} rows
   data_rows:
     failed: Failed rows
     success: Successfull rows
@@ -72,6 +76,6 @@ en:
     back_to_list: Back to list
     destroy: Delete
     confirm_destroy: Really delete this record?
-    step: "Step %{count} from %{total}:"
+    step: 'Step %{count} from %{total}:'
   errors:
-    sk_login_required: "Please login to SalesKing and navigate to this app from inside there."
+    sk_login_required: Please login to SalesKing and navigate to this app from inside there.

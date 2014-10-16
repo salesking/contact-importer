@@ -1,0 +1,15 @@
+{
+  "name": "schmuugle",
+  "description": "css fun",
+  "main": "dist/css/schmuugle.css",
+  "version": "0.0.6",
+  "dependencies": {
+    "bootstrap" : "*",
+    "font-awesome" : "*"
+  },
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ]
+}
+

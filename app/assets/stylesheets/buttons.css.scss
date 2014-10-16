@@ -1,0 +1,25 @@
+.btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-primary {
+	background-color: #9c3;
+	border-color: #9c3;
+	&:hover {
+	  background-color: rgb(7, 143, 0);
+	  border-color: rgb(7, 143, 0);
+	}
+	&:active {
+	  background-color: rgb(7, 143, 0);
+	  border-color: rgb(7, 143, 0);
+	}
+	&:focus {
+	  background-color: rgb(7, 143, 0);
+	  border-color: rgb(7, 143, 0);
+	}
+}
+
+#button-locale {
+	display: none;
+}

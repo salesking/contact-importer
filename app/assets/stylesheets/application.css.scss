@@ -1,8 +1,12 @@
 /*
- *= require bootstrap
+ *= require bootstrap/dist/css/bootstrap.css
+ *= require font-awesome/css/font-awesome.css
+ *= require schmuugle/dist/css/schmuugle.css
  *= require fileuploader
  *= require mappings
  *= require attachments
+ *= require buttons
+ *= require schmuugle_additions
 */
 
 ul.top_menu{margin:0;padding:0}

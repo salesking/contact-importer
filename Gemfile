@@ -16,6 +16,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
+gem 'bower-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.6'
@@ -23,6 +24,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'mysql2'
+  gem 'localeapp'
 end
 
 group :development do

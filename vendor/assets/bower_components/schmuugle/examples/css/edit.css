@@ -1,0 +1,34 @@
+/** Custom styles used on edit view **/
+
+.page-edit{
+    -moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px #888; box-shadow: 0 0 5px #888;
+    outline: none;
+    border: 1px solid #aaa;
+    background: #fff;
+    margin: 15px;
+    padding: 15px;
+    min-height: 900px;
+}
+
+.help-block-inline{
+    color: #737373;
+}
+
+/** bootstrap overrides */
+
+label{
+    font-weight: normal;
+    margin-bottom: 2px;
+}
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+.input-sm {
+    border-radius: 2px;
+}
+
+select.input-sm {
+    padding: 5px 5px;
+}

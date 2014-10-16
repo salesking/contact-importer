@@ -1,14 +1,31 @@
-%h2
-  = t('link.step', count: 3, total: 3)
-  = t('imports.new')
-%table
-  - @import.preview.each do |row|
-    %tr
-      - row.each do |item|
-        %td= item
-%p= t('imports.total', count: @import.attachment.rows.size - 1)
+.header
+  .head2
+    .title
+      = t('link.step', count: 3, total: 3)
+      = t('imports.new')
+  .head3
+    .info
+      %p= t('imports.total', count: @import.attachment.rows.size - 1)
 
-= form_for [@attachment, @import] do |f|
-  .actions
-    = f.submit t('imports.create'), class: "btn primary large"
-    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+#side
+  .side-list
+    = form_for [@attachment, @import] do |f|
+      .actions 
+        .side-list-item
+          = f.submit t('imports.create'), class: "btn btn-danger"
+        .side-list-item
+          = link_to t('link.back'), new_attachment_path, class: "btn secondary"
+
+#content
+  %h2=t('attachments.new.preview')
+  %p=t('attachments.new.preview_info')
+  %table.table
+    - @import.preview.each_with_index do |row, index|
+      - if index == 0
+        %thead
+          - row.each do |item|
+            %th= item
+      - else
+        %tr
+        - row.each do |item|
+          %td= item

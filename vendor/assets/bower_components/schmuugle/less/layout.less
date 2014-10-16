@@ -1,0 +1,175 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  font-family: arial;
+  font-size: 13px;
+}
+
+#header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+//  height: 139px;
+}
+
+/* top areas */
+
+.head1 {
+  background-color: #2D2D2D;
+}
+
+.head2 {
+  padding: 4px 4px 6px 0;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+}
+.head2:before, .head2:after {
+  display: table;
+  content: " ";
+}
+.head2:after {
+  clear: both;
+}
+
+#logo {
+  float: left;
+  width: @side-width;
+  margin: 12px 2px 0 0;
+  padding-left: @side-margin-left;
+}
+
+#main_search {
+  width: 40%;
+  margin: 8px 0 0 0;
+  float: left;
+}
+
+.head2 input{
+  width: 80%;
+  display: inline;
+}
+
+#side {
+  position: absolute;
+  top: @header_height;
+  bottom: 0;
+  left: 0;
+  width: @side-width;
+  overflow: auto;
+  // default margin for childs
+  > *{
+  margin-left: @side-margin-left;
+  }
+}
+
+#content {
+  position: absolute;
+  top: @header_height;
+  right: 0;
+  bottom: 0;
+  left: @side-width;
+  overflow: auto;
+  padding-right: 15px;
+}
+
+.head3{
+  height: @toolbar_height;
+  border-bottom: 1px solid #e5e5e5;
+  .btn-toolbar-main{
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+  .title{
+    margin-top: 8px;
+    float: left;
+    width: @side-width ;
+    padding-left: @side-margin-left;
+  }
+}
+
+
+/* overrides for content elements
+spacing for first tab el in content*/
+
+#content{
+  .tab-pane form,
+  > form {
+    margin-top: 15px;
+  }
+  .row{
+    margin-right:0;
+  }
+}
+
+
+/* very top with current user email*/
+.head1-edit{
+  height: @head1-edit-height;
+  .nav{
+    height: 15px;
+    margin: 5px 15px 0 0;
+  }
+  .nav a{
+    color: #666;
+    font-size: 11px;
+    padding: 0 15px;
+  }
+}
+
+.head2-edit{
+  height: 29px;
+  margin: 0 28px 0 @top-edit-margin-left;
+  a{
+    color: #666;
+    text-decoration: none;
+  }
+  .title{
+    margin-left: 8px;
+  }
+  .title-pre{
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+  }
+}
+
+/* plain text menu container */
+.head3-edit{
+  height: 27px;
+  margin-left: @top-edit-margin-left;
+  .nav{
+    margin-top: -5px;
+  }
+}
+/* editor button menu*/
+.edit-toolbar .btn-toolbar-edit{
+  padding-right: @top-edit-margin-left;
+  padding-left: @top-edit-margin-left;
+  position: relative;
+}
+
+/* edit area */
+.content-edit {
+  background-color: #ccc;
+  position: absolute;
+  top: @header_edit_height;
+  right: 0;
+  bottom: 0;
+  left: @side-width;
+  overflow: auto;
+}
+#side-edit{
+  position: absolute;
+  top: @header_edit_height;
+  width: @side-width;
+  padding: 5px;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+
+}
