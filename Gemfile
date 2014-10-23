@@ -9,12 +9,12 @@ gem 'rack-raw-upload'
 gem 'cancan'
 
 gem 'unicorn'
+gem 'bower-rails'
 gem 'pg'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
-gem 'bower-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.6'
