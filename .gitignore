@@ -11,6 +11,7 @@ nbproject
 config/database.yml
 config/settings.yml
 config/salesking_app.yml
+config/localeapp.rb
 coverage
 .idea
 public/assets
