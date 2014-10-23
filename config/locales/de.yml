@@ -119,8 +119,9 @@ de:
       other: "%{count} Felder: %{fields}"
   support:
     array:
+      last_word_connector: " and "
       two_words_connector: " und "
-      words_connector: " und "
+      words_connector: ", "
   time:
     am: vormittags
     formats:

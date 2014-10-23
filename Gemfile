@@ -25,6 +25,7 @@ group :test, :development do
   gem 'simplecov'
   gem 'mysql2'
   gem 'localeapp'
+  gem 'byebug'
 end
 
 group :development do

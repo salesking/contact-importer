@@ -35,7 +35,7 @@ describe Mapping do
 
   describe '#title' do
     it 'should return mapping details' do
-      @mapping.title.should == '3 fields: organization, gender, and birthday'
+      @mapping.title.should == '3 fields: organization, gender and birthday'
     end
   end
 end
