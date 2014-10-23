@@ -8,6 +8,7 @@ de:
         encoding: Encoding
         filename: Dateiname
         quote_char: Texttrenner
+        quote_charp: 
       data_row:
         external_id: Link in SalesKing
         log: Log
@@ -67,20 +68,6 @@ de:
     create: Daten importieren
     delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Kontakte in Ihrem Account aus. Mit Löschung fortfahren?
     destroyed_successfully: Erfolgreich gelöscht
-    document:
-      title_failed:
-        one: "%{count} Dokument fehlgeschlagen"
-        other: "%{count} Dokumente fehlgeschlagen"
-      title_success:
-        one: "%{count} Dokument importiert"
-        other: "%{count} Dokumente importiert"
-    line_item:
-      title_failed:
-        one: "%{count} Einzelposition fehlgeschlagen"
-        other: "%{count} Einzelpositionen fehlgeschlagen"
-      title_success:
-        one: "%{count} Einzelposition importiert"
-        other: "%{count} Einzelpositionen importiert"
     new: Import erzeugen
     title_failed:
       one: "%{count} Zeile fehlgeschlagen"
@@ -100,7 +87,7 @@ de:
     actions: Aktionen
     back: Zurück
     back_to_list: Zurück zur Liste
-    back_to_mapping: Zurück zum Mapping
+    back_to_mapping: Zurück zur Feldzuweisung
     confirm_destroy: Diesen Eintrag wirklich löschen?
     destroy: Löschen
     edit: Bearbeiten
@@ -130,6 +117,10 @@ de:
     title:
       one: "%{count} Feld: %{fields}"
       other: "%{count} Felder: %{fields}"
+  support:
+    array:
+      two_words_connector: " und "
+      words_connector: " und "
   time:
     am: vormittags
     formats:

@@ -2,6 +2,13 @@
   .head2
     .title
       = Import.model_name.human(count: 1)
+  .head3
+    .btn-toolbar-main.left-space
+      %a.btn{href: imports_path, title: t(:'link.back')}
+        %i.fa.fa-level-up.fa-rotate-270
+      .btn-group
+        %button.btn{title: t(:'link.destroy')}
+          = link_to(icon('trash-o'), @mapping, data: {confirm: t('mappings.delete_confirm'), method: :delete})
 
 #side
   .side-list
@@ -11,7 +18,7 @@
 
 #content
   - if @import.data_rows.failed.present?
-    %table
+    %table.table
       %thead
         %tr
           %th= DataRow.human_attribute_name(:source)

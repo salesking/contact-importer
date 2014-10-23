@@ -13,7 +13,7 @@ class Import < ActiveRecord::Base
   def title
     title = I18n.t('imports.title_success', count: data_rows.success.count)
     if (failed = data_rows.failed.count) > 0
-      [title, I18n.t('imports.title_failed', count: failed)].to_sentence
+      [title, I18n.t('imports.title_failed', count: failed)].to_sentence(locale: I18n.locale)
     else
       title
     end

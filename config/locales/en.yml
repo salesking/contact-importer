@@ -8,6 +8,7 @@ en:
         encoding: Encoding
         filename: Filename
         quote_char: Quote character
+        quote_charp: 
       data_row:
         external_id: Link in SalesKing
         log: Log
@@ -67,20 +68,6 @@ en:
     create: Import data
     delete_confirm: Deleting an import does not remove created contacts in your SalesKing account. Are you sure you want to continue?
     destroyed_successfully: Successfully destroyed
-    document:
-      title_failed:
-        one: "%{count} document failed"
-        other: "%{count} documents failed"
-      title_success:
-        one: "%{count} document imported"
-        other: "%{count} documents imported"
-    line_item:
-      title_failed:
-        one: "%{count} line item failed"
-        other: "%{count} line items failed"
-      title_success:
-        one: "%{count} line item imported"
-        other: "%{count} line items imported"
     new: Create import
     title_failed:
       one: "%{count} row failed"
@@ -130,6 +117,10 @@ en:
     title:
       one: "%{count} field: %{fields}"
       other: "%{count} fields: %{fields}"
+  support:
+    array:
+      two_words_connector: " and "
+      words_connector: " and "
   time:
     am: am
     formats:

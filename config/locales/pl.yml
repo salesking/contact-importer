@@ -8,6 +8,7 @@ pl:
         encoding: Kodowanie znaków
         filename: 
         quote_char: Znak cudzysłowia
+        quote_charp: 
       data_row:
         external_id: 
         log: Rejestr
@@ -115,6 +116,10 @@ pl:
       few: "%{count} pola: %{fields}"
       one: "%{count} pole: %{fields}"
       other: "%{count} pól: %{fields}"
+  support:
+    array:
+      two_words_connector: 
+      words_connector: 
   time:
     am: 
     formats:
