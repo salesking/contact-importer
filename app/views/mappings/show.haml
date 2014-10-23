@@ -1,13 +1,20 @@
 .header
   .head2
     .title
-      %h2= Mapping.model_name.human(count: 1)
+      = Mapping.model_name.human(count: 1)
+  .head3
+    .btn-toolbar-main.left-space
+      %a.btn{href: mappings_path, title: t(:'link.back')}
+        %i.fa.fa-level-up.fa-rotate-270
+      .btn-group
+        %button.btn{title: t(:'link.destroy')}
+          = link_to(icon('trash-o'), @mapping, data: {confirm: t('mappings.delete_confirm'), method: :delete})
 
 #side
   .side-list
     .side-list-item
-      .actions
-        = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'link.new_import')} 
+        = t(:'link.new_import')
 
 #content
   %table.table

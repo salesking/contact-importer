@@ -65,3 +65,13 @@
 	position: absolute;
 	margin-top: 5px !important;
 }
+
+/* max width for select options */
+#attachment_mapping_id {
+	width: 350px;
+}
+
+#attachment_mapping_id option {
+	overflow: auto;
+	text-overflow: ellipsis;
+}

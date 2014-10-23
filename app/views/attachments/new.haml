@@ -40,7 +40,7 @@
             %span.info=t('.only_for_advanced_users')
       .side-list-item
         .actions
-          = f.submit t('attachments.proceed_to_mapping'), class: "btn btn-primary btn-large"
+          = f.submit t('attachments.proceed_to_mapping'), class: "btn btn-primary btn-large", id: "continue-button", style: "display:none"
           = link_to t('link.back'), attachments_path, class: "btn secondary"
   
 #content

@@ -13,12 +13,12 @@
     .col-md-6.fit-to-top
       %span.big-letters= t('mappings.reuse')
   .row.mapping-border
-    .col-md-8.existing-mapping
+    .col-md-10.existing-mapping
       .clearfix
         = form_for @attachment do |f|
-          %p= t('mappings.select_reuse')
-          = f.select 'mapping_id', options_for_select(mapping_options)
-          = f.submit t('mappings.form.proceed_to_import'), class: 'btn btn-primary btn-large'
+          %h4= t('mappings.select_reuse')
+          = f.select 'mapping_id', options_for_select(mapping_options), :include_blank => true
+          = f.submit t('mappings.form.reuse_this_mapping_button'), class: 'btn btn-primary btn-large', id: 'reuse', style: 'display:none'
   #new_mapping_body
     = form_for [@attachment, @mapping] do |f|
       .row

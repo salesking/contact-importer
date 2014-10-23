@@ -3,6 +3,11 @@
     .title
       = Mapping.model_name.human(count: 5)
       %small= @mappings.size
+  .head3
+    .btn-toolbar-main.left-space
+      .btn-group
+        %button.btn{title: t(:'link.destroy')}
+          %i.fa.fa-trash-o
 
 #side
   .side-list
@@ -18,12 +23,11 @@
           %input{id: "id", name: "id", type: "checkbox", value: 1}
         %th= Mapping.model_name.human(count: 1)
         %th= Mapping.human_attribute_name(:created_at)
-        %th= t('link.actions')
     %tbody
       - @mappings.each do |mapping|
         %tr
           %td.check-column
             %input{:type=>"checkbox", :name=>"ids[]", :value=>"#{mapping.id}"}
-          %td= mapping.title
+          %td
+            = link_to mapping.title, mapping
           %td= mapping.created_at
-          %td= link_to(t('link.show'), mapping)

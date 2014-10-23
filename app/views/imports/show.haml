@@ -8,9 +8,6 @@
     .side-list-item
       %a.btn.btn-danger{href: new_attachment_path, title: t(:'link.new_import')} 
         = t(:'link.new_import')
-    .side-list-item
-      .actions
-        = link_to t('link.back_to_list'), imports_path, class: "btn secondary"
 
 #content
   - if @import.data_rows.failed.present?
