@@ -5,8 +5,6 @@ gem 'json'
 gem 'sk_sdk', :git=>'https://github.com/salesking/sk_sdk.git', branch: 'master'
 gem 'sk_api_schema', '~> 0.9.4'
 gem 'haml'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'rack-raw-upload'
 gem 'cancan'
 
