@@ -1,3 +1,0 @@
-asset 'schmuugle', 'https://github.com/Schmuugle/schmuugle.git'
-asset 'jquery-ujs', 'https://github.com/rails/jquery-ujs.git'
-asset 'jquery-ui', '1.10.4'
