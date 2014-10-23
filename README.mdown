@@ -1,14 +1,31 @@
 # SalesKing CSV Importer
 
-A SalesKing app to import csv files. As a starting point you can import
-contacts given as csv f.ex exported from Outlook.
+A SalesKing app to import contacts via csv-files.
+
+you should make sure to clean your csv-file e.g. split "Mr. Test User" into three columns "Mr." "Test" "User".
+
+HINT: If there is no column which is used to identify the contact-type (e.g. client, lead, supplier) you should enhance your csv-file with that column and each row with such type-info. Otherwise SalesKing will create Contacts as Clients which can't be converted to e.g. lead or supplier afterwards.
+
+Advice: If you are not sure about the type give all rows a type called "lead" - this contact-type is convertible into client/supplier after import within SalesKing.
 
 ## Developer Info
 
-The app is build with Rails 3.1 and Ruby 1.9.2 and is working with
+The app is build with Rails 4 and Ruby 2+ and is working with
 MySQL or PostgreSQL.
 It uses oAuth2 and has a canvas integration, so a user can use
-it inside SalesKing.
+it wihtout leaving his SalesKing-UI.
+
+### Development Dependencies
+
+Assets are managed via bower and the bower-rails gem. So you should have the 
+following running:
+
+* nodejs
+* bower
+
+Clone assets into /vendor/assets/bower_components
+
+    rake bower:install
 
 ## Getting Started
 
@@ -24,6 +41,10 @@ it inside SalesKing.
     bundle exec rails s
 
 3. Go into SalesKing at `/app/your-canvas-slug`
+
+4. SSL Restrictions in browsers will prevent iFrames to load (your local) http-site 
+into the https-enabled SalesKing install. In Google Chrome look at the very 
+right site of the url-input where an icon appears to allow such content.
 
 ## Run on Heroku
 
@@ -43,6 +64,20 @@ local git branch where you add the ignored `salesking_app.yml` file:
 
 DON'T FORGET: never push production to your public branch, if you do you need to setup NEW app credentials
 
+## Translating contact-importer
+
+- Edit the translations directly on the [salesking/contact-importer](http://www.localeapp.com/projects/7443) project on Locale.
+- **That's it!**
+- The maintainer will then pull translations from the Locale project and push to Github.
+
+If you need to pull/push locales:
+
+  localeapp install --standalone <API Key>
+  
+And than edit the config file in .localeapp/config.rb
+
+
+Happy translating!
 
 ## Test
 
@@ -54,4 +89,4 @@ Test coverage report is created by simpleCov and available after running the
 specs
 
 
-Copyright (c) 2011 Georg Leciejewski, released under the MIT license
+Copyright (c) 2014 Georg Leciejewski, released under the MIT license
