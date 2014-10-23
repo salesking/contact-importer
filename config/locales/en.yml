@@ -4,7 +4,7 @@ en:
       attachment:
         col_sep: Column separator
         column_separator: Column separator
-        disk_filename: 
+        disk_filename: Disk filename
         encoding: Encoding
         filename: Filename
         quote_char: Quote character
@@ -65,8 +65,8 @@ en:
     sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
   imports:
     create: Import data
-    delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
-    destroyed_successfully: 
+    delete_confirm: Deleting an import does not remove created contacts in your SalesKing account. Are you sure you want to continue?
+    destroyed_successfully: Successfully destroyed
     document:
       title_failed:
         one: "%{count} document failed"
@@ -82,8 +82,6 @@ en:
         one: "%{count} line item imported"
         other: "%{count} line items imported"
     new: Create import
-    show:
-      open_document: Open document
     title_failed:
       one: "%{count} row failed"
       other: "%{count} rows failed"
@@ -117,16 +115,11 @@ en:
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
     edit: Edit mapping
     form:
-      document: Document
-      document_id_placeholder: Type here to search through available draft documents
-      document_mapping: Target document fields
       field_mappings: Create Mapping
-      line_item_mapping: Target line item fields
-      line_item_mapping_info: At least price_single and quantity must be mapped to a source field.
       proceed_to_import: Proceed to import
       reuse_this_mapping_button: Reuse selected mapping
       setup: Initial setup
-      source_fields_info: If your source lacks fields to match some document-/line-item fields, you might want to edit your csv to add fields and their content and then upload it again.
+      source_fields_info: If your source lacks fields to match some contact fields, you might want to edit your csv to add fields and their content and then upload it again.
     info: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     new: Import settings
     new_mapping: New Mapping

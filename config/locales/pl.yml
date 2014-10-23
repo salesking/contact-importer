@@ -71,15 +71,7 @@ pl:
     create: 
     delete_confirm: 
     destroyed_successfully: 
-    document:
-      title_failed: 
-      title_success: 
-    line_item:
-      title_failed: 
-      title_success: 
     new: 
-    show:
-      open_document: 
     title_failed: 
     title_success: 
     total: 
@@ -107,12 +99,7 @@ pl:
     dnd_info: Przeciągnij i upuść powyższe pola na odpowiadające pola celowe. Docelowo możesz upuścić więcej niż jedno pole. Ich wartości zostaną wtedy połączone odstępem.
     edit: 
     form:
-      document: 
-      document_id_placeholder: Szukaj dokumentów o statusie roboczym
-      document_mapping: Docelowe pola dokumentu
       field_mappings: Ustawienia połączeń kolumn
-      line_item_mapping: Docelowe pola pozycji
-      line_item_mapping_info: Abyśmy mogli rozpocząć import, musisz połaczyć co najmniej pola price_single i quantity
       proceed_to_import: Przejdź do importu
       reuse_this_mapping_button: Wykorzystaj wybrane połączenia pól
       setup: Ustawienia początkowe

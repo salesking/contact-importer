@@ -65,8 +65,8 @@ de:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
   imports:
     create: Daten importieren
-    delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?
-    destroyed_successfully: 
+    delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Kontakte in Ihrem Account aus. Mit Löschung fortfahren?
+    destroyed_successfully: Erfolgreich gelöscht
     document:
       title_failed:
         one: "%{count} Dokument fehlgeschlagen"
@@ -82,8 +82,6 @@ de:
         one: "%{count} Einzelposition importiert"
         other: "%{count} Einzelpositionen importiert"
     new: Import erzeugen
-    show:
-      open_document: Dokument öffnen
     title_failed:
       one: "%{count} Zeile fehlgeschlagen"
       other: "%{count} Zeilen fehlgeschlagen"
@@ -117,16 +115,11 @@ de:
     dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schlagworte).
     edit: Feldzuweisung bearbeiten
     form:
-      document: Dokument
-      document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
-      document_mapping: Zielfelder des Dokumentes
       field_mappings: Feldzuweisung erstellen
-      line_item_mapping: Zielfelder der Einzelpositionen
-      line_item_mapping_info: Mindestens price_single und quantity müssen eine Zuweisung aus Ihrer Quelldatei haben.
       proceed_to_import: Weiter zum Import
       reuse_this_mapping_button: Diese Feldzuweisung erneut anwenden
       setup: Einstellungen
-      source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
+      source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Kontakte fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
     info: Wählen Sie eine existierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     new: Importeinstellungen
     new_mapping: Neue Feldzuweisung

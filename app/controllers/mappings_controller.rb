@@ -14,6 +14,15 @@ class MappingsController < ApplicationController
     end
   end
 
+  def destroy
+    if @mapping.destroy
+      flash[:success] = I18n.t('imports.destroyed_successfully')
+    else
+      flash[:error]  = I18n.t('imports.destroy_failed')
+    end
+    redirect_to attachments_path
+  end
+
   private
   def mapping_params
     params.require(:mapping).permit(mapping_elements_attributes: [:id, :source, :target, :source, :conv_type, :conv_opts, :import_id])
