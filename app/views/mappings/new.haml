@@ -1,8 +1,11 @@
 .header
   .head2
     .title
-      = t('link.step', count: 2, total: 3)
+      = t('link.step', step: 2, total: 3)
       = t('mappings.new')
+  .head3
+    .info
+      = t('mappings.info')
 
         
 #content.form
@@ -15,7 +18,7 @@
         = form_for @attachment do |f|
           %p= t('mappings.reuse')
           = f.select 'mapping_id', options_for_select(mapping_options)
-          = f.submit t('mappings.proceed_to_import'), class: 'btn btn-primary btn-large'
+          = f.submit t('mappings.form.proceed_to_import'), class: 'btn btn-primary btn-large'
   #new_mapping_body
     = form_for [@attachment, @mapping] do |f|
       .row
@@ -41,7 +44,7 @@
                   .target{attrs.merge('data-target' => name)}= name
       .clearfix
         %hr.form_bottom
-          = f.submit t('mappings.proceed_to_import'), class: 'btn btn-primary btn-large'
+          = f.submit t('mappings.form.proceed_to_import'), class: 'btn btn-primary btn-large'
 
 #side
   .actions

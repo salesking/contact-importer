@@ -1,81 +1,150 @@
 en:
   activerecord:
+    attributes:
+      attachment:
+        col_sep: Column separator
+        column_separator: Column separator
+        disk_filename: 
+        encoding: Encoding
+        filename: Filename
+        quote_char: Quote character
+      data_row:
+        external_id: Link in SalesKing
+        log: Log
+        sk_id: SalesKing ID
+        source: Source data
+      import:
+        col_sep: Column Separator
+        created_at: Created at
+        kind: Data type
+        quote_char: Quote character
+      mapping:
+        created_at: Created at
+        mapping_elements: Mapping
+      mapping_element:
+        source: Source field
+        target: SalesKing field
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: missing
     models:
       attachment:
-        one: Uploaded File
-        other: Uploaded Files
+        one: Uploaded file
+        other: Uploaded files
+      data_row:
+        one: Data row
+        other: Data rows
       import:
         one: Import
         other: Imports
       mapping:
         one: Mapping
         other: Mappings
-      data_row:
-        one: Data Row
-        other: Data Rows
-    attributes:
-      attachment:
-        col_sep: Column Separator
-        quote_char: Quote character
-        encoding: Encoding
-        quote_charp: Quote charp
-      import:
-        created_at: Created at
-        col_sep: Column Separator
-        quote_char: Quote character
-        kind: Data type
-      data_row:
-        sk_id: SalesKing ID
-        log: Log
-        source: Source data
-      mapping_element:
-        target: Target field
-        source: Source field
-        conv_type: Convert type
-        conv_opts: Convert Options
-      mapping:
-        created_at: Created at
   attachments:
-    new:
-      page_title: Upload new CSV file
-      can_use_tab_character_html: You can use <tt>\t</tt> as a tabulator desigator.
-    upload: Upload
-    proceed_to_mapping: Proceed to mapping
-    delete_confirm: Please note that, this is irreversible process. This will delete associated imports. Are you sure?
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
-  mappings:
-    title:
-      one: "%{count} field: %{fields}"
-      other: "%{count} fields: %{fields}"
-    new: Create mapping
-    proceed_to_import: Proceed to import
-    source_fields: Source fields
-    target_fields: Target fields
-    reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
-    dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
-  imports:
-    title_success:
-      one: "%{count} rows imported"
-      other: "%{count} rows imported"
-    title_failed:
-      one: "%{count} row failed"
-      other: "%{count} rows failed"
-    new: Create import
-    create: Import data
-    total:
-      one: Total %{count} row
-      other: Total %{count} rows
+    delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
+    new:
+      can_use_tab_character_html: You can use <tt>\t</tt> to designate tabulators.
+      enable_javascript: Please enable JavaScript to use file uploader.
+      help_html: If you have problems using this app, consult <a href="%{link}" target="_blank">our documentation</a>.
+      help_link: https://hilfe.salesking.eu/kb/apps/contact-importer-kontakte-per-csv-import-importieren
+      only_for_advanced_users: This setting is only for advanced users. Leave it, if you don't know what we're talking about.
+      page_title: Upload file
+      preview: Preview
+      preview_info: This is just a preview - it shows only first three rows of the csv.
+      upload_button: Upload file
+    proceed_to_mapping: Proceed to mapping
+    upload: Upload
   data_rows:
     failed: Failed rows
     success: Successfull rows
+  errors:
+    sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
+  imports:
+    create: Import data
+    delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
+    destroyed_successfully: 
+    document:
+      title_failed:
+        one: "%{count} document failed"
+        other: "%{count} documents failed"
+      title_success:
+        one: "%{count} document imported"
+        other: "%{count} documents imported"
+    line_item:
+      title_failed:
+        one: "%{count} line item failed"
+        other: "%{count} line items failed"
+      title_success:
+        one: "%{count} line item imported"
+        other: "%{count} line items imported"
+    new: Create import
+    show:
+      open_document: Open document
+    title_failed:
+      one: "%{count} row failed"
+      other: "%{count} rows failed"
+    title_success:
+      one: "%{count} row imported"
+      other: "%{count} rows imported"
+    total:
+      one: Total %{count} row
+      other: Total %{count} rows
+  layouts:
+    application:
+      attachments: Datasets
+      imports: Imports
+      mappings: Mappings
   link:
     actions: Actions
-    show: Show
-    edit: Edit
-    revert: Revert
+    back: Back
     back_to_list: Back to list
-    destroy: Delete
+    back_to_mapping: Back to Mapping
     confirm_destroy: Really delete this record?
-    step: 'Step %{count} from %{total}:'
-  errors:
-    sk_login_required: Please login to SalesKing and navigate to this app from inside there.
+    destroy: Delete
+    edit: Edit
+    new_import: New Import
+    revert: Revert
+    show: Show
+    step: 'Step %{step} of %{total}:'
+  mappings:
+    delete_confirm: Removing a mapping does not remove an import. Do you wish to continue?
+    destroy_failed: Mapping could not be removed.
+    destroyed_successfully: Mapping has been removed successfully.
+    dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
+    edit: Edit mapping
+    form:
+      document: Document
+      document_id_placeholder: Type here to search through available draft documents
+      document_mapping: Target document fields
+      field_mappings: Create Mapping
+      line_item_mapping: Target line item fields
+      line_item_mapping_info: At least price_single and quantity must be mapped to a source field.
+      proceed_to_import: Proceed to import
+      reuse_this_mapping_button: Reuse selected mapping
+      setup: Initial setup
+      source_fields_info: If your source lacks fields to match some document-/line-item fields, you might want to edit your csv to add fields and their content and then upload it again.
+    info: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
+    new: Import settings
+    new_mapping: New Mapping
+    reuse: Existing mapping
+    select_reuse: Select an existing mapping
+    source_fields: Source fields
+    target_fields: SalesKing fields
+    title:
+      one: "%{count} field: %{fields}"
+      other: "%{count} fields: %{fields}"
+  time:
+    am: am
+    formats:
+      date_only: "%A, %m.%d.%Y"
+      default: "%m.%d.%Y, %H:%M"
+      long: "%B %d, %Y %H:%M"
+      month_year: "%B, %Y"
+      short: "%d %b %H:%M"
+      shorter: "%m.%d.%y %H:%M"
+      time: "%H:%M"
+    pm: pm

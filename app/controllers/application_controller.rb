@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :set_locale
+
   rescue_from CanCan::AccessDenied do |exception|
     access_denied(exception.message)
   end
@@ -18,5 +20,11 @@ class ApplicationController < ActionController::Base
     else
       redirect_to root_url, alert: message
     end
+  end
+
+  def set_locale
+    I18n.locale = session['language']
+  rescue I18n::InvalidLocale
+    I18n.locale = I18n.default_locale
   end
 end

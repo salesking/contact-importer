@@ -1,15 +1,28 @@
-%h2= Import.model_name.human(count: 1)
-%h3= @import.title
-- if @import.data_rows.failed.present?
-  %table
-    %thead
-      %tr
-        %th= DataRow.human_attribute_name(:source)
-        %th= DataRow.human_attribute_name(:log)
-    %tbody
-      - @import.data_rows.failed.each do |row|
+.header
+  .head2
+    .title
+      = Import.model_name.human(count: 1)
+
+#side
+  .side-list
+    .side-list-item
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'link.new_import')} 
+        = t(:'link.new_import')
+    .side-list-item
+      .actions
+        = link_to t('link.back_to_list'), imports_path, class: "btn secondary"
+
+#content
+  - if @import.data_rows.failed.present?
+    %table
+      %thead
         %tr
-          %td= row.source
-          %td= row.log
-.actions
-  = link_to t('link.back_to_list'), imports_path, class: "btn secondary"
+          %th= DataRow.human_attribute_name(:source)
+          %th= DataRow.human_attribute_name(:log)
+      %tbody
+        - @import.data_rows.failed.each do |row|
+          %tr
+            %td= row.source
+            %td= row.log
+  - else
+    %h3= @import.title

@@ -12,7 +12,9 @@
         %nav.navbar.clearfix(role="navigation")
           %ul.nav.navbar-nav
             %li= link_to t('.attachments'), attachments_path, class: ('current' if request.fullpath =~ /attachments/)
-            %li= link_to t('.mappings'), mappings_path, class: ('current' if request.fullpath =~ /mappings/)
-            %li= link_to t('.imports'), imports_path, class: ('current' if request.fullpath =~ /imports/)
+            %li= link_to t('.mappings'),    mappings_path,    class: ('current' if request.fullpath =~ /mappings/)
+            %li= link_to t('.imports'),     imports_path,     class: ('current' if request.fullpath =~ /imports/)
+    %br
+    %br
       
     = yield

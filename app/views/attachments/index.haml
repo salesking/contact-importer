@@ -23,10 +23,12 @@
             %input{:type=>"checkbox", :name=>"ids[]", :value=>"#{attachment.id}"}
           %td
             = link_to(attachment.filename, attachment)
+            = link_to(icon('trash-o'), attachment, data: {confirm: t('attachments.delete_confirm'), method: :delete})
             .created= l attachment.created_at
           %td
             - if attachment.mapping
               = link_to(attachment.mapping.title, attachment.mapping)
+              = link_to(icon('trash-o'), [attachment, attachment.mapping], data: {confirm: t('mappings.delete_confirm'), method: :delete})
               .created= l attachment.mapping.created_at
             - else
               = link_to(t('mappings.new'), new_attachment_mapping_path(attachment))
@@ -34,8 +36,7 @@
             - if attachment.imports.any?
               - attachment.imports.each do |import|
                 = link_to(import.title, import)
+                = link_to(icon('trash-o'), [attachment, import], data: {confirm: t('imports.delete_confirm'), method: :delete})
                 .created= l import.created_at
             - elsif attachment.mapping
               = link_to(t('imports.new'), new_attachment_import_path(attachment))
-          %td
-            = link_to(image_tag('destroy.png'), attachment, data: {confirm: t('attachments.delete_confirm'), method: :delete})

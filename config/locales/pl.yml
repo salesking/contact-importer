@@ -2,7 +2,140 @@ pl:
   activerecord:
     attributes:
       attachment:
-        encoding: 
-        quote_charp: 
+        col_sep: Separator kolumn
+        column_separator: Separator kolumn
+        disk_filename: 
+        encoding: Kodowanie znaków
+        filename: 
+        quote_char: Znak cudzysłowia
+      data_row:
+        external_id: 
+        log: Rejestr
+        sk_id: Identyfikator w SalesKing
+        source: Dane źródłowe
+      import:
+        col_sep: Separator kolumn
+        created_at: Stworzono
+        kind: 
+        quote_char: Znak cudzysłowia
       mapping:
         created_at: 
+        mapping_elements: 
+      mapping_element:
+        source: 
+        target: Pole w SalesKing
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: 
+    models:
+      attachment:
+        few: Wysłane pliki
+        one: Wysłany plik
+        other: wysłanych plików
+      data_row:
+        few: Wiersze danych
+        one: Wiersz danych
+        other: wierszy danych
+      import:
+        few: Importy
+        one: Import
+        other: importów
+      mapping:
+        few: Połączenia pół
+        one: Połaczenie pół
+        other: połączeń pól
+  attachments:
+    csv_import_error: 
+    delete_confirm: Tej czynności nie można cofnąć. Dołączone importy zostaną usunięte z aplikacji. Czy na pewno chcesz kontynuować?
+    new:
+      can_use_tab_character_html: 
+      enable_javascript: Włącz obsługę JavaScript w przeglądarce, by móc wysyłać pliki.
+      help_html: Jeżeli masz problem z używaniem tej aplikacji, przeczytaj <a href="%{link}" target="_blank">naszą dokumentację</a>.
+      help_link: https://hilfe.salesking.eu/kb/apps/contact-importer-kontakte-per-csv-import-importieren
+      only_for_advanced_users: To ustawienie jest tylko dla zaawansowanych użytkowników. Zostaw pole, jak jest, jeżeli nie wiesz, o czym mówimy.
+      page_title: 
+      preview: Podgląd pliku CSV
+      preview_info: Poniższa tabela zawiera jedynie przegląd przesłanego pliku.
+      upload_button: 
+    proceed_to_mapping: 
+    upload: 
+  data_rows:
+    failed: 
+    success: 
+  errors:
+    sk_login_required: 
+  imports:
+    create: 
+    delete_confirm: 
+    destroyed_successfully: 
+    document:
+      title_failed: 
+      title_success: 
+    line_item:
+      title_failed: 
+      title_success: 
+    new: 
+    show:
+      open_document: 
+    title_failed: 
+    title_success: 
+    total: 
+  layouts:
+    application:
+      attachments: 
+      imports: 
+      mappings: 
+  link:
+    actions: 
+    back: 
+    back_to_list: Wróć do listy
+    back_to_mapping: 
+    confirm_destroy: Czy na pewno usunąć ten obiekt?
+    destroy: Usuń
+    edit: Edytuj
+    new_import: 
+    revert: Cofnij zmiany
+    show: Pokaż
+    step: 'Krok %{step} z %{total}:'
+  mappings:
+    delete_confirm: 
+    destroy_failed: 
+    destroyed_successfully: 
+    dnd_info: Przeciągnij i upuść powyższe pola na odpowiadające pola celowe. Docelowo możesz upuścić więcej niż jedno pole. Ich wartości zostaną wtedy połączone odstępem.
+    edit: 
+    form:
+      document: 
+      document_id_placeholder: Szukaj dokumentów o statusie roboczym
+      document_mapping: Docelowe pola dokumentu
+      field_mappings: Ustawienia połączeń kolumn
+      line_item_mapping: Docelowe pola pozycji
+      line_item_mapping_info: Abyśmy mogli rozpocząć import, musisz połaczyć co najmniej pola price_single i quantity
+      proceed_to_import: Przejdź do importu
+      reuse_this_mapping_button: Wykorzystaj wybrane połączenia pól
+      setup: Ustawienia początkowe
+      source_fields_info: 
+    info: 
+    new: Połącz pola z załącznika
+    new_mapping: 
+    reuse: 
+    select_reuse: 
+    source_fields: Pola źródłowe z załącznika
+    target_fields: Pola w SalesKing
+    title:
+      few: "%{count} pola: %{fields}"
+      one: "%{count} pole: %{fields}"
+      other: "%{count} pól: %{fields}"
+  time:
+    am: 
+    formats:
+      date_only: 
+      default: 
+      long: 
+      month_year: 
+      short: 
+      shorter: 
+      time: 
+    pm: 

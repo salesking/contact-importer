@@ -1,7 +1,7 @@
 .header
   .head2
     .title
-      = t('link.step', count: 3, total: 3)
+      = t('link.step', step: 3, total: 3)
       = t('imports.new')
   .head3
     .info
@@ -14,7 +14,7 @@
         .side-list-item
           = f.submit t('imports.create'), class: "btn btn-danger"
         .side-list-item
-          = link_to t('link.back'), new_attachment_path, class: "btn secondary"
+          = link_to t('link.back'), attachments_path, class: "btn secondary"
 
 #content
   %h2=t('attachments.new.preview')

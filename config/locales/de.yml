@@ -2,7 +2,149 @@ de:
   activerecord:
     attributes:
       attachment:
-        encoding: 
-        quote_charp: 
+        col_sep: Feldtrenner
+        column_separator: Feldtrenner
+        disk_filename: Disk filename
+        encoding: Encoding
+        filename: Dateiname
+        quote_char: Texttrenner
+      data_row:
+        external_id: Link in SalesKing
+        log: Log
+        sk_id: SalesKing ID
+        source: Quelldaten
+      import:
+        col_sep: Feldtrenner
+        created_at: Erstellt am
+        kind: Dateityp
+        quote_char: Texttrenner
       mapping:
-        created_at: 
+        created_at: Erstellt am
+        mapping_elements: Feldzuweisung
+      mapping_element:
+        source: Quellfeld
+        target: SalesKing-Feld
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: fehlt
+    models:
+      attachment:
+        one: Hochgeladene Datei
+        other: Hochgeladene Dateien
+      data_row:
+        one: Datenzeile
+        other: Datenzeilen
+      import:
+        one: Import
+        other: Importe
+      mapping:
+        one: Feldzuweisung
+        other: Feldzuweisungen
+  attachments:
+    csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
+    delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
+    new:
+      can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
+      enable_javascript: Bitte aktivieren Sie JavaScript um Dateien hochladen zu können.
+      help_html: Sollten Sie Probleme mit dieser App haben, lesen Sie <a href="%{link}" target="_blank">die Dokumentation</a>.
+      help_link: https://hilfe.salesking.eu/kb/apps/contact-importer-kontakte-per-csv-import-importieren
+      only_for_advanced_users: Diese Einstellung ist für Profis. Ändern Sie nichts, wenn Sie nicht wissen damit umzugehen.
+      page_title: Datei hochladen
+      preview: Vorschau
+      preview_info: Dies ist eine Vorschau - es werden die ersten drei Zeilen aus dem csv angezeigt.
+      upload_button: Datei hochladen
+    proceed_to_mapping: Weiter zur Feldzuweisung
+    upload: Hochladen
+  data_rows:
+    failed: Fehlgeschlagene Zeilen
+    success: Erfolgreiche Zeilen
+  errors:
+    sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
+  imports:
+    create: Daten importieren
+    delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?
+    destroyed_successfully: 
+    document:
+      title_failed:
+        one: "%{count} Dokument fehlgeschlagen"
+        other: "%{count} Dokumente fehlgeschlagen"
+      title_success:
+        one: "%{count} Dokument importiert"
+        other: "%{count} Dokumente importiert"
+    line_item:
+      title_failed:
+        one: "%{count} Einzelposition fehlgeschlagen"
+        other: "%{count} Einzelpositionen fehlgeschlagen"
+      title_success:
+        one: "%{count} Einzelposition importiert"
+        other: "%{count} Einzelpositionen importiert"
+    new: Import erzeugen
+    show:
+      open_document: Dokument öffnen
+    title_failed:
+      one: "%{count} Zeile fehlgeschlagen"
+      other: "%{count} Zeilen fehlgeschlagen"
+    title_success:
+      one: "%{count} Zeile importiert"
+      other: "%{count} Zeilen importiert"
+    total:
+      one: Insgesamt %{count} Zeile
+      other: Insgesamt %{count} Zeilen
+  layouts:
+    application:
+      attachments: Datensätze
+      imports: Importe
+      mappings: Feldzuweisungen
+  link:
+    actions: Aktionen
+    back: Zurück
+    back_to_list: Zurück zur Liste
+    back_to_mapping: Zurück zum Mapping
+    confirm_destroy: Diesen Eintrag wirklich löschen?
+    destroy: Löschen
+    edit: Bearbeiten
+    new_import: Neuer Import
+    revert: Rückgängig
+    show: Zeige
+    step: 'Schritt %{step} von %{total}:'
+  mappings:
+    delete_confirm: Das Löschen einer Feldzuweisung löscht nicht den Import. Mit Löschung fortfahren?
+    destroy_failed: Feldzuweisung konnte nicht gelöscht werden.
+    destroyed_successfully: Feldzuweisung erfolgreich gelöscht.
+    dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schlagworte).
+    edit: Feldzuweisung bearbeiten
+    form:
+      document: Dokument
+      document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
+      document_mapping: Zielfelder des Dokumentes
+      field_mappings: Feldzuweisung erstellen
+      line_item_mapping: Zielfelder der Einzelpositionen
+      line_item_mapping_info: Mindestens price_single und quantity müssen eine Zuweisung aus Ihrer Quelldatei haben.
+      proceed_to_import: Weiter zum Import
+      reuse_this_mapping_button: Diese Feldzuweisung erneut anwenden
+      setup: Einstellungen
+      source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
+    info: Wählen Sie eine existierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
+    new: Importeinstellungen
+    new_mapping: Neue Feldzuweisung
+    reuse: Exisitierende Feldzuweisung
+    select_reuse: Wählen Sie eine existierende Feldzuweisung
+    source_fields: Quellfelder
+    target_fields: SalesKing-Felder
+    title:
+      one: "%{count} Feld: %{fields}"
+      other: "%{count} Felder: %{fields}"
+  time:
+    am: vormittags
+    formats:
+      date_only: "%A, %d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M Uhr"
+      long: "%A, %e. %B %Y, %H:%M Uhr"
+      month_year: "%B, %Y"
+      short: "%e. %B, %H:%M Uhr"
+      shorter: "%d.%m.%y %H:%M"
+      time: "%H:%M"
+    pm: nachmittags

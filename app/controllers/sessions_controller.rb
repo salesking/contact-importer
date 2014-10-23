@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
       session['access_token'] = r.data['access_token']
       session['user_id'] = r.data['user_id']
       session['company_id'] = r.data['company_id']
+      session['language'] = find_locale(r.data['language'])
       redirect_to attachments_url
     else # must authorize redirect to oauth dialog
         render inline: "<script> top.location.href='#{Sk::APP.auth_dialog}'</script>"
@@ -30,5 +31,11 @@ class SessionsController < ApplicationController
       #redirect to sk internal canvas page, where we are now authenticated
       render inline: "<script> top.location.href='#{Sk::APP.sk_canvas_url}'</script>"
     end
+  end
+
+  private
+
+  def find_locale(locale)
+    locale.match(/\A(?<country>[a-z]{2})_[A-Z]{2}\Z/).try(:[], :country) || locale
   end
 end
