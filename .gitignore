@@ -18,3 +18,4 @@ public/assets
 .localeapp
 /vendor/assets/bower_components/*
 config/initializers/localeapp.rb
+Bowerfile
