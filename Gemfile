@@ -10,11 +10,13 @@ gem 'cancan'
 
 gem 'unicorn'
 gem 'bower-rails'
+gem 'non-stupid-digest-assets'
 gem 'pg'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
+
 
 group :test, :development do
   gem 'rspec-rails'

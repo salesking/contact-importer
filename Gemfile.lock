@@ -100,6 +100,7 @@ GEM
     net-ssh (2.9.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    non-stupid-digest-assets (1.0.4)
     pg (0.17.1)
     rack (1.5.2)
     rack-raw-upload (1.1.1)
@@ -200,6 +201,7 @@ DEPENDENCIES
   haml
   json
   mysql2
+  non-stupid-digest-assets
   pg
   rack-raw-upload
   rails (= 4.1.6)
