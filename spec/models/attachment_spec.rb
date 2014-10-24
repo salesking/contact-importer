@@ -9,7 +9,7 @@ describe Attachment do
   end
 
   describe 'validations' do
-    context :col_sep do
+    context 'col_sep' do
       let(:attachment) { build(:attachment) }
       before           {  }
       it 'is valid present' do
