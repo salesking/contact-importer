@@ -17,7 +17,7 @@ gem 'uglifier'
 gem 'therubyracer'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.6'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
