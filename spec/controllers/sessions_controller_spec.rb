@@ -18,7 +18,7 @@ describe SessionsController do
       # construct signed param
       param_hash = {'sub_domain' =>'abc', 'company_id'=>'xyz',
                     'access_token'=>'a-long-token',
-                    'user_id'=>'xyz', 'algorithm' => 'HMAC-SHA256' }
+                    'user_id'=>'xyz', 'algorithm' => 'HMAC-SHA256', 'language' => 'en_GB' }
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::APP.secret)
       
       post :create, :signed_request => param

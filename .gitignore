@@ -19,3 +19,5 @@ public/assets
 /vendor/assets/bower_components/*
 config/initializers/localeapp.rb
 .localeapp
+Bowerfile
+.DS_Store

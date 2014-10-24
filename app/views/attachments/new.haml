@@ -29,7 +29,7 @@
             %span.help-inline= t('.can_use_tab_character_html')
       .side-list-item
         .clearfix
-          = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_charp)} <span class='required'> *</span>".html_safe
+          = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_char)} <span class='required'> *</span>".html_safe
           .input
             = f.text_field :quote_char, class: 'minimi'
       .side-list-item
@@ -42,7 +42,7 @@
         .actions
           = f.submit t('attachments.proceed_to_mapping'), class: "btn btn-primary btn-large", id: "continue-button", style: "display:none"
           = link_to t('link.back'), attachments_path, class: "btn secondary"
-  
+
 #content
   #csv-table.clearfix{style: ("display: none" if @attachment.new_record?)}
     %h2=t('.preview')
