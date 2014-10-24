@@ -7,6 +7,7 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
+      "jquery-ui": "https://github.com/components/jqueryui.git",
       "jquery-ujs": "https://github.com/rails/jquery-ujs.git",
       "schmuugle": "https://github.com/Schmuugle/schmuugle.git"
     }
