@@ -24,7 +24,6 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'mysql2'
-  gem 'localeapp'
 end
 
 group :development do

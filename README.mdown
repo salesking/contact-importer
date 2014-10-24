@@ -70,11 +70,14 @@ DON'T FORGET: never push production to your public branch, if you do you need to
 - **That's it!**
 - The maintainer will then pull translations from the Locale project and push to Github.
 
-If you need to pull/push locales:
+We want to strictly seperate the localeapp from this project thus if you need to pull locales install the localeapp gem globally:
 
-  localeapp install --standalone <API Key>
+  gem install localeapp <API KEY>
   
-And than edit the config file in .localeapp/config.rb
+And than add to the config file in .localeapp/config.rb in your root directory the following:
+
+  config.sending_environments = []
+  config.polling_environments = [] 
 
 
 Happy translating!
