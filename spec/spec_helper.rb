@@ -8,7 +8,10 @@ require 'rspec/rails'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
+# Checks for pending migrations before tests are run.
+# ActiveRecord::Migration.check_pending!
+ActiveRecord::Migration.maintain_test_schema!
+I18n.locale = :en
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods

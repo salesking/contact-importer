@@ -22,7 +22,6 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'mysql2'
-  gem 'localeapp'
   gem 'byebug'
 end
 

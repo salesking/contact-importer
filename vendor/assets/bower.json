@@ -1,8 +1,0 @@
-{
-  "name": "dsl-generated dependencies",
-  "dependencies": {
-    "schmuugle": "https://github.com/Schmuugle/schmuugle.git",
-    "jquery-ujs": "https://github.com/rails/jquery-ujs.git",
-    "jquery-ui": "1.10.4"
-  }
-}
