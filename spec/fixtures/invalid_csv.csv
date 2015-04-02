@@ -1,0 +1,4 @@
+"name","description","quantity","price_single","quantity_unit","tax"
+"Training","TestTraining, Vorbereitung // Hauptstr. 10, 1234 Stadt // Termin: 11.11.2012: 09.00 - 10.00 // Abgerechnete Leistung: 09.30 - 10.00 (0:30 später wg. Verspätung ) ","0,5","30","Stunden","19"
+"Training","TestTraining, Vorbereitung // Hauptstr. 10, 1234 Stadt // Termin: 11.11.2012: 10.00 - 11.00 // Abgerechnete Leistung: 10.00 - 12.45 (+1:45 wg. geplante Updates, Neueinrichtung User für Testsystem "X" und Testlauf (mit Thomas Maier)) ","2,75","70","Stunden","19"
+"Training","TestTraining, Vorbereitung // Telefonkonferenz,   // Termin: 11.11.2011: 10.00 - 11.30 // Abgerechnete Leistung: 10.00 - 11.15","1,25","70","Stunden","19"

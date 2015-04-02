@@ -44,6 +44,7 @@
           = link_to t('link.back'), attachments_path, class: "btn secondary"
 
 #content
+  #invalid-csv-error.alert-message.block-message.error{style: 'display: none'}
   #csv-table.clearfix{style: ("display: none" if @attachment.new_record?)}
     %h2=t('.preview')
     %p=t('.preview_info')

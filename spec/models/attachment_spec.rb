@@ -59,6 +59,12 @@ describe Attachment do
     @attachment.rows.first.size.should be > 1
   end
 
+  it 'set error for invalid csv' do
+    invalid_attachment = create(:attachment, uploaded_data: file_upload('invalid_csv.csv'), col_sep: ',')
+    expect(invalid_attachment.rows).to eq []
+    expect(invalid_attachment.parse_error).to eq 'Missing or stray quote in line 3'
+  end
+
   it 'reveals specified number of rows' do
     @attachment.rows(1).size.should == 1
   end

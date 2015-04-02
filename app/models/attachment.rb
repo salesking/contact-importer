@@ -24,7 +24,7 @@ class Attachment < ActiveRecord::Base
   validate :col_sep_presence
 
   #attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
-  attr_reader :error_rows
+  attr_reader :error_rows, :parse_error
 
   def col_sep=(original_value)
     self.send(:write_attribute, :col_sep, original_value == "\\t" ? "\t" : original_value)
@@ -61,7 +61,8 @@ class Attachment < ActiveRecord::Base
   def parsed_data
     @parsed_data ||= begin
       CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: encoding)
-    rescue #CSV::MalformedCSVError => er
+    rescue => e #CSV::MalformedCSVError => er
+      @parse_error = e.to_s
       rows = []
       #one more attempt. If BOM is present in the file.
       begin

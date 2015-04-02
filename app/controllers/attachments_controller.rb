@@ -14,7 +14,8 @@ class AttachmentsController < ApplicationController
     @attachment.user = current_user
     @attachment.save!
     # TODO rescue parser errors -> rows empty
-    render json: {success: true, id: @attachment.id, rows: @attachment.rows(4)}, status: :ok
+    rows = @attachment.rows(4)
+    render json: {errors: @attachment.parse_error, id: @attachment.id, rows: rows}, status: :ok
   end
 
   def update
