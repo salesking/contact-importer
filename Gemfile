@@ -7,6 +7,7 @@ gem 'sk_api_schema', '~> 0.9.4'
 gem 'haml'
 gem 'rack-raw-upload'
 gem 'cancan'
+gem 'eventmachine', '~>1.0.4'
 
 gem 'unicorn'
 gem 'bower-rails'
@@ -23,7 +24,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.13'
   gem 'byebug'
 end
 
