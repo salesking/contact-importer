@@ -66,6 +66,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.8.9)
+    concurrent-ruby (1.1.10)
     curb (0.8.6)
     daemons (1.1.9)
     debugger-linecache (1.2.0)
@@ -83,7 +84,8 @@ GEM
       tilt
     highline (1.6.21)
     hike (1.2.3)
-    i18n (0.6.11)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     json (1.8.1)
     kgio (2.9.2)
     libv8 (3.16.14.7)
